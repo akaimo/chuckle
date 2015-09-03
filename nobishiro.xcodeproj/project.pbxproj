@@ -14,6 +14,12 @@
 		99593B531B983C82000C51C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593B511B983C82000C51C1 /* LaunchScreen.xib */; };
 		99593B5F1B983C82000C51C1 /* nobishiroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B5E1B983C82000C51C1 /* nobishiroTests.swift */; };
 		99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B681B983D48000C51C1 /* PostingViewController.swift */; };
+		B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B34FB1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift */; };
+		B57B34FE1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57B34FC1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib */; };
+		B57B35011B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B34FF1B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift */; };
+		B57B35021B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57B35001B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib */; };
+		B57B35051B985C9300C156A2 /* FourPanelMangaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B35031B985C9300C156A2 /* FourPanelMangaTableViewCell.swift */; };
+		B57B35061B985C9300C156A2 /* FourPanelMangaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57B35041B985C9300C156A2 /* FourPanelMangaTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +44,12 @@
 		99593B5D1B983C82000C51C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99593B5E1B983C82000C51C1 /* nobishiroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nobishiroTests.swift; sourceTree = "<group>"; };
 		99593B681B983D48000C51C1 /* PostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingViewController.swift; sourceTree = "<group>"; };
+		B57B34FB1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoPanelMangaTableViewCell.swift; sourceTree = "<group>"; };
+		B57B34FC1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPanelMangaTableViewCell.xib; sourceTree = "<group>"; };
+		B57B34FF1B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreePanelMangaTableViewCell.swift; sourceTree = "<group>"; };
+		B57B35001B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreePanelMangaTableViewCell.xib; sourceTree = "<group>"; };
+		B57B35031B985C9300C156A2 /* FourPanelMangaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourPanelMangaTableViewCell.swift; sourceTree = "<group>"; };
+		B57B35041B985C9300C156A2 /* FourPanelMangaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourPanelMangaTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +91,7 @@
 		99593B451B983C82000C51C1 /* nobishiro */ = {
 			isa = PBXGroup;
 			children = (
+				B57B35071B9860A500C156A2 /* Cells */,
 				99593B481B983C82000C51C1 /* AppDelegate.swift */,
 				99593B4A1B983C82000C51C1 /* ViewController.swift */,
 				99593B681B983D48000C51C1 /* PostingViewController.swift */,
@@ -113,6 +126,19 @@
 				99593B5D1B983C82000C51C1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B57B35071B9860A500C156A2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B57B34FB1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift */,
+				B57B34FC1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib */,
+				B57B34FF1B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift */,
+				B57B35001B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib */,
+				B57B35031B985C9300C156A2 /* FourPanelMangaTableViewCell.swift */,
+				B57B35041B985C9300C156A2 /* FourPanelMangaTableViewCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,8 +221,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B57B34FE1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib in Resources */,
+				B57B35061B985C9300C156A2 /* FourPanelMangaTableViewCell.xib in Resources */,
 				99593B4E1B983C82000C51C1 /* Main.storyboard in Resources */,
 				99593B531B983C82000C51C1 /* LaunchScreen.xib in Resources */,
+				B57B35021B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib in Resources */,
 				99593B501B983C82000C51C1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,9 +244,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */,
 				99593B4B1B983C82000C51C1 /* ViewController.swift in Sources */,
 				99593B491B983C82000C51C1 /* AppDelegate.swift in Sources */,
 				99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */,
+				B57B35011B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift in Sources */,
+				B57B35051B985C9300C156A2 /* FourPanelMangaTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +445,7 @@
 				99593B641B983C82000C51C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		99593B651B983C82000C51C1 /* Build configuration list for PBXNativeTarget "nobishiroTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +454,7 @@
 				99593B671B983C82000C51C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
