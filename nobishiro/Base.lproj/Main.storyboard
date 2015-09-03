@@ -15,7 +15,19 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zhf-aE-hVj" userLabel="timelineTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="zhf-aE-hVj" secondAttribute="centerY" id="D36-lL-lNE"/>
+                            <constraint firstAttribute="centerX" secondItem="zhf-aE-hVj" secondAttribute="centerX" id="ZNu-a2-bEk"/>
+                            <constraint firstAttribute="height" secondItem="zhf-aE-hVj" secondAttribute="height" id="cCT-bz-SCI"/>
+                            <constraint firstAttribute="width" secondItem="zhf-aE-hVj" secondAttribute="width" id="rsI-6x-MG2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8m7-i9-46F">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7xB-Av-8ic">
@@ -24,6 +36,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="timelineTableView" destination="zhf-aE-hVj" id="ZkU-xA-9Sp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
