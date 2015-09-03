@@ -13,6 +13,7 @@
 		99593B501B983C82000C51C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99593B4F1B983C82000C51C1 /* Images.xcassets */; };
 		99593B531B983C82000C51C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593B511B983C82000C51C1 /* LaunchScreen.xib */; };
 		99593B5F1B983C82000C51C1 /* nobishiroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B5E1B983C82000C51C1 /* nobishiroTests.swift */; };
+		99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B681B983D48000C51C1 /* PostingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		99593B581B983C82000C51C1 /* nobishiroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nobishiroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99593B5D1B983C82000C51C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99593B5E1B983C82000C51C1 /* nobishiroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nobishiroTests.swift; sourceTree = "<group>"; };
+		99593B681B983D48000C51C1 /* PostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				99593B481B983C82000C51C1 /* AppDelegate.swift */,
 				99593B4A1B983C82000C51C1 /* ViewController.swift */,
+				99593B681B983D48000C51C1 /* PostingViewController.swift */,
 				99593B4C1B983C82000C51C1 /* Main.storyboard */,
 				99593B4F1B983C82000C51C1 /* Images.xcassets */,
 				99593B511B983C82000C51C1 /* LaunchScreen.xib */,
@@ -214,6 +217,7 @@
 			files = (
 				99593B4B1B983C82000C51C1 /* ViewController.swift in Sources */,
 				99593B491B983C82000C51C1 /* AppDelegate.swift in Sources */,
+				99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
