@@ -13,16 +13,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQL-eq-iwB">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQL-eq-iwB" userLabel="firstPanel">
                         <rect key="frame" x="112" y="8" width="150" height="150"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17d-1y-XDn">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17d-1y-XDn" userLabel="secondPanel">
                         <rect key="frame" x="112" y="162" width="150" height="150"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="firstPanel" destination="XQL-eq-iwB" id="6MI-Cz-jda"/>
+                <outlet property="secondPanel" destination="17d-1y-XDn" id="6ik-Nv-kAe"/>
+            </connections>
             <point key="canvasLocation" x="307.5" y="451"/>
         </tableViewCell>
     </objects>

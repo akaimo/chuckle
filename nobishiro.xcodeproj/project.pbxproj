@@ -18,6 +18,10 @@
 		B5105AD11B993FB300BD9ECD /* Haneke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACE1B993FB200BD9ECD /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5105AD21B993FB300BD9ECD /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACF1B993FB200BD9ECD /* Himotoki.framework */; };
 		B5105AD31B993FB300BD9ECD /* Himotoki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACF1B993FB200BD9ECD /* Himotoki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5105AD71B9941A200BD9ECD /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5105AD61B9941A200BD9ECD /* Work.swift */; };
+		B5105AD91B994F2A00BD9ECD /* WorksData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5105AD81B994F2A00BD9ECD /* WorksData.swift */; };
+		B5105ADB1B9950E800BD9ECD /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5105ADA1B9950E800BD9ECD /* Material.swift */; };
+		B53B08041B99600D005F5F30 /* MaterialsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B08031B99600D005F5F30 /* MaterialsData.swift */; };
 		B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B34FB1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift */; };
 		B57B34FE1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57B34FC1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib */; };
 		B57B35011B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B34FF1B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift */; };
@@ -65,6 +69,10 @@
 		99593B681B983D48000C51C1 /* PostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingViewController.swift; sourceTree = "<group>"; };
 		B5105ACE1B993FB200BD9ECD /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		B5105ACF1B993FB200BD9ECD /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
+		B5105AD61B9941A200BD9ECD /* Work.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
+		B5105AD81B994F2A00BD9ECD /* WorksData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksData.swift; sourceTree = "<group>"; };
+		B5105ADA1B9950E800BD9ECD /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		B53B08031B99600D005F5F30 /* MaterialsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialsData.swift; sourceTree = "<group>"; };
 		B57B34FB1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoPanelMangaTableViewCell.swift; sourceTree = "<group>"; };
 		B57B34FC1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPanelMangaTableViewCell.xib; sourceTree = "<group>"; };
 		B57B34FF1B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreePanelMangaTableViewCell.swift; sourceTree = "<group>"; };
@@ -116,6 +124,7 @@
 		99593B451B983C82000C51C1 /* nobishiro */ = {
 			isa = PBXGroup;
 			children = (
+				B5105AD51B99418400BD9ECD /* Models */,
 				B57B35071B9860A500C156A2 /* Cells */,
 				99593B481B983C82000C51C1 /* AppDelegate.swift */,
 				99593B4A1B983C82000C51C1 /* ViewController.swift */,
@@ -151,6 +160,17 @@
 				99593B5D1B983C82000C51C1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5105AD51B99418400BD9ECD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B5105AD61B9941A200BD9ECD /* Work.swift */,
+				B5105AD81B994F2A00BD9ECD /* WorksData.swift */,
+				B5105ADA1B9950E800BD9ECD /* Material.swift */,
+				B53B08031B99600D005F5F30 /* MaterialsData.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		B57B35071B9860A500C156A2 /* Cells */ = {
@@ -270,11 +290,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53B08041B99600D005F5F30 /* MaterialsData.swift in Sources */,
 				B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */,
+				B5105ADB1B9950E800BD9ECD /* Material.swift in Sources */,
 				99593B4B1B983C82000C51C1 /* ViewController.swift in Sources */,
+				B5105AD91B994F2A00BD9ECD /* WorksData.swift in Sources */,
 				99593B491B983C82000C51C1 /* AppDelegate.swift in Sources */,
 				99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */,
 				B57B35011B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift in Sources */,
+				B5105AD71B9941A200BD9ECD /* Work.swift in Sources */,
 				B57B35051B985C9300C156A2 /* FourPanelMangaTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

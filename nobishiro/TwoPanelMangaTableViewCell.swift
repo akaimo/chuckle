@@ -10,6 +10,9 @@ import UIKit
 
 class TwoPanelMangaTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var firstPanel: UIImageView!
+    @IBOutlet weak var secondPanel: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
