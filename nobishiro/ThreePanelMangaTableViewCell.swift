@@ -10,9 +10,26 @@ import UIKit
 
 class ThreePanelMangaTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var title: UILabel!
+    
+    @IBOutlet weak var firstPanel: UIImageView!
+    @IBOutlet weak var secondPanel: UIImageView!
+    @IBOutlet weak var thirdPanel: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+
+    class func height() -> CGFloat {
+        return 512
+    }
+
+    override func prepareForReuse() {
+        title.text = ""
+        firstPanel.image = nil
+        secondPanel.image = nil
+        thirdPanel.image = nil
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
