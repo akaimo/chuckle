@@ -47,6 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if let json = JSON.dictionary,
                 worksData: WorksData = decode(json) {
                 self.works = worksData.data
+                print(worksData.data)
                 print("set data")
             } else {
                 println("can't decode")
@@ -63,14 +64,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        //MARK: TODO
-        switch indexPath.row % 3 {
-        case 1:
-            return 320
+        switch works[indexPath.row].materials.count {
         case 2:
-            return 474
+            return TwoPanelMangaTableViewCell.height()
+        case 3:
+            return ThreePanelMangaTableViewCell.height()
+        case 4:
+            return FourPanelMangaTableViewCell.height()
         default:
-            return 628
+            return 0
         }
     }
 
@@ -81,17 +83,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         switch materials.count {
         case 2:
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[0]) as! TwoPanelMangaTableViewCell
+            cell.title.text = NSDate().description
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             return cell
         case 3:
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[1]) as! ThreePanelMangaTableViewCell
+            cell.title.text = NSDate().description
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
             return cell
         case 4:
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[2]) as! FourPanelMangaTableViewCell
+            cell.title.text = NSDate().description
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
