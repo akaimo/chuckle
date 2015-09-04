@@ -24,15 +24,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="zhf-aE-hVj" secondAttribute="centerY" id="D36-lL-lNE"/>
+                            <constraint firstAttribute="width" secondItem="zhf-aE-hVj" secondAttribute="width" id="YW4-mC-luh"/>
                             <constraint firstAttribute="centerX" secondItem="zhf-aE-hVj" secondAttribute="centerX" id="ZNu-a2-bEk"/>
                             <constraint firstAttribute="height" secondItem="zhf-aE-hVj" secondAttribute="height" id="cCT-bz-SCI"/>
-                            <constraint firstAttribute="width" secondItem="zhf-aE-hVj" secondAttribute="width" id="rsI-6x-MG2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8m7-i9-46F">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7xB-Av-8ic">
                             <connections>
-                                <segue destination="oMM-xB-o2j" kind="push" id="c04-Em-Bex"/>
+                                <segue destination="oMM-xB-o2j" kind="presentation" id="wuX-8d-Czy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
