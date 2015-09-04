@@ -9,7 +9,10 @@
 import UIKit
 
 class FourPanelMangaTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var firstPanel: UIImageView!
+    @IBOutlet weak var secondPanel: UIImageView!
+    @IBOutlet weak var thirdPanel: UIImageView!
+    @IBOutlet weak var fourPanel: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

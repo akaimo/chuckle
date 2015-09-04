@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import Haneke
+import Himotoki
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private weak var timelineTableView: UITableView!
+    private var works: [Work] = [] {
+        didSet {
+            timelineTableView.reloadData()
+        }
+    }
 
     let sampleIdentifier = ["TwoPanelManga", "ThreePanelManga", "FourPanelManga"]
 
@@ -24,11 +31,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         for identifier in sampleIdentifier {
             timelineTableView.registerNib(UINib(nibName: "\(identifier)TableViewCell", bundle: nil), forCellReuseIdentifier: identifier)
         }
+
+        loadWorks()
+    }
+
+    func loadWorks() {
+        let cache = Cache<JSON>(name: "works")
+        let URL = NSURL(string: "http://yuji.website:3001/api/work")!
+
+        cache.fetch(URL: URL).onSuccess{ JSON in
+            if let json = JSON.dictionary,
+                worksData: WorksData = decode(json) {
+                self.works += worksData.data
+            } else {
+                println("can't decode")
+            }
+        }.onFailure{Failer in
+            println(Failer)
+        }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //MARK: TODO
-        return 10
+        return works.count
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -45,17 +69,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        //MARK: TODO
-        let cell: UITableViewCell!
-        switch indexPath.row % 3 {
-        case 1:
-            cell = timelineTableView.dequeueReusableCellWithIdentifier(sampleIdentifier[0]) as! TwoPanelMangaTableViewCell
+        let materials = works[indexPath.row].materials
+
+        switch materials.count {
         case 2:
-            cell = timelineTableView.dequeueReusableCellWithIdentifier(sampleIdentifier[1]) as! ThreePanelMangaTableViewCell
+            let cell = timelineTableView.dequeueReusableCellWithIdentifier(sampleIdentifier[0]) as! TwoPanelMangaTableViewCell
+            cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
+            cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
+            return cell
+        case 3:
+            let cell = timelineTableView.dequeueReusableCellWithIdentifier(sampleIdentifier[1]) as! ThreePanelMangaTableViewCell
+            cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
+            cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
+            cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
+            return cell
+        case 4:
+            let cell = timelineTableView.dequeueReusableCellWithIdentifier(sampleIdentifier[2]) as! FourPanelMangaTableViewCell
+            cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
+            cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
+            cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
+            cell.fourPanel.hnk_setImageFromURL(NSURL(string: materials[3].url)!)
+            return cell
         default:
-            cell = timelineTableView.dequeueReusableCellWithIdentifier(sampleIdentifier[2]) as! FourPanelMangaTableViewCell
+            return UITableViewCell()
         }
-        return cell
     }
 }
 
