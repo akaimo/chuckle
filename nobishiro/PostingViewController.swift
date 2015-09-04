@@ -16,6 +16,7 @@ class PostingViewController: UIViewController {
         super.viewDidLoad()
 
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
+        postingTableView.registerNib(UINib(nibName: "PostingTitleCustomCell", bundle: nil), forCellReuseIdentifier: "Title")
         postingTableView.allowsSelection = false
     }
 
@@ -27,23 +28,35 @@ class PostingViewController: UIViewController {
     
     // MARK: - UITableViewDelegate Protocol
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 160
+        switch indexPath.row {
+        case 0:
+            return 80
+        default:
+            return 160
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: PostingTableViewCell
-        cell = postingTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
-        cell.postingImageView.image = UIImage(named: "Image")
-        cell.postingImageView.tag = indexPath.row
-        
-        let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
-        cell.postingImageView.addGestureRecognizer(gesture)
-        
-        return cell
+        switch indexPath.row {
+        case 0:
+            let cell = postingTableView.dequeueReusableCellWithIdentifier("Title") as! PostingTitleCustomCell
+            
+            return cell
+            
+        default:
+            let cell = postingTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
+            cell.postingImageView.image = UIImage(named: "Image")
+            cell.postingImageView.tag = indexPath.row
+            
+            let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
+            cell.postingImageView.addGestureRecognizer(gesture)
+            
+            return cell
+        }
     }
     
     // MARK: -
