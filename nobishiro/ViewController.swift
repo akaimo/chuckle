@@ -13,6 +13,7 @@ import Himotoki
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private weak var timelineTableView: UITableView!
+    private let refreshControl = UIRefreshControl()
     private var works: [Work] = [] {
         didSet {
             timelineTableView.reloadData()
@@ -33,6 +34,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
         loadWorks()
+
+        refreshControl.addTarget(self, action: "loadWorks", forControlEvents: .ValueChanged)
+        timelineTableView.addSubview(refreshControl)
     }
 
     func loadWorks() {
@@ -42,12 +46,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cache.fetch(URL: URL).onSuccess{ JSON in
             if let json = JSON.dictionary,
                 worksData: WorksData = decode(json) {
-                self.works += worksData.data
+                self.works = worksData.data
+                print("set data")
             } else {
                 println("can't decode")
             }
+            self.refreshControl.endRefreshing()
         }.onFailure{Failer in
             println(Failer)
+            self.refreshControl.endRefreshing()
         }
     }
 
