@@ -25,12 +25,19 @@
                         <rect key="frame" x="112" y="316" width="150" height="150"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3コマ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdQ-7Z-Eo1" userLabel="title">
+                        <rect key="frame" x="300" y="8" width="67" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="firstPanel" destination="ZvJ-43-3vl" id="mX5-si-vRA"/>
                 <outlet property="secondPanel" destination="Nna-sW-jwT" id="jEJ-A9-GGr"/>
                 <outlet property="thirdPanel" destination="n85-DC-frC" id="p4H-6e-Cpe"/>
+                <outlet property="title" destination="bdQ-7Z-Eo1" id="OFf-YI-vzJ"/>
             </connections>
             <point key="canvasLocation" x="307.5" y="545"/>
         </tableViewCell>

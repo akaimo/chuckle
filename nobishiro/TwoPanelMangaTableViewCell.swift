@@ -10,6 +10,7 @@ import UIKit
 
 class TwoPanelMangaTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var firstPanel: UIImageView!
     @IBOutlet weak var secondPanel: UIImageView!
 

@@ -9,6 +9,9 @@
 import UIKit
 
 class FourPanelMangaTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var title: UILabel!
+    
     @IBOutlet weak var firstPanel: UIImageView!
     @IBOutlet weak var secondPanel: UIImageView!
     @IBOutlet weak var thirdPanel: UIImageView!
