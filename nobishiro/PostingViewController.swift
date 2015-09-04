@@ -36,8 +36,20 @@ class PostingViewController: UIViewController {
         let cell: PostingTableViewCell
         cell = postingTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
         cell.postingImageView.image = UIImage(named: "Image")
+        cell.postingImageView.tag = indexPath.row
+        
+        let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
+        cell.postingImageView.addGestureRecognizer(gesture)
         
         return cell
+    }
+    
+    
+    func didClickImageView(recognizer: UIGestureRecognizer) {
+        if let imageView = recognizer.view as? UIImageView {
+            // TODO: キーボード的なのを表示
+            println(imageView.tag)
+        }
     }
 
 }
