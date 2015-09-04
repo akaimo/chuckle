@@ -115,7 +115,13 @@
                             <constraint firstItem="Kqg-FK-1CL" firstAttribute="leading" secondItem="TiW-cL-0fq" secondAttribute="leading" id="k21-at-dIh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Y9H-TS-UZU"/>
+                    <navigationItem key="navigationItem" id="Y9H-TS-UZU">
+                        <barButtonItem key="rightBarButtonItem" title="投稿" id="Zda-TG-XmA">
+                            <connections>
+                                <action selector="tapPostingBtn:" destination="oMM-xB-o2j" id="rwk-qZ-7BX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="postingCollectionView" destination="Kqg-FK-1CL" id="lut-mb-aEt"/>
                         <outlet property="postingTableView" destination="rY7-aU-mtF" id="XeZ-ZJ-vaL"/>

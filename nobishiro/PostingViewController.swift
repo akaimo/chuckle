@@ -34,7 +34,7 @@ class PostingViewController: UIViewController {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 80
+            return 70
         default:
             return 160
         }
@@ -82,6 +82,10 @@ class PostingViewController: UIViewController {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 50;
+    }
+    
+    @IBAction func tapPostingBtn(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
 }
