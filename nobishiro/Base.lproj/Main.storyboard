@@ -55,9 +55,28 @@
                     <view key="view" contentMode="scaleToFill" id="TiW-cL-0fq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rY7-aU-mtF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="oMM-xB-o2j" id="PM0-Ug-oQT"/>
+                                    <outlet property="delegate" destination="oMM-xB-o2j" id="HJj-lg-YQg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rY7-aU-mtF" firstAttribute="leading" secondItem="TiW-cL-0fq" secondAttribute="leading" id="5Ew-CY-YSc"/>
+                            <constraint firstAttribute="trailing" secondItem="rY7-aU-mtF" secondAttribute="trailing" id="Fbf-ln-muh"/>
+                            <constraint firstItem="rY7-aU-mtF" firstAttribute="top" secondItem="TiW-cL-0fq" secondAttribute="top" id="TAG-M8-8Pb"/>
+                            <constraint firstItem="rY7-aU-mtF" firstAttribute="bottom" secondItem="RSv-4i-C7T" secondAttribute="top" id="kZm-3m-JC7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y9H-TS-UZU"/>
+                    <connections>
+                        <outlet property="postingTableView" destination="rY7-aU-mtF" id="XeZ-ZJ-vaL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBM-cN-5ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
