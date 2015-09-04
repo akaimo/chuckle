@@ -29,6 +29,12 @@
                         <rect key="frame" x="112" y="470" width="150" height="150"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4こま" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hq0-in-Eik" userLabel="title">
+                        <rect key="frame" x="307" y="8" width="60" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -36,6 +42,7 @@
                 <outlet property="fourPanel" destination="B9s-Yb-GF5" id="x1g-fN-9oB"/>
                 <outlet property="secondPanel" destination="u5n-WN-fRk" id="Sm6-yJ-Wzl"/>
                 <outlet property="thirdPanel" destination="ekv-PZ-jlj" id="tnB-q4-HCz"/>
+                <outlet property="title" destination="Hq0-in-Eik" id="ucH-6C-MM8"/>
             </connections>
             <point key="canvasLocation" x="307.5" y="607"/>
         </tableViewCell>

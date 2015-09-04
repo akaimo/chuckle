@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
-    let sampleIdentifier = ["TwoPanelManga", "ThreePanelManga", "FourPanelManga"]
+    let identifiers = ["TwoPanelMangaTableViewCell", "ThreePanelMangaTableViewCell", "FourPanelMangaTableViewCell"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +28,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         timelineTableView.delegate = self
         timelineTableView.allowsSelection = false
 
-        for identifier in sampleIdentifier {
-            timelineTableView.registerNib(UINib(nibName: "\(identifier)TableViewCell", bundle: nil), forCellReuseIdentifier: identifier)
+        for identifier in identifiers {
+            timelineTableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
         }
 
         loadWorks()
@@ -73,18 +73,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         switch materials.count {
         case 2:
-            let cell = timelineTableView.dequeueReusableCellWithIdentifier(sampleIdentifier[0]) as! TwoPanelMangaTableViewCell
+            let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[0]) as! TwoPanelMangaTableViewCell
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             return cell
         case 3:
-            let cell = timelineTableView.dequeueReusableCellWithIdentifier(sampleIdentifier[1]) as! ThreePanelMangaTableViewCell
+            let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[1]) as! ThreePanelMangaTableViewCell
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
             return cell
         case 4:
-            let cell = timelineTableView.dequeueReusableCellWithIdentifier(sampleIdentifier[2]) as! FourPanelMangaTableViewCell
+            let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[2]) as! FourPanelMangaTableViewCell
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
