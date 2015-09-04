@@ -47,8 +47,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if let json = JSON.dictionary,
                 worksData: WorksData = decode(json) {
                 self.works = worksData.data
-                print(worksData.data)
-                print("set data")
+                println(worksData.data)
+                println(worksData.error)
+                println(worksData.next)
             } else {
                 println("can't decode")
             }
