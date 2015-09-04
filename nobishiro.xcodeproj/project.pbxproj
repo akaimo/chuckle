@@ -16,6 +16,7 @@
 		99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B681B983D48000C51C1 /* PostingViewController.swift */; };
 		99593B9C1B99474A000C51C1 /* PostingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B9A1B99474A000C51C1 /* PostingTableViewCell.swift */; };
 		99593B9D1B99474A000C51C1 /* PostingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593B9B1B99474A000C51C1 /* PostingTableViewCell.xib */; };
+		99593B9F1B99605F000C51C1 /* PostingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B9E1B99605F000C51C1 /* PostingCollectionViewCell.swift */; };
 		B5105AD01B993FB200BD9ECD /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACE1B993FB200BD9ECD /* Haneke.framework */; };
 		B5105AD11B993FB300BD9ECD /* Haneke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACE1B993FB200BD9ECD /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5105AD21B993FB300BD9ECD /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACF1B993FB200BD9ECD /* Himotoki.framework */; };
@@ -67,6 +68,7 @@
 		99593B681B983D48000C51C1 /* PostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingViewController.swift; sourceTree = "<group>"; };
 		99593B9A1B99474A000C51C1 /* PostingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingTableViewCell.swift; sourceTree = "<group>"; };
 		99593B9B1B99474A000C51C1 /* PostingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostingTableViewCell.xib; sourceTree = "<group>"; };
+		99593B9E1B99605F000C51C1 /* PostingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5105ACE1B993FB200BD9ECD /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		B5105ACF1B993FB200BD9ECD /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
 		B57B34FB1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoPanelMangaTableViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				99593B681B983D48000C51C1 /* PostingViewController.swift */,
 				99593B9A1B99474A000C51C1 /* PostingTableViewCell.swift */,
 				99593B9B1B99474A000C51C1 /* PostingTableViewCell.xib */,
+				99593B9E1B99605F000C51C1 /* PostingCollectionViewCell.swift */,
 				99593B4C1B983C82000C51C1 /* Main.storyboard */,
 				99593B4F1B983C82000C51C1 /* Images.xcassets */,
 				99593B511B983C82000C51C1 /* LaunchScreen.xib */,
@@ -282,6 +285,7 @@
 				99593B491B983C82000C51C1 /* AppDelegate.swift in Sources */,
 				99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */,
 				B57B35011B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift in Sources */,
+				99593B9F1B99605F000C51C1 /* PostingCollectionViewCell.swift in Sources */,
 				B57B35051B985C9300C156A2 /* FourPanelMangaTableViewCell.swift in Sources */,
 				99593B9C1B99474A000C51C1 /* PostingTableViewCell.swift in Sources */,
 			);

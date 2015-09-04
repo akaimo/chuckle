@@ -10,7 +10,8 @@ import UIKit
 
 class PostingViewController: UIViewController {
     @IBOutlet weak var postingTableView: UITableView!
-
+    @IBOutlet weak var postingCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +24,8 @@ class PostingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    // MARK: - UITableViewDelegate Protocol
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
@@ -44,12 +46,29 @@ class PostingViewController: UIViewController {
         return cell
     }
     
-    
+    // MARK: -
     func didClickImageView(recognizer: UIGestureRecognizer) {
         if let imageView = recognizer.view as? UIImageView {
             // TODO: キーボード的なのを表示
             println(imageView.tag)
         }
+    }
+    
+    
+    // MARK: - UICollectionViewDelegate Protocol
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell:PostingCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! PostingCollectionViewCell
+        cell.stampImageView.image = UIImage(named: "Stamp")
+        cell.backgroundColor = UIColor.blackColor()
+        return cell
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 50;
     }
 
 }
