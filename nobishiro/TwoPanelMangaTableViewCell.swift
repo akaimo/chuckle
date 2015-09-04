@@ -21,7 +21,7 @@ class TwoPanelMangaTableViewCell: UITableViewCell {
     }
 
     class func height() -> CGFloat {
-        return 320
+        return 358
     }
 
     override func prepareForReuse() {
