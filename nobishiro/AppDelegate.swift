@@ -60,21 +60,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       println("deviceToken = \(deviceTokenString)")
       
       let userDefaults = NSUserDefaults.standardUserDefaults()
-      println(userDefaults.objectForKey("userID")!)
-      
+
       if let savedUserID: AnyObject = userDefaults.objectForKey("userID") { // IDを端末内に保存済みなら
         println("userID = \(savedUserID)")
         if let savedDeviceToken: AnyObject = userDefaults.objectForKey("deviceToken") {
           if savedDeviceToken as! String != deviceTokenString {
             //デバイストークンが変化していたら、idそのままでトークンだけ再登録
-            Alamofire.request(.PUT, "http://yuji.website:3001/api/register/"+(savedUserID as! String)+"?device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+            Alamofire.request(.PUT, "http://yuji.website:3001/api/register/\(savedUserID as! NSNumber)?device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
               if let responseJson = JSON as? NSDictionary {
+                println("deviceToken updated")
                 userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
                 userDefaults.synchronize()
               }
             }
           }
-        }        
+        }
       }else{
         //デバイストークンをサーバーに登録して、idを受け取る
         Alamofire.request(.GET, "http://yuji.website:3001/api/register?screen_name=testuser&device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
