@@ -48,7 +48,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cache.fetch(URL: URL).onSuccess{ JSON in
             if let json = JSON.dictionary,
                 worksData: WorksData = decode(json) {
-                self.works = worksData.data.reverse()
+                self.works = worksData.data
             } else {
                 println("can't decode")
             }
