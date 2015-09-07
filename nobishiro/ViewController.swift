@@ -94,6 +94,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        println("count: \(works.count)")
         return works.count
     }
 
@@ -117,20 +118,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         switch materials.count {
         case 2:
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[0]) as! TwoPanelMangaTableViewCell
-            cell.title.text = NSDate().description
+            cell.title.text = works[indexPath.row].title
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             return cell
         case 3:
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[1]) as! ThreePanelMangaTableViewCell
-            cell.title.text = NSDate().description
+            cell.title.text = works[indexPath.row].title
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
             return cell
         case 4:
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[2]) as! FourPanelMangaTableViewCell
-            cell.title.text = NSDate().description
+            cell.title.text = works[indexPath.row].title
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
@@ -142,19 +143,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func makeImageAndTweet(sender: UIButton) {
-        let panels = 4
+        let composeView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        composeView.setInitialText("")
+        composeView.addImage(makeImage([]))
+        self.presentViewController(composeView, animated: true, completion: nil)
+    }
+
+    func line() {
+        let pasteBoard = UIPasteboard.pasteboardWithUniqueName()
+        pasteBoard.setData(UIImagePNGRepresentation(makeImage([])), forPasteboardType: "public.png")
+        let lineURLString = "line://msg/image/\(pasteBoard.name)"
+
+        UIApplication.sharedApplication().openURL(NSURL(string: lineURLString)!)
+    }
+
+    func makeImage(images: [UIImage]) -> UIImage {
         let images: [UIImage] = []
-        UIGraphicsBeginImageContext(CGSizeMake(150, CGFloat(150 * panels)))
+        UIGraphicsBeginImageContext(CGSizeMake(150, CGFloat(150 * images.count)))
         for (i, image) in enumerate(images) {
             image.drawAtPoint(CGPointMake(0, CGFloat(150 * i)))
         }
         let mangaImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
-        let composeView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        composeView.setInitialText("")
-        composeView.addImage(mangaImage)
-        self.presentViewController(composeView, animated: true, completion: nil)
+        return mangaImage
     }
 }
 

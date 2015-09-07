@@ -11,6 +11,7 @@ import Himotoki
 
 struct Work: Decodable {
     let workId: Int
+    let title: String
     let materials: [Material]
 
     static func decode(e: Extractor) -> Work? {
@@ -18,6 +19,7 @@ struct Work: Decodable {
 
         return build(create)(
             e <| "work_id",
+            e <| "title",
             e <|| "materials"
         )
     }
