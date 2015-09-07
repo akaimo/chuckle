@@ -19,6 +19,7 @@
 		99593B9F1B99605F000C51C1 /* PostingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B9E1B99605F000C51C1 /* PostingCollectionViewCell.swift */; };
 		99593BA21B997AA4000C51C1 /* PostingTitleCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593BA01B997AA4000C51C1 /* PostingTitleCustomCell.swift */; };
 		99593BA31B997AA4000C51C1 /* PostingTitleCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593BA11B997AA4000C51C1 /* PostingTitleCustomCell.xib */; };
+		B507CEF31B9D6800000BE39D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B507CEF21B9D6800000BE39D /* Social.framework */; };
 		B5105AD01B993FB200BD9ECD /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACE1B993FB200BD9ECD /* Haneke.framework */; };
 		B5105AD11B993FB300BD9ECD /* Haneke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACE1B993FB200BD9ECD /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5105AD21B993FB300BD9ECD /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACF1B993FB200BD9ECD /* Himotoki.framework */; };
@@ -84,6 +85,7 @@
 		99593B9E1B99605F000C51C1 /* PostingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingCollectionViewCell.swift; sourceTree = "<group>"; };
 		99593BA01B997AA4000C51C1 /* PostingTitleCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingTitleCustomCell.swift; sourceTree = "<group>"; };
 		99593BA11B997AA4000C51C1 /* PostingTitleCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostingTitleCustomCell.xib; sourceTree = "<group>"; };
+		B507CEF21B9D6800000BE39D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B5105ACE1B993FB200BD9ECD /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		B5105ACF1B993FB200BD9ECD /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
 		B5105AD61B9941A200BD9ECD /* Work.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B507CEF31B9D6800000BE39D /* Social.framework in Frameworks */,
 				B5105AD21B993FB300BD9ECD /* Himotoki.framework in Frameworks */,
 				B58888C71B9D1BBA00D4972E /* Alamofire.framework in Frameworks */,
 				B5105AD01B993FB200BD9ECD /* Haneke.framework in Frameworks */,
@@ -127,6 +130,7 @@
 		99593B3A1B983C82000C51C1 = {
 			isa = PBXGroup;
 			children = (
+				B507CEF21B9D6800000BE39D /* Social.framework */,
 				B58888C61B9D1BBA00D4972E /* Alamofire.framework */,
 				B5105ACE1B993FB200BD9ECD /* Haneke.framework */,
 				B5105ACF1B993FB200BD9ECD /* Himotoki.framework */,

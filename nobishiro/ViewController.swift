@@ -9,6 +9,9 @@
 import UIKit
 import Haneke
 import Himotoki
+import CoreGraphics
+import QuartzCore
+import Social
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -24,7 +27,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         timelineTableView.dataSource = self
         timelineTableView.delegate = self
         timelineTableView.allowsSelection = false
@@ -57,6 +59,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }.onFailure{Failer in
             println(Failer)
             self.refreshControl.endRefreshing()
+        }
+
+        let cacheFavo = Cache<JSON>(name: "favorites")
+        let URLFavo = NSURL(string: "http://yuji.website:3001/api/favorite")!
+
+        println("favo")
+        cacheFavo.fetch(URL: URLFavo).onSuccess{ JSON in
+            if let json = JSON.dictionary,
+                favoritesData: FavoritesData = decode(json) {
+                    println(favoritesData.data)
+                    println(favoritesData.status)
+            } else {
+                println("can't decode")
+            }
+            }.onFailure{Failer in
+                println(Failer)
+        }
+
+        println("ranking")
+        let cacheRank = Cache<JSON>(name: "ranking")
+        let URLRank = NSURL(string: "http://yuji.website:3001/api/ranking")!
+        cacheRank.fetch(URL: URLRank).onSuccess{ JSON in
+            if let json = JSON.dictionary,
+                rankingData: RankingData = decode(json) {
+                    println(rankingData.data)
+                    println(rankingData.status)
+            } else {
+                println("cant")
+            }
+            }.onFailure{Failer in
+                println(Failer)
         }
     }
 
@@ -108,5 +141,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
+    func makeImageAndTweet(sender: UIButton) {
+        let panels = 4
+        let images: [UIImage] = []
+        UIGraphicsBeginImageContext(CGSizeMake(150, CGFloat(150 * panels)))
+        for (i, image) in enumerate(images) {
+            image.drawAtPoint(CGPointMake(0, CGFloat(150 * i)))
+        }
+        let mangaImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        let composeView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        composeView.setInitialText("")
+        composeView.addImage(mangaImage)
+        self.presentViewController(composeView, animated: true, completion: nil)
+    }
 }
 
