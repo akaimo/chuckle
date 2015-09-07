@@ -15,7 +15,8 @@ class PostingViewController: UIViewController {
     @IBOutlet weak var postingTableView: UITableView!
     @IBOutlet weak var postingCollectionView: UICollectionView!
     
-    private var imgCount: Int = 1
+    private var imgCount: Int = 0
+    private var imgArray: [Int?] = [nil, nil, nil, nil]
     private var materials: [Material] = [] {
         didSet {
             postingCollectionView.reloadData()
@@ -63,7 +64,12 @@ class PostingViewController: UIViewController {
             
         default:
             let cell = postingTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
-            cell.postingImageView.image = UIImage(named: "Image")
+            if let count = imgArray[indexPath.row - 1] {
+                let material = materials[imgArray[indexPath.row - 1]!]
+                cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+            } else {
+                cell.postingImageView.image = UIImage(named: "Image")
+            }
             cell.postingImageView.tag = indexPath.row
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
@@ -119,13 +125,12 @@ class PostingViewController: UIViewController {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println(indexPath.row)
+        println(imgCount)
+        imgArray[imgCount] = indexPath.row
+        self.postingTableView.reloadData()
         
-        var cell: PostingTableViewCell = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0)) as! PostingTableViewCell
-        let material = materials[indexPath.row]
-        cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
-        
-        if imgCount == 4 {
-            imgCount = 1
+        if imgCount == 3 {
+            imgCount = 0
         } else {
             imgCount += 1
         }
