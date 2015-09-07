@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -55,8 +56,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-      println("deviceToken = \(deviceToken)")
-      //サーバーにユーザーIDと共にデバイストークンの登録処理
+      let deviceTokenString = "\(deviceToken)".stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>")).stringByReplacingOccurrencesOfString(" ", withString: "")
+      println("deviceToken = \(deviceTokenString)")
+      
+      let userDefaults = NSUserDefaults.standardUserDefaults()
+      println(userDefaults.objectForKey("userID")!)
+      
+      if let savedUserID: AnyObject = userDefaults.objectForKey("userID") { // IDを端末内に保存済みなら
+        println("userID = \(savedUserID)")
+        if let savedDeviceToken: AnyObject = userDefaults.objectForKey("deviceToken") {
+          if savedDeviceToken as! String != deviceTokenString {
+            //デバイストークンが変化していたら、idそのままでトークンだけ再登録
+            Alamofire.request(.PUT, "http://yuji.website:3001/api/register/"+(savedUserID as! String)+"?device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+              if let responseJson = JSON as? NSDictionary {
+                userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
+                userDefaults.synchronize()
+              }
+            }
+          }
+        }        
+      }else{
+        //デバイストークンをサーバーに登録して、idを受け取る
+        Alamofire.request(.GET, "http://yuji.website:3001/api/register?screen_name=testuser&device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+          if let responseJson = JSON as? NSDictionary {
+            userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
+            userDefaults.setObject(responseJson.objectForKey("status")!, forKey: "userID")
+            userDefaults.synchronize()
+          }
+        }
+      }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
