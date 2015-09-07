@@ -29,9 +29,7 @@
                             <constraint firstAttribute="height" secondItem="zhf-aE-hVj" secondAttribute="height" id="cCT-bz-SCI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8m7-i9-46F">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7xB-Av-8ic"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="8m7-i9-46F"/>
                     <connections>
                         <outlet property="timelineTableView" destination="zhf-aE-hVj" id="ZkU-xA-9Sp"/>
                     </connections>
@@ -112,6 +110,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y9H-TS-UZU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="GGh-98-JJ0">
+                            <connections>
+                                <action selector="backBtnTap:" destination="oMM-xB-o2j" id="gCA-UN-Nkf"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="投稿" id="Zda-TG-XmA">
                             <connections>
                                 <action selector="tapPostingBtn:" destination="oMM-xB-o2j" id="rwk-qZ-7BX"/>
