@@ -71,7 +71,7 @@ class PostingViewController: UIViewController {
             } else {
                 cell.postingImageView.image = UIImage(named: "Image")
             }
-            cell.postingImageView.tag = indexPath.row
+            cell.postingImageView.tag = indexPath.row - 1
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
             cell.postingImageView.addGestureRecognizer(gesture)
@@ -85,6 +85,7 @@ class PostingViewController: UIViewController {
         if let imageView = recognizer.view as? UIImageView {
             // TODO: キーボード的なのを表示
             println(imageView.tag)
+            imgCount = imageView.tag
         }
     }
     
