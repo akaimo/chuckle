@@ -9,6 +9,9 @@
 import UIKit
 import Haneke
 import Himotoki
+import CoreGraphics
+import QuartzCore
+import Social
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -24,7 +27,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         timelineTableView.dataSource = self
         timelineTableView.delegate = self
         timelineTableView.allowsSelection = false
@@ -40,16 +42,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func loadWorks() {
+        Shared.JSONCache.removeAll()
         let cache = Cache<JSON>(name: "works")
         let URL = NSURL(string: "http://yuji.website:3001/api/work")!
-
         cache.fetch(URL: URL).onSuccess{ JSON in
             if let json = JSON.dictionary,
                 worksData: WorksData = decode(json) {
-                self.works = worksData.data
-                println(worksData.data)
-                println(worksData.error)
-                println(worksData.next)
+                self.works = worksData.data.reverse()
             } else {
                 println("can't decode")
             }
@@ -58,9 +57,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             println(Failer)
             self.refreshControl.endRefreshing()
         }
+
+        let cacheFavo = Cache<JSON>(name: "favorites")
+        let URLFavo = NSURL(string: "http://yuji.website:3001/api/favorite")!
+
+        println("favo")
+        cacheFavo.fetch(URL: URLFavo).onSuccess{ JSON in
+            if let json = JSON.dictionary,
+                favoritesData: FavoritesData = decode(json) {
+                    println(favoritesData.data)
+                    println(favoritesData.status)
+            } else {
+                println("can't decode")
+            }
+            }.onFailure{Failer in
+                println(Failer)
+        }
+
+        let cacheRank = Cache<JSON>(name: "ranking")
+        let URLRank = NSURL(string: "http://yuji.website:3001/api/ranking")!
+        cacheRank.fetch(URL: URLRank).onSuccess{ JSON in
+            if let json = JSON.dictionary,
+                rankingData: RankingData = decode(json) {
+                    println(rankingData.data)
+                    println(rankingData.status)
+            } else {
+                println("cant")
+            }
+            }.onFailure{Failer in
+                println(Failer)
+        }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        println("count: \(works.count)")
         return works.count
     }
 
@@ -84,20 +114,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         switch materials.count {
         case 2:
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[0]) as! TwoPanelMangaTableViewCell
-            cell.title.text = NSDate().description
+            cell.title.text = works[indexPath.row].title
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             return cell
         case 3:
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[1]) as! ThreePanelMangaTableViewCell
-            cell.title.text = NSDate().description
+            cell.title.text = works[indexPath.row].title
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
             return cell
         case 4:
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[2]) as! FourPanelMangaTableViewCell
-            cell.title.text = NSDate().description
+            cell.title.text = works[indexPath.row].title
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
@@ -108,5 +138,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
+    func makeImageAndTweet(sender: UIButton) {
+        let composeView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        composeView.setInitialText("")
+        composeView.addImage(makeImage([]))
+        self.presentViewController(composeView, animated: true, completion: nil)
+    }
+
+    func line() {
+        let pasteBoard = UIPasteboard.pasteboardWithUniqueName()
+        pasteBoard.setData(UIImagePNGRepresentation(makeImage([])), forPasteboardType: "public.png")
+        let lineURLString = "line://msg/image/\(pasteBoard.name)"
+
+        UIApplication.sharedApplication().openURL(NSURL(string: lineURLString)!)
+    }
+
+    func makeImage(images: [UIImage]) -> UIImage {
+        let images: [UIImage] = []
+        UIGraphicsBeginImageContext(CGSizeMake(150, CGFloat(150 * images.count)))
+        for (i, image) in enumerate(images) {
+            image.drawAtPoint(CGPointMake(0, CGFloat(150 * i)))
+        }
+        let mangaImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return mangaImage
+    }
 }
 

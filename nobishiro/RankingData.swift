@@ -1,5 +1,5 @@
 //
-//  FavoritesData.swift
+//  RankingData.swift
 //  nobishiro
 //
 //  Created by S-Shimotori on 9/7/15.
@@ -9,12 +9,12 @@
 import Foundation
 import Himotoki
 
-struct FavoritesData: Decodable {
-    let data: [Favorite]
+struct RankingData: Decodable {
+    let data: [Work]
     let status: String
 
-    static func decode(e: Extractor) -> FavoritesData? {
-        let create = { FavoritesData($0) }
+    static func decode(e: Extractor) -> RankingData? {
+        let create = { RankingData($0) }
 
         return build(create)(
             e <|| "data",
