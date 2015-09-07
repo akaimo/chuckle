@@ -42,16 +42,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func loadWorks() {
+        Shared.JSONCache.removeAll()
         let cache = Cache<JSON>(name: "works")
         let URL = NSURL(string: "http://yuji.website:3001/api/work")!
-
         cache.fetch(URL: URL).onSuccess{ JSON in
             if let json = JSON.dictionary,
                 worksData: WorksData = decode(json) {
-                self.works = worksData.data
-                println(worksData.data)
-                println(worksData.error)
-                println(worksData.next)
+                self.works = worksData.data.reverse()
             } else {
                 println("can't decode")
             }
@@ -77,7 +74,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 println(Failer)
         }
 
-        println("ranking")
         let cacheRank = Cache<JSON>(name: "ranking")
         let URLRank = NSURL(string: "http://yuji.website:3001/api/ranking")!
         cacheRank.fetch(URL: URLRank).onSuccess{ JSON in
