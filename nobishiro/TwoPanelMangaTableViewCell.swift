@@ -15,13 +15,18 @@ class TwoPanelMangaTableViewCell: UITableViewCell {
     @IBOutlet weak var firstPanel: UIImageView!
     @IBOutlet weak var secondPanel: UIImageView!
 
+    @IBOutlet weak var postToTwitter: UIButton!
+    @IBOutlet weak var postToFacebook: UIButton!
+    @IBOutlet weak var postToLine: UIButton!
+    @IBOutlet weak var postToFavorite: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     class func height() -> CGFloat {
-        return 358
+        return 415//358
     }
 
     override func prepareForReuse() {
