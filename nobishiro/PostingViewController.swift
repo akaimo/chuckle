@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import Haneke
+import Himotoki
 import Alamofire
 
 class PostingViewController: UIViewController {
     @IBOutlet weak var postingTableView: UITableView!
     @IBOutlet weak var postingCollectionView: UICollectionView!
+    
+    private var imgCount: Int = 0
+    private var imgArray: [Int?] = [nil, nil, nil, nil]
+    private var postTitle: String = ""
+    private var materials: [Material] = [] {
+        didSet {
+            postingCollectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +32,8 @@ class PostingViewController: UIViewController {
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
         postingTableView.registerNib(UINib(nibName: "PostingTitleCustomCell", bundle: nil), forCellReuseIdentifier: "Title")
         postingTableView.allowsSelection = false
+        
+        loadMaterials()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,8 +65,13 @@ class PostingViewController: UIViewController {
             
         default:
             let cell = postingTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
-            cell.postingImageView.image = UIImage(named: "Image")
-            cell.postingImageView.tag = indexPath.row
+            if let count = imgArray[indexPath.row - 1] {
+                let material = materials[imgArray[indexPath.row - 1]!]
+                cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+            } else {
+                cell.postingImageView.image = UIImage(named: "Image")
+            }
+            cell.postingImageView.tag = indexPath.row - 1
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
             cell.postingImageView.addGestureRecognizer(gesture)
@@ -67,14 +85,34 @@ class PostingViewController: UIViewController {
         if let imageView = recognizer.view as? UIImageView {
             // TODO: キーボード的なのを表示
             println(imageView.tag)
+            imgCount = imageView.tag
+        }
+    }
+    
+    func loadMaterials() {
+        let cache = Cache<JSON>(name: "materials")
+        let URL = NSURL(string: "http://yuji.website:3001/api/material")!
+        
+        cache.fetch(URL: URL).onSuccess{ JSON in
+            if let json = JSON.dictionary, materialData: MaterialsData = decode(json) {
+                self.materials = materialData.data
+                println("data:\(materialData.data)")
+                println("error:\(materialData.error)")
+            } else {
+                println("can't decode")
+            }
+        }.onFailure{Failer in
+            println(Failer)
         }
     }
     
     
     // MARK: - UICollectionViewDelegate Protocol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let material = materials[indexPath.row]
+        
         let cell:PostingCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! PostingCollectionViewCell
-        cell.stampImageView.image = UIImage(named: "Stamp")
+        cell.stampImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
         cell.backgroundColor = UIColor.blackColor()
         return cell
     }
@@ -84,13 +122,50 @@ class PostingViewController: UIViewController {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50;
+        return materials.count;
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        imgArray[imgCount] = indexPath.row
+        self.postingTableView.reloadData()
+        
+        if imgCount == 3 {
+            imgCount = 0
+        } else {
+            imgCount += 1
+        }
+    }
+    
+    
     @IBAction func tapPostingBtn(sender: AnyObject) {
+        if imgArray[0] == nil || imgArray[1] == nil {
+            // TODO: ポップアップ
+            println("画像が選択されていない")
+            return
+        }
+        
+        var postMaterial: [Int] = []
+        for num in imgArray {
+            if let materialID = num {
+                postMaterial.append(materialID + 1)
+            }
+        }
+        println(postMaterial)
+        
+        var cell: PostingTitleCustomCell = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! PostingTitleCustomCell
+        postTitle = cell.titleTextField.text
+        println("title:\(postTitle)")
+        
+        // カラ、空白オンリーは弾く
+        if postTitle == "" {
+            // TODO: ポップアップ
+            println("タイトルが入力されていない")
+            return
+        }
+        
         let parameters: [String: AnyObject] = [
-            "title": "hogehogehoge",
-            "materials": [3, 2, 1]
+            "title": postTitle,
+            "materials": postMaterial
         ]
         Alamofire.request(.POST, "http://yuji.website:3001/api/work", parameters: parameters, encoding: .JSON).responseJSON{ request, response, JSON, error in
             println(request)
@@ -98,8 +173,8 @@ class PostingViewController: UIViewController {
             println(JSON)
             println(error)
         }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
-        //self.navigationController?.popViewControllerAnimated(true)
     }
 
 }
