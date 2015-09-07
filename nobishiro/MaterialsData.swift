@@ -18,7 +18,7 @@ struct MaterialsData: Decodable {
 
         return build(create)(
             e <|| "data",
-            e <| "error"
+            e <| "status"
         )
     }
 }
