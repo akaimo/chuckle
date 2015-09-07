@@ -29,9 +29,7 @@
                             <constraint firstAttribute="height" secondItem="zhf-aE-hVj" secondAttribute="height" id="cCT-bz-SCI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8m7-i9-46F">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7xB-Av-8ic"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="8m7-i9-46F"/>
                     <connections>
                         <outlet property="timelineTableView" destination="zhf-aE-hVj" id="ZkU-xA-9Sp"/>
                     </connections>
