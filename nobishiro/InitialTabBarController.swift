@@ -22,7 +22,7 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        if viewController is UINavigationController {
+        if viewController is NavigationToPostingViewController {
             if let currentViewController = self.selectedViewController {
                 let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NavigationToPosting") as! UINavigationController
                 nextViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical

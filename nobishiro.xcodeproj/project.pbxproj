@@ -19,6 +19,7 @@
 		99593B9F1B99605F000C51C1 /* PostingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B9E1B99605F000C51C1 /* PostingCollectionViewCell.swift */; };
 		99593BA21B997AA4000C51C1 /* PostingTitleCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593BA01B997AA4000C51C1 /* PostingTitleCustomCell.swift */; };
 		99593BA31B997AA4000C51C1 /* PostingTitleCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593BA11B997AA4000C51C1 /* PostingTitleCustomCell.xib */; };
+		B503C7501B9D8E7C008C139A /* NavigationToPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C74F1B9D8E7C008C139A /* NavigationToPostingViewController.swift */; };
 		B507CEF31B9D6800000BE39D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B507CEF21B9D6800000BE39D /* Social.framework */; };
 		B5105AD01B993FB200BD9ECD /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACE1B993FB200BD9ECD /* Haneke.framework */; };
 		B5105AD11B993FB300BD9ECD /* Haneke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACE1B993FB200BD9ECD /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -85,6 +86,7 @@
 		99593B9E1B99605F000C51C1 /* PostingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingCollectionViewCell.swift; sourceTree = "<group>"; };
 		99593BA01B997AA4000C51C1 /* PostingTitleCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingTitleCustomCell.swift; sourceTree = "<group>"; };
 		99593BA11B997AA4000C51C1 /* PostingTitleCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostingTitleCustomCell.xib; sourceTree = "<group>"; };
+		B503C74F1B9D8E7C008C139A /* NavigationToPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationToPostingViewController.swift; sourceTree = "<group>"; };
 		B507CEF21B9D6800000BE39D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B5105ACE1B993FB200BD9ECD /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		B5105ACF1B993FB200BD9ECD /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				99593B511B983C82000C51C1 /* LaunchScreen.xib */,
 				99593B461B983C82000C51C1 /* Supporting Files */,
 				B58888CD1B9D367300D4972E /* InitialTabBarController.swift */,
+				B503C74F1B9D8E7C008C139A /* NavigationToPostingViewController.swift */,
 			);
 			path = nobishiro;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */,
 				B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */,
 				B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */,
+				B503C7501B9D8E7C008C139A /* NavigationToPostingViewController.swift in Sources */,
 				B56CA0A91B9D561800AFA16E /* RankingData.swift in Sources */,
 				B5105ADB1B9950E800BD9ECD /* Material.swift in Sources */,
 				99593B4B1B983C82000C51C1 /* ViewController.swift in Sources */,
