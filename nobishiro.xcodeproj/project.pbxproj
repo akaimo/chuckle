@@ -37,6 +37,7 @@
 		B58888C81B9D1BBA00D4972E /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58888C61B9D1BBA00D4972E /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888C91B9D2D7300D4972E /* Favorite.swift */; };
 		B58888CC1B9D2DAF00D4972E /* FavoritesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888CB1B9D2DAF00D4972E /* FavoritesData.swift */; };
+		B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888CD1B9D367300D4972E /* InitialTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		B58888C61B9D1BBA00D4972E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		B58888C91B9D2D7300D4972E /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		B58888CB1B9D2DAF00D4972E /* FavoritesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesData.swift; sourceTree = "<group>"; };
+		B58888CD1B9D367300D4972E /* InitialTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				99593B4F1B983C82000C51C1 /* Images.xcassets */,
 				99593B511B983C82000C51C1 /* LaunchScreen.xib */,
 				99593B461B983C82000C51C1 /* Supporting Files */,
+				B58888CD1B9D367300D4972E /* InitialTabBarController.swift */,
 			);
 			path = nobishiro;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			files = (
 				B53B08041B99600D005F5F30 /* MaterialsData.swift in Sources */,
 				B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */,
+				B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */,
 				B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */,
 				B5105ADB1B9950E800BD9ECD /* Material.swift in Sources */,
 				99593B4B1B983C82000C51C1 /* ViewController.swift in Sources */,
