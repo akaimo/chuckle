@@ -27,6 +27,7 @@
 		B5105AD91B994F2A00BD9ECD /* WorksData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5105AD81B994F2A00BD9ECD /* WorksData.swift */; };
 		B5105ADB1B9950E800BD9ECD /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5105ADA1B9950E800BD9ECD /* Material.swift */; };
 		B53B08041B99600D005F5F30 /* MaterialsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B08031B99600D005F5F30 /* MaterialsData.swift */; };
+		B56CA0A91B9D561800AFA16E /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56CA0A81B9D561800AFA16E /* RankingData.swift */; };
 		B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B34FB1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift */; };
 		B57B34FE1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57B34FC1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib */; };
 		B57B35011B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B34FF1B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift */; };
@@ -89,6 +90,7 @@
 		B5105AD81B994F2A00BD9ECD /* WorksData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksData.swift; sourceTree = "<group>"; };
 		B5105ADA1B9950E800BD9ECD /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		B53B08031B99600D005F5F30 /* MaterialsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialsData.swift; sourceTree = "<group>"; };
+		B56CA0A81B9D561800AFA16E /* RankingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
 		B57B34FB1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoPanelMangaTableViewCell.swift; sourceTree = "<group>"; };
 		B57B34FC1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPanelMangaTableViewCell.xib; sourceTree = "<group>"; };
 		B57B34FF1B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreePanelMangaTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				B53B08031B99600D005F5F30 /* MaterialsData.swift */,
 				B58888C91B9D2D7300D4972E /* Favorite.swift */,
 				B58888CB1B9D2DAF00D4972E /* FavoritesData.swift */,
+				B56CA0A81B9D561800AFA16E /* RankingData.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */,
 				B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */,
 				B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */,
+				B56CA0A91B9D561800AFA16E /* RankingData.swift in Sources */,
 				B5105ADB1B9950E800BD9ECD /* Material.swift in Sources */,
 				99593B4B1B983C82000C51C1 /* ViewController.swift in Sources */,
 				B5105AD91B994F2A00BD9ECD /* WorksData.swift in Sources */,
