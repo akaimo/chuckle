@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+      if (UIDevice.currentDevice().systemVersion as NSString).floatValue >= 8.0 {
+        // iOS8以上
+        let apnsTypes = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        
+        let notiSettings = UIUserNotificationSettings(forTypes:apnsTypes, categories:nil)
+        application.registerUserNotificationSettings(notiSettings)
+        application.registerForRemoteNotifications()
+        
+      } else{
+        // iOS7以前
+        application.registerForRemoteNotificationTypes( UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound | UIRemoteNotificationType.Alert )
+      }
+      
         return true
     }
 
@@ -39,6 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+  
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+      println("deviceToken = \(deviceToken)")
+      //サーバーにユーザーIDと共にデバイストークンの登録処理
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+      println("Failed to get token, error: \(error)")
     }
 
 
