@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PostingViewController: UIViewController {
     @IBOutlet weak var postingTableView: UITableView!
@@ -87,6 +88,16 @@ class PostingViewController: UIViewController {
     }
     
     @IBAction func tapPostingBtn(sender: AnyObject) {
+        let parameters: [String: AnyObject] = [
+            "title": "hogehogehoge",
+            "materials": [3, 2, 1]
+        ]
+        Alamofire.request(.POST, "http://yuji.website:3001/api/work", parameters: parameters, encoding: .JSON).responseJSON{ request, response, JSON, error in
+            println(request)
+            println(response)
+            println(JSON)
+            println(error)
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
         //self.navigationController?.popViewControllerAnimated(true)
     }
