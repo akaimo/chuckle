@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import Haneke
+import Himotoki
 import Alamofire
 
 class PostingViewController: UIViewController {
     @IBOutlet weak var postingTableView: UITableView!
     @IBOutlet weak var postingCollectionView: UICollectionView!
+    
+    private var imgCount: Int = 1
+    private var materials: [Material] = [] {
+        didSet {
+            postingCollectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +30,8 @@ class PostingViewController: UIViewController {
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
         postingTableView.registerNib(UINib(nibName: "PostingTitleCustomCell", bundle: nil), forCellReuseIdentifier: "Title")
         postingTableView.allowsSelection = false
+        
+        loadMaterials()
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,11 +81,30 @@ class PostingViewController: UIViewController {
         }
     }
     
+    func loadMaterials() {
+        let cache = Cache<JSON>(name: "materials")
+        let URL = NSURL(string: "http://yuji.website:3001/api/material")!
+        
+        cache.fetch(URL: URL).onSuccess{ JSON in
+            if let json = JSON.dictionary, materialData: MaterialsData = decode(json) {
+                self.materials = materialData.data
+                println("data:\(materialData.data)")
+                println("error:\(materialData.error)")
+            } else {
+                println("can't decode")
+            }
+        }.onFailure{Failer in
+            println(Failer)
+        }
+    }
+    
     
     // MARK: - UICollectionViewDelegate Protocol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let material = materials[indexPath.row]
+        
         let cell:PostingCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! PostingCollectionViewCell
-        cell.stampImageView.image = UIImage(named: "Stamp")
+        cell.stampImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
         cell.backgroundColor = UIColor.blackColor()
         return cell
     }
@@ -84,7 +114,21 @@ class PostingViewController: UIViewController {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50;
+        return materials.count;
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        println(indexPath.row)
+        
+        var cell: PostingTableViewCell = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0)) as! PostingTableViewCell
+        let material = materials[indexPath.row]
+        cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+        
+        if imgCount == 4 {
+            imgCount = 1
+        } else {
+            imgCount += 1
+        }
     }
     
     @IBAction func tapPostingBtn(sender: AnyObject) {
