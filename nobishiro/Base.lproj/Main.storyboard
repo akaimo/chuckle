@@ -112,6 +112,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y9H-TS-UZU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="GGh-98-JJ0">
+                            <connections>
+                                <action selector="backBtnTap:" destination="oMM-xB-o2j" id="gCA-UN-Nkf"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="投稿" id="Zda-TG-XmA">
                             <connections>
                                 <action selector="tapPostingBtn:" destination="oMM-xB-o2j" id="rwk-qZ-7BX"/>
