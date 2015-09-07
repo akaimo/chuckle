@@ -17,6 +17,7 @@ class PostingViewController: UIViewController {
     
     private var imgCount: Int = 0
     private var imgArray: [Int?] = [nil, nil, nil, nil]
+    private var postTitle: String = ""
     private var materials: [Material] = [] {
         didSet {
             postingCollectionView.reloadData()
@@ -124,8 +125,6 @@ class PostingViewController: UIViewController {
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println(indexPath.row)
-        println(imgCount)
         imgArray[imgCount] = indexPath.row
         self.postingTableView.reloadData()
         
@@ -136,10 +135,36 @@ class PostingViewController: UIViewController {
         }
     }
     
+    
     @IBAction func tapPostingBtn(sender: AnyObject) {
+        if imgArray[0] == nil || imgArray[1] == nil {
+            // TODO: ポップアップ
+            println("画像が選択されていない")
+            return
+        }
+        
+        var postMaterial: [Int] = []
+        for num in imgArray {
+            if let materialID = num {
+                postMaterial.append(materialID + 1)
+            }
+        }
+        println(postMaterial)
+        
+        var cell: PostingTitleCustomCell = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! PostingTitleCustomCell
+        postTitle = cell.titleTextField.text
+        println("title:\(postTitle)")
+        
+        // カラ、空白オンリーは弾く
+        if postTitle == "" {
+            // TODO: ポップアップ
+            println("タイトルが入力されていない")
+            return
+        }
+        
         let parameters: [String: AnyObject] = [
-            "title": "hogehogehoge",
-            "materials": [3, 2, 1]
+            "title": postTitle,
+            "materials": postMaterial
         ]
         Alamofire.request(.POST, "http://yuji.website:3001/api/work", parameters: parameters, encoding: .JSON).responseJSON{ request, response, JSON, error in
             println(request)
@@ -147,8 +172,8 @@ class PostingViewController: UIViewController {
             println(JSON)
             println(error)
         }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
-        //self.navigationController?.popViewControllerAnimated(true)
     }
 
 }
