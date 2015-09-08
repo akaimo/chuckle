@@ -12,6 +12,7 @@ import Himotoki
 import CoreGraphics
 import QuartzCore
 import Social
+import Alamofire
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -42,22 +43,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func loadWorks() {
-        Shared.JSONCache.removeAll()
-        let cache = Cache<JSON>(name: "works")
-        let URL = NSURL(string: "http://yuji.website:3001/api/work")!
-        cache.fetch(URL: URL).onSuccess{ JSON in
-            if let json = JSON.dictionary,
-                worksData: WorksData = decode(json) {
-                self.works = worksData.data
-            } else {
-                println("can't decode")
-            }
-            self.refreshControl.endRefreshing()
-        }.onFailure{Failer in
-            println(Failer)
-            self.refreshControl.endRefreshing()
+        Alamofire.request(.GET, "http://yuji.website:3001/api/work")
+            .responseJSON { request, response, JSON, error in
+                switch (JSON, error) {
+                case (.Some(let json), .None):
+                    if let worksData: WorksData = decode(json) {
+                        self.works = worksData.data
+                    }
+                case (.None, .Some):
+                    println(error)
+                default:
+                    println("both json and error are nil!")
+                }
+                self.refreshControl.endRefreshing()
         }
-
+/*
         let cacheFavo = Cache<JSON>(name: "favorites")
         let URLFavo = NSURL(string: "http://yuji.website:3001/api/favorite")!
 
@@ -86,7 +86,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             }.onFailure{Failer in
                 println(Failer)
-        }
+        }*/
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,6 +116,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.title.text = works[indexPath.row].title
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
+            //cell.postToTwitter.tag = works[indexPath.row].workId
+            //cell.postToTwitter.addTarget(self, action: "shareWithTwitter:", forControlEvents: .TouchUpInside)
             return cell
         case 3:
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[1]) as! ThreePanelMangaTableViewCell
@@ -136,12 +138,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return UITableViewCell()
         }
     }
+/*
+    func findWork(workId: Int) -> Work? {
+        for work in works {
+            if work.workId == workId {
+                return work
+            }
+        }
+        return nil
+    }
 
-    func makeImageAndTweet(sender: UIButton) {
+    func shareWithTwitter(sender: UIButton) {
         let composeView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        composeView.setInitialText("")
-        composeView.addImage(makeImage([]))
-        self.presentViewController(composeView, animated: true, completion: nil)
+        if let work = findWork(sender.tag) {
+            composeView.setInitialText("\(work.title)だよ!")
+            composeView.addImage(makeImage(work.workId))
+            self.presentViewController(composeView, animated: true, completion: nil)
+        } else {
+            println("cant find work")
+        }
     }
 
     func line() {
@@ -152,7 +167,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         UIApplication.sharedApplication().openURL(NSURL(string: lineURLString)!)
     }
 
-    func makeImage(images: [UIImage]) -> UIImage {
+    func makeImage(workId: Int) -> UIImage {
+        let URLs = findWork(workId)?.materials.map{$0.url}
+        let cache = Shared.imageCache
         let images: [UIImage] = []
         UIGraphicsBeginImageContext(CGSizeMake(150, CGFloat(150 * images.count)))
         for (i, image) in enumerate(images) {
@@ -162,6 +179,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         UIGraphicsEndImageContext()
 
         return mangaImage
-    }
+    }*/
 }
 
