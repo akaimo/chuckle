@@ -9,8 +9,6 @@
 import UIKit
 import Haneke
 import Himotoki
-import CoreGraphics
-import QuartzCore
 import Social
 import Alamofire
 
@@ -133,16 +131,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.postToFacebook.tag = works[indexPath.row].workId
             cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
             cell.postToLine.tag = works[indexPath.row].workId
-            cell.postToLine.addTarget(self, action: "shareWithLine:", forControlEvents: .TouchUpInside)
+            cell.postToLine.addTarget(self, action: "shareWithLINE:", forControlEvents: .TouchUpInside)
             cell.postToFavorite.tag = works[indexPath.row].workId
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
             if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
-                println("yellow")
-                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+                cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
-                println("black")
-                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+                cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
             }
 
             if works[indexPath.row].favoriteCount > 1000 {
@@ -169,16 +165,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.postToFacebook.tag = works[indexPath.row].workId
             cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
             cell.postToLine.tag = works[indexPath.row].workId
-            cell.postToLine.addTarget(self, action: "shareWithLine:", forControlEvents: .TouchUpInside)
+            cell.postToLine.addTarget(self, action: "shareWithLINE:", forControlEvents: .TouchUpInside)
             cell.postToFavorite.tag = works[indexPath.row].workId
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
             if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
-                println("yellow")
-                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+                cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
-                println("black")
-                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+                cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
             }
 
             if works[indexPath.row].favoriteCount > 1000 {
@@ -206,16 +200,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.postToFacebook.tag = works[indexPath.row].workId
             cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
             cell.postToLine.tag = works[indexPath.row].workId
-            cell.postToLine.addTarget(self, action: "shareWithLine:", forControlEvents: .TouchUpInside)
+            cell.postToLine.addTarget(self, action: "shareWithLINE:", forControlEvents: .TouchUpInside)
             cell.postToFavorite.tag = works[indexPath.row].workId
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
             if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
-                println("yellow")
-                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+                cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
-                println("black")
-                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+                cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
             }
 
             if works[indexPath.row].favoriteCount > 1000 {
@@ -246,22 +238,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func shareWithTwitter(sender: UIButton) {
-        //TODO
         println("shareWithTwitter")
+        SNS.shareWithSNS(self, sns: .Twitter, workID: sender.tag)
     }
 
     func shareWithFacebook(sender: UIButton) {
+        println("shareWithFacebook")
+        SNS.shareWithSNS(self, sns: .Facebook, workID: sender.tag)
     }
 
-    func shareWithLine(sender: UIButton) {
-        //TODO
-        println("shareWithLine")
-        /*
-        let pasteBoard = UIPasteboard.pasteboardWithUniqueName()
-        pasteBoard.setData(UIImagePNGRepresentation(makeImage([])), forPasteboardType: "public.png")
-        let lineURLString = "line://msg/image/\(pasteBoard.name)"
-
-        UIApplication.sharedApplication().openURL(NSURL(string: lineURLString)!)*/
+    func shareWithLINE(sender: UIButton) {
+        println("shareWithLINE")
+        SNS.shareWithSNS(self, sns: .LINE, workID: sender.tag)
     }
 }
-
