@@ -16,9 +16,12 @@
 		99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B681B983D48000C51C1 /* PostingViewController.swift */; };
 		99593B9C1B99474A000C51C1 /* PostingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B9A1B99474A000C51C1 /* PostingTableViewCell.swift */; };
 		99593B9D1B99474A000C51C1 /* PostingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593B9B1B99474A000C51C1 /* PostingTableViewCell.xib */; };
-		99593B9F1B99605F000C51C1 /* PostingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B9E1B99605F000C51C1 /* PostingCollectionViewCell.swift */; };
 		99593BA21B997AA4000C51C1 /* PostingTitleCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593BA01B997AA4000C51C1 /* PostingTitleCustomCell.swift */; };
 		99593BA31B997AA4000C51C1 /* PostingTitleCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593BA11B997AA4000C51C1 /* PostingTitleCustomCell.xib */; };
+		99593C141B9DC91D000C51C1 /* PostCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593C131B9DC91D000C51C1 /* PostCollectionView.swift */; };
+		99593C191B9DCA55000C51C1 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593C171B9DCA55000C51C1 /* PostCollectionViewCell.swift */; };
+		99593C1A1B9DCA55000C51C1 /* PostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593C181B9DCA55000C51C1 /* PostCollectionViewCell.xib */; };
+		99593C1C1B9DCCE3000C51C1 /* PostCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593C1B1B9DCCE3000C51C1 /* PostCollectionView.xib */; };
 		B503C7501B9D8E7C008C139A /* NavigationToPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C74F1B9D8E7C008C139A /* NavigationToPostingViewController.swift */; };
 		B507CEF31B9D6800000BE39D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B507CEF21B9D6800000BE39D /* Social.framework */; };
 		B5105AD01B993FB200BD9ECD /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5105ACE1B993FB200BD9ECD /* Haneke.framework */; };
@@ -83,9 +86,12 @@
 		99593B681B983D48000C51C1 /* PostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingViewController.swift; sourceTree = "<group>"; };
 		99593B9A1B99474A000C51C1 /* PostingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingTableViewCell.swift; sourceTree = "<group>"; };
 		99593B9B1B99474A000C51C1 /* PostingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostingTableViewCell.xib; sourceTree = "<group>"; };
-		99593B9E1B99605F000C51C1 /* PostingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingCollectionViewCell.swift; sourceTree = "<group>"; };
 		99593BA01B997AA4000C51C1 /* PostingTitleCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingTitleCustomCell.swift; sourceTree = "<group>"; };
 		99593BA11B997AA4000C51C1 /* PostingTitleCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostingTitleCustomCell.xib; sourceTree = "<group>"; };
+		99593C131B9DC91D000C51C1 /* PostCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionView.swift; sourceTree = "<group>"; };
+		99593C171B9DCA55000C51C1 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		99593C181B9DCA55000C51C1 /* PostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCollectionViewCell.xib; sourceTree = "<group>"; };
+		99593C1B1B9DCCE3000C51C1 /* PostCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCollectionView.xib; sourceTree = "<group>"; };
 		B503C74F1B9D8E7C008C139A /* NavigationToPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationToPostingViewController.swift; sourceTree = "<group>"; };
 		B507CEF21B9D6800000BE39D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B5105ACE1B993FB200BD9ECD /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
@@ -159,6 +165,8 @@
 				99593B481B983C82000C51C1 /* AppDelegate.swift */,
 				99593B4A1B983C82000C51C1 /* ViewController.swift */,
 				99593B681B983D48000C51C1 /* PostingViewController.swift */,
+				99593C131B9DC91D000C51C1 /* PostCollectionView.swift */,
+				99593C1B1B9DCCE3000C51C1 /* PostCollectionView.xib */,
 				99593BA41B997B76000C51C1 /* PostingCells */,
 				99593B4C1B983C82000C51C1 /* Main.storyboard */,
 				99593B4F1B983C82000C51C1 /* Images.xcassets */,
@@ -202,7 +210,8 @@
 				99593B9B1B99474A000C51C1 /* PostingTableViewCell.xib */,
 				99593BA01B997AA4000C51C1 /* PostingTitleCustomCell.swift */,
 				99593BA11B997AA4000C51C1 /* PostingTitleCustomCell.xib */,
-				99593B9E1B99605F000C51C1 /* PostingCollectionViewCell.swift */,
+				99593C171B9DCA55000C51C1 /* PostCollectionViewCell.swift */,
+				99593C181B9DCA55000C51C1 /* PostCollectionViewCell.xib */,
 			);
 			name = PostingCells;
 			sourceTree = "<group>";
@@ -284,7 +293,7 @@
 				TargetAttributes = {
 					99593B421B983C82000C51C1 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = MK5V3GM3DD;
+						DevelopmentTeam = V234C4FQ67;
 					};
 					99593B571B983C82000C51C1 = {
 						CreatedOnToolsVersion = 6.4;
@@ -320,7 +329,9 @@
 				B57B35061B985C9300C156A2 /* FourPanelMangaTableViewCell.xib in Resources */,
 				99593B4E1B983C82000C51C1 /* Main.storyboard in Resources */,
 				99593B531B983C82000C51C1 /* LaunchScreen.xib in Resources */,
+				99593C1A1B9DCA55000C51C1 /* PostCollectionViewCell.xib in Resources */,
 				99593BA31B997AA4000C51C1 /* PostingTitleCustomCell.xib in Resources */,
+				99593C1C1B9DCCE3000C51C1 /* PostCollectionView.xib in Resources */,
 				B57B35021B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib in Resources */,
 				99593B501B983C82000C51C1 /* Images.xcassets in Resources */,
 				99593B9D1B99474A000C51C1 /* PostingTableViewCell.xib in Resources */,
@@ -354,8 +365,9 @@
 				99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */,
 				B57B35011B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift in Sources */,
 				99593BA21B997AA4000C51C1 /* PostingTitleCustomCell.swift in Sources */,
+				99593C141B9DC91D000C51C1 /* PostCollectionView.swift in Sources */,
+				99593C191B9DCA55000C51C1 /* PostCollectionViewCell.swift in Sources */,
 				B58888CC1B9D2DAF00D4972E /* FavoritesData.swift in Sources */,
-				99593B9F1B99605F000C51C1 /* PostingCollectionViewCell.swift in Sources */,
 				B5105AD71B9941A200BD9ECD /* Work.swift in Sources */,
 				B57B35051B985C9300C156A2 /* FourPanelMangaTableViewCell.swift in Sources */,
 				99593B9C1B99474A000C51C1 /* PostingTableViewCell.swift in Sources */,
@@ -486,7 +498,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuji Fujisaka (93WZF2RG67)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -503,7 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yuji Fujisaka";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

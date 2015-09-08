@@ -10,10 +10,10 @@ import Foundation
 import Himotoki
 
 struct Favorite: Decodable {
-    let work_id: Int
+    let workId: Int
 
     static func decode(e: Extractor) -> Favorite? {
-        let create = { Favorite(work_id: $0) }
+        let create = { Favorite(workId: $0) }
 
         return build(create)(
             e <| "work_id"
