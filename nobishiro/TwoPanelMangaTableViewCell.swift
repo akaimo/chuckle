@@ -20,6 +20,8 @@ class TwoPanelMangaTableViewCell: UITableViewCell {
     @IBOutlet weak var postToLine: UIButton!
     @IBOutlet weak var postToFavorite: UIButton!
 
+    @IBOutlet weak var favoriteCount: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,6 +35,8 @@ class TwoPanelMangaTableViewCell: UITableViewCell {
         title.text = nil
         firstPanel.image = nil
         secondPanel.image = nil
+        favoriteCount.text = nil
+        postToFavorite.imageView?.image = nil
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

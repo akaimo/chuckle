@@ -22,8 +22,6 @@ class ThreePanelMangaTableViewCell: UITableViewCell {
     @IBOutlet weak var postToFavorite: UIButton!
 
     @IBOutlet weak var favoriteCount: UILabel!
-
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,10 +33,12 @@ class ThreePanelMangaTableViewCell: UITableViewCell {
     }
 
     override func prepareForReuse() {
-        title.text = ""
+        title.text = nil
         firstPanel.image = nil
         secondPanel.image = nil
         thirdPanel.image = nil
+        favoriteCount.text = nil
+        postToFavorite.imageView?.image = nil
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

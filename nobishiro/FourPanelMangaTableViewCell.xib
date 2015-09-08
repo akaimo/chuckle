@@ -177,8 +177,13 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="favoriteCount" destination="yvw-hV-FAS" id="cVg-hp-6ry"/>
                 <outlet property="firstPanel" destination="VSV-FL-ToM" id="wEs-Rb-ik5"/>
                 <outlet property="fourPanel" destination="B9s-Yb-GF5" id="x1g-fN-9oB"/>
+                <outlet property="postToFacebook" destination="TG1-Jp-Yct" id="Xlt-bB-ryu"/>
+                <outlet property="postToFavorite" destination="AMq-25-FTs" id="dJh-QO-v2h"/>
+                <outlet property="postToLine" destination="N5R-6m-VCu" id="t1F-zE-Qlz"/>
+                <outlet property="postToTwitter" destination="dEr-hr-tRT" id="IG2-DZ-dt3"/>
                 <outlet property="secondPanel" destination="u5n-WN-fRk" id="Sm6-yJ-Wzl"/>
                 <outlet property="thirdPanel" destination="ekv-PZ-jlj" id="tnB-q4-HCz"/>
                 <outlet property="title" destination="Hq0-in-Eik" id="ucH-6C-MM8"/>

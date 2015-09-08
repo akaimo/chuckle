@@ -16,6 +16,13 @@ class FourPanelMangaTableViewCell: UITableViewCell {
     @IBOutlet weak var secondPanel: UIImageView!
     @IBOutlet weak var thirdPanel: UIImageView!
     @IBOutlet weak var fourPanel: UIImageView!
+
+    @IBOutlet weak var postToTwitter: UIButton!
+    @IBOutlet weak var postToFacebook: UIButton!
+    @IBOutlet weak var postToLine: UIButton!
+    @IBOutlet weak var postToFavorite: UIButton!
+
+    @IBOutlet weak var favoriteCount: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +39,8 @@ class FourPanelMangaTableViewCell: UITableViewCell {
         secondPanel.image = nil
         thirdPanel.image = nil
         fourPanel.image = nil
+        favoriteCount.text = nil
+        postToFavorite.imageView?.image = nil
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
