@@ -80,6 +80,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="postBtn" destination="Zda-TG-XmA" id="iFS-JO-6CU"/>
                         <outlet property="postingTableView" destination="rY7-aU-mtF" id="XeZ-ZJ-vaL"/>
                         <outlet property="postingTableViewHeight" destination="7ZI-t6-aFD" id="LUf-4j-1Lv"/>
                     </connections>
