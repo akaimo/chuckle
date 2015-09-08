@@ -11,13 +11,10 @@
     },
     {
       "idiom" : "universal",
-<<<<<<< HEAD
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-=======
->>>>>>> master
       "scale" : "3x"
     }
   ],
