@@ -30,7 +30,8 @@ class FourPanelMangaTableViewCell: UITableViewCell {
     }
 
     class func height() -> CGFloat {
-        return 669
+        // TODO:
+        return 783
     }
 
     override func prepareForReuse() {

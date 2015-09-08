@@ -7,21 +7,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ThreePanelMangaTableViewCell" customModule="nobishiro" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="512"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="660" id="KGk-i7-Jjw" customClass="ThreePanelMangaTableViewCell" customModule="nobishiro" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="660"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2b-lL-ZqT">
-                        <rect key="frame" x="8" y="8" width="304" height="495.5"/>
+                        <rect key="frame" x="8" y="8" width="304" height="643.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCn-gO-r0A">
-                                <rect key="frame" x="0.0" y="0.0" width="304" height="76"/>
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3コマ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdQ-7Z-Eo1" userLabel="title">
-                                        <rect key="frame" x="10" y="10" width="284" height="56"/>
+                                        <rect key="frame" x="10" y="10" width="284" height="90"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -36,38 +36,38 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZvJ-43-3vl" userLabel="firstPanel">
-                                <rect key="frame" x="96" y="86" width="112" height="112"/>
+                                <rect key="frame" x="77" y="120" width="150" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="112" id="KTb-pl-zwr"/>
-                                    <constraint firstAttribute="height" constant="112" id="dD2-fH-RAS"/>
+                                    <constraint firstAttribute="width" constant="150" id="KTb-pl-zwr"/>
+                                    <constraint firstAttribute="height" constant="150" id="dD2-fH-RAS"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nna-sW-jwT" userLabel="secondPanel">
-                                <rect key="frame" x="96" y="201" width="112" height="112"/>
+                                <rect key="frame" x="77" y="273" width="150" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="112" id="etS-as-82Z"/>
-                                    <constraint firstAttribute="width" constant="112" id="uHS-d1-12D"/>
+                                    <constraint firstAttribute="height" constant="150" id="etS-as-82Z"/>
+                                    <constraint firstAttribute="width" constant="150" id="uHS-d1-12D"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n85-DC-frC" userLabel="thirdPanel">
-                                <rect key="frame" x="96" y="316" width="112" height="112"/>
+                                <rect key="frame" x="77" y="426" width="150" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="112" id="3y2-h7-2vw"/>
-                                    <constraint firstAttribute="width" constant="112" id="Oxh-nt-xBj"/>
+                                    <constraint firstAttribute="height" constant="150" id="3y2-h7-2vw"/>
+                                    <constraint firstAttribute="width" constant="150" id="Oxh-nt-xBj"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="numberOfStars" translatesAutoresizingMaskIntoConstraints="NO" id="NT4-nA-PyH">
-                                <rect key="frame" x="245" y="412" width="15" height="14"/>
+                                <rect key="frame" x="245" y="560" width="15" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="5UX-OF-8pt"/>
                                     <constraint firstAttribute="height" constant="14" id="ok2-M0-H85"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tes-rC-RLf" userLabel="favoriteCount">
-                                <rect key="frame" x="263" y="411" width="32" height="17"/>
+                                <rect key="frame" x="263" y="559" width="32" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="dJZ-v7-zDc"/>
                                 </constraints>
@@ -76,14 +76,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HG0-BP-hNg">
-                                <rect key="frame" x="10" y="437" width="284" height="1"/>
+                                <rect key="frame" x="10" y="585" width="284" height="1"/>
                                 <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Gyr-qx-GhN"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjp-3H-U4c" userLabel="postToFacebook">
-                                <rect key="frame" x="55" y="448" width="35" height="37"/>
+                                <rect key="frame" x="55" y="596" width="35" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="fid-Xf-HxU"/>
                                     <constraint firstAttribute="height" constant="37" id="nqg-Uw-biv"/>
@@ -93,7 +93,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRP-5P-JLW" userLabel="postToLine">
-                                <rect key="frame" x="100" y="448" width="35" height="37"/>
+                                <rect key="frame" x="100" y="596" width="35" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="9e4-Hi-R7C"/>
                                     <constraint firstAttribute="height" constant="37" id="UEO-zN-ZNB"/>
@@ -103,7 +103,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cm-Cl-rpb" userLabel="postToFavorite">
-                                <rect key="frame" x="267" y="453" width="26" height="24"/>
+                                <rect key="frame" x="267" y="601" width="26" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="26" id="mvX-9m-azx"/>
                                     <constraint firstAttribute="height" constant="24" id="wft-r2-f07"/>
@@ -113,7 +113,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obl-rh-Hn6" userLabel="postToTwitter">
-                                <rect key="frame" x="10" y="448" width="35" height="37"/>
+                                <rect key="frame" x="10" y="596" width="35" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="Y98-pi-aGA"/>
                                     <constraint firstAttribute="height" constant="37" id="qXD-P3-sQe"/>
@@ -178,14 +178,14 @@
                 <outlet property="thirdPanel" destination="n85-DC-frC" id="p4H-6e-Cpe"/>
                 <outlet property="title" destination="bdQ-7Z-Eo1" id="OFf-YI-vzJ"/>
             </connections>
-            <point key="canvasLocation" x="307.5" y="564"/>
+            <point key="canvasLocation" x="307" y="638"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="facebook" width="70" height="74"/>
-        <image name="line" width="70" height="74"/>
-        <image name="numberOfStars" width="30" height="28"/>
-        <image name="star" width="52" height="50"/>
-        <image name="twitter" width="70" height="74"/>
+        <image name="facebook" width="35" height="37"/>
+        <image name="line" width="35" height="37"/>
+        <image name="numberOfStars" width="15" height="14"/>
+        <image name="star" width="26" height="25"/>
+        <image name="twitter" width="35" height="37"/>
     </resources>
 </document>

@@ -19,12 +19,19 @@ struct SNS {
         composeView.addImage(image)
         viewController.presentViewController(composeView, animated: true, completion: nil)
     }
+    
     static func postToLINE(image: UIImage) {
-        let pasteBoard = UIPasteboard.pasteboardWithUniqueName()
-        pasteBoard.setData(UIImagePNGRepresentation(image), forPasteboardType: "chuckle.png")
-        let lineURLString = "line://msg/image/\(pasteBoard.name)"
-        UIApplication.sharedApplication().openURL(NSURL(string: lineURLString)!)
+        let pasteboard = UIPasteboard.generalPasteboard()
+        pasteboard.setData(UIImagePNGRepresentation(image), forPasteboardType: "public.png")
+        let url = NSURL(string: "line://msg/image/\(pasteboard.name)")!
+        if UIApplication.sharedApplication().canOpenURL(url) {
+            UIApplication.sharedApplication().openURL(url)
+        } else {
+            let alert = UIAlertView(title: "エラー", message: "LINEがインストールされていません。", delegate: nil, cancelButtonTitle: "閉じる")
+            alert.show()
+        }
     }
+
     static func shareWithSNS(viewController: UIViewController, sns: SNSType, workID: Int) {
         let cache = Cache<UIImage>(name: "shareImage")
         Alamofire.request(.GET, "http://yuji.website:3001/api/share_image/\(workID)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in

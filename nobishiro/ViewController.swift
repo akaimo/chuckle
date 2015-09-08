@@ -251,4 +251,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         println("shareWithLINE")
         SNS.shareWithSNS(self, sns: .LINE, workID: sender.tag)
     }
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.timelineTableView.contentOffset.y >= self.timelineTableView.contentSize.height - self.timelineTableView.bounds.size.height {
+            println("bottom")
+        }
+    }
 }

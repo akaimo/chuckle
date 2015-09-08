@@ -2,15 +2,22 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
       "filename" : "facebook.png"
     },
     {
       "idiom" : "universal",
+<<<<<<< HEAD
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+=======
+>>>>>>> master
       "scale" : "3x"
     }
   ],
