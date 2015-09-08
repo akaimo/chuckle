@@ -11,16 +11,17 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PostingViewController: UIViewController {
+class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var postingTableView: UITableView!
-    @IBOutlet weak var postingCollectionView: UICollectionView!
+    var postingCollectionView: PostCollectionView!
     
     private var imgCount: Int = 0
     private var imgArray: [Int?] = [nil, nil, nil, nil]
     private var postTitle: String = ""
+    private var animat = false
     private var materials: [Material] = [] {
         didSet {
-            postingCollectionView.reloadData()
+            postingCollectionView.postCollectionView.reloadData()
         }
     }
     
@@ -32,6 +33,14 @@ class PostingViewController: UIViewController {
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
         postingTableView.registerNib(UINib(nibName: "PostingTitleCustomCell", bundle: nil), forCellReuseIdentifier: "Title")
         postingTableView.allowsSelection = false
+        
+        postingCollectionView = PostCollectionView.instance()
+        postingCollectionView.postCollectionView.dataSource = self
+        postingCollectionView.postCollectionView.delegate = self
+        postingCollectionView.postCollectionView.registerNib(UINib(nibName: "PostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Stamp")
+        postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 250)
+        self.view.addSubview(postingCollectionView)
+        
         
         loadMaterials()
     }
@@ -86,6 +95,8 @@ class PostingViewController: UIViewController {
             // TODO: キーボード的なのを表示
             println(imageView.tag)
             imgCount = imageView.tag
+            
+            collectionAnimation()
         }
     }
     
@@ -106,12 +117,26 @@ class PostingViewController: UIViewController {
         }
     }
     
+    func collectionAnimation() {
+        if !animat {
+            UIView.animateWithDuration(1.0, animations: { () -> Void in
+                self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
+            })
+            animat = true
+        } else {
+            UIView.animateWithDuration(1.0, animations: { () -> Void in
+                self.postingCollectionView.frame.origin.y += self.postingCollectionView.frame.height
+            })
+            animat = false
+        }
+    }
+    
     
     // MARK: - UICollectionViewDelegate Protocol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let material = materials[indexPath.row]
         
-        let cell:PostingCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! PostingCollectionViewCell
+        let cell:PostCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("Stamp", forIndexPath: indexPath) as! PostCollectionViewCell
         cell.stampImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
         cell.backgroundColor = UIColor.blackColor()
         return cell
