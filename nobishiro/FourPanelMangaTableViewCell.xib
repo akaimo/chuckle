@@ -36,7 +36,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VSV-FL-ToM" userLabel="firstPanel">
-                                <rect key="frame" x="123.5" y="127" width="112" height="112"/>
+                                <rect key="frame" x="123" y="127" width="112" height="112"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="112" id="Sws-oV-Ykf"/>
@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="height" constant="112" id="kui-nk-zRW"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nab-mI-ubK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NumberOfStars" translatesAutoresizingMaskIntoConstraints="NO" id="Nab-mI-ubK">
                                 <rect key="frame" x="296" y="568" width="15" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="Mam-rA-Kb1"/>
@@ -87,46 +87,43 @@
                                     <constraint firstAttribute="height" constant="1" id="YDf-YY-a6H"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEr-hr-tRT" userLabel="postToTwitter">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEr-hr-tRT" userLabel="postToTwitter">
                                 <rect key="frame" x="10" y="604" width="35" height="37"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="93s-CI-ZVV"/>
                                     <constraint firstAttribute="width" constant="35" id="Plu-9d-mNh"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" image="Twitter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-Jp-Yct" userLabel="postToFacebook">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-Jp-Yct" userLabel="postToFacebook">
                                 <rect key="frame" x="55" y="604" width="35" height="37"/>
-                                <color key="backgroundColor" red="0.21138773088964591" green="0.20942773229216749" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="G2K-Tk-761"/>
                                     <constraint firstAttribute="height" constant="37" id="rvi-0P-HN6"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" image="Facebook">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5R-6m-VCu" userLabel="postToLine">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5R-6m-VCu" userLabel="postToLine">
                                 <rect key="frame" x="100" y="604" width="35" height="37"/>
-                                <color key="backgroundColor" red="0.21730313470485429" green="1" blue="0.092460094692515926" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="5DZ-Ik-DaQ"/>
                                     <constraint firstAttribute="width" constant="35" id="qrL-8D-OaG"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" image="Line">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMq-25-FTs" userLabel="postToFavorite">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMq-25-FTs" userLabel="postToFavorite">
                                 <rect key="frame" x="322" y="609" width="26" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="26" id="i1f-qM-b3k"/>
                                     <constraint firstAttribute="height" constant="24" id="mRm-5i-pyY"/>
                                 </constraints>
-                                <state key="normal" title="星">
+                                <state key="normal" image="Star">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -169,6 +166,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="jBf-44-FHx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="UUk-eh-MeQ"/>
                     <constraint firstAttribute="bottomMargin" secondItem="jBf-44-FHx" secondAttribute="bottom" id="dF7-jb-974"/>
@@ -191,4 +189,11 @@
             <point key="canvasLocation" x="307.5" y="639"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Facebook" width="70" height="74"/>
+        <image name="Line" width="70" height="74"/>
+        <image name="NumberOfStars" width="30" height="28"/>
+        <image name="Star" width="52" height="50"/>
+        <image name="Twitter" width="70" height="74"/>
+    </resources>
 </document>
