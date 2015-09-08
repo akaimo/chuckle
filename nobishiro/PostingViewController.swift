@@ -189,8 +189,9 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             // 4つ目を選択したとき
             imgCount = 0
             focusNum = nil
-            self.postingTableView.reloadData()
+//            self.postingTableView.reloadData()
             closeCollection()
+            self.postingTableView.reloadData()
         } else {
             // 1~3つ目を選択したとき
             // TODO: 次の行にフォーカスを移す
