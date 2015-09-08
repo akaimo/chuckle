@@ -16,6 +16,15 @@ class ThreePanelMangaTableViewCell: UITableViewCell {
     @IBOutlet weak var secondPanel: UIImageView!
     @IBOutlet weak var thirdPanel: UIImageView!
 
+    @IBOutlet weak var postToTwitter: UIButton!
+    @IBOutlet weak var postToFacebook: UIButton!
+    @IBOutlet weak var postToLine: UIButton!
+    @IBOutlet weak var postToFavorite: UIButton!
+
+    @IBOutlet weak var favoriteCount: UILabel!
+
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
