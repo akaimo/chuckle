@@ -14,7 +14,7 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
 
     @IBOutlet private weak var notificationTableView: UITableView!
     private let refreshControl = UIRefreshControl()
-    private var notification: [Notification] = [] {
+    private var notifications: [Notification] = [] {
       didSet {
         notificationTableView.reloadData()
       }
@@ -26,6 +26,10 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
         notificationTableView.dataSource = self
         notificationTableView.delegate = self
         notificationTableView.allowsSelection = false
+        self.automaticallyAdjustsScrollViewInsets = false;
+        
+        notificationTableView.registerNib(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
+        
         loadNotifications()
         refreshControl.addTarget(self, action: "loadNotifications", forControlEvents: .ValueChanged)
         notificationTableView.addSubview(refreshControl)
@@ -34,21 +38,35 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
   
     override func loadView() {
-      if let view = UINib(nibName: "NotificationTableViewController", bundle: nil).instantiateWithOwner(self, options: nil).first as? UIView {
+        if let view = UINib(nibName: "NotificationTableViewController", bundle: nil).instantiateWithOwner(self, options: nil).first as? UIView {
         self.view = view
         }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notification.count
+        return notifications.count
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 78
+    }
+
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = notificationTableView.dequeueReusableCellWithIdentifier("NotificationTableViewCell") as! NotificationTableViewCell
+        
+        let lblText = NSMutableAttributedString(string: "「」がお気に入りされました！")
+        let title = NSMutableAttributedString(string: notifications[indexPath.row].title)
+        title.addAttributes([NSFontAttributeName: UIFont.boldSystemFontOfSize(UIFont.smallSystemFontSize())], range: NSMakeRange(0, title.length))
+        lblText.insertAttributedString(title, atIndex: 1)
+        
+        cell.title.attributedText = lblText
+        cell.thumImageView.hnk_setImageFromURL(NSURL(string: notifications[indexPath.row].imageUrl)!)
+        
+        return cell
     }
 
   
@@ -74,7 +92,7 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
             switch (JSON, error) {
             case (.Some(let json), .None):
                 if let notificationsData: NotificationsData = decode(json) {
-                    self.notification = notificationsData.data
+                    self.notifications = notificationsData.data
                 }
             case (.None, .Some):
                 println(error)
@@ -96,14 +114,5 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
         return platformName! as String
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

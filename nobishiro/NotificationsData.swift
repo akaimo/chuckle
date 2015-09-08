@@ -10,15 +10,15 @@ import Foundation
 import Himotoki
 
 struct NotificationsData: Decodable {
-  let data: [Notification]
-  let status: String
+    let data: [Notification]
+    let status: String
   
-  static func decode(e: Extractor) -> NotificationsData? {
-    let create = { NotificationsData($0) }
-    
-    return build(create)(
-      e <|| "data",
-      e <| "status"
-    )
-  }
+    static func decode(e: Extractor) -> NotificationsData? {
+        let create = { NotificationsData($0) }
+
+        return build(create)(
+            e <|| "data",
+            e <| "status"
+        )
+    }
 }

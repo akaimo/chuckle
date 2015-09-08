@@ -50,6 +50,8 @@
 		BA428AFB1B9F2BF200CE73F0 /* NotificationTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA428AF91B9F2BF200CE73F0 /* NotificationTableViewController.xib */; };
 		BA428AFD1B9F31C300CE73F0 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428AFC1B9F31C300CE73F0 /* Notification.swift */; };
 		BA428AFF1B9F332A00CE73F0 /* NotificationsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428AFE1B9F332A00CE73F0 /* NotificationsData.swift */; };
+		BA428B021B9F3B1F00CE73F0 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428B001B9F3B1F00CE73F0 /* NotificationTableViewCell.swift */; };
+		BA428B031B9F3B1F00CE73F0 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA428B011B9F3B1F00CE73F0 /* NotificationTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		BA428AF91B9F2BF200CE73F0 /* NotificationTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTableViewController.xib; sourceTree = "<group>"; };
 		BA428AFC1B9F31C300CE73F0 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		BA428AFE1B9F332A00CE73F0 /* NotificationsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsData.swift; sourceTree = "<group>"; };
+		BA428B001B9F3B1F00CE73F0 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		BA428B011B9F3B1F00CE73F0 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +261,8 @@
 				B57B35001B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib */,
 				B57B35031B985C9300C156A2 /* FourPanelMangaTableViewCell.swift */,
 				B57B35041B985C9300C156A2 /* FourPanelMangaTableViewCell.xib */,
+				BA428B001B9F3B1F00CE73F0 /* NotificationTableViewCell.swift */,
+				BA428B011B9F3B1F00CE73F0 /* NotificationTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 				99593BA31B997AA4000C51C1 /* PostingTitleCustomCell.xib in Resources */,
 				BA428AFB1B9F2BF200CE73F0 /* NotificationTableViewController.xib in Resources */,
 				99593C1C1B9DCCE3000C51C1 /* PostCollectionView.xib in Resources */,
+				BA428B031B9F3B1F00CE73F0 /* NotificationTableViewCell.xib in Resources */,
 				B57B35021B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib in Resources */,
 				99593B501B983C82000C51C1 /* Images.xcassets in Resources */,
 				99593B9D1B99474A000C51C1 /* PostingTableViewCell.xib in Resources */,
@@ -372,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B50304B61B9EEA16008D46C0 /* SNS.swift in Sources */,
+				BA428B021B9F3B1F00CE73F0 /* NotificationTableViewCell.swift in Sources */,
 				B53B08041B99600D005F5F30 /* MaterialsData.swift in Sources */,
 				B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */,
 				BA428AFD1B9F31C300CE73F0 /* Notification.swift in Sources */,

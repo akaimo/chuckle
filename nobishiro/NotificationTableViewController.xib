@@ -15,12 +15,23 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5Sp-TS-sDB">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5Sp-TS-sDB">
+                    <rect key="frame" x="0.0" y="70" width="600" height="530"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="sectionIndexBackgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="5Sp-TS-sDB" secondAttribute="centerX" id="g9r-GL-4GK"/>
+                <constraint firstAttribute="bottom" secondItem="5Sp-TS-sDB" secondAttribute="bottom" id="gry-4g-IIh"/>
+                <constraint firstItem="5Sp-TS-sDB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jOP-V0-qfg"/>
+                <constraint firstAttribute="trailing" secondItem="5Sp-TS-sDB" secondAttribute="trailing" id="kMZ-Ge-h06"/>
+                <constraint firstItem="5Sp-TS-sDB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="thg-7N-D9T"/>
+                <constraint firstAttribute="centerY" secondItem="5Sp-TS-sDB" secondAttribute="centerY" id="uJg-1n-qFE"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
         </view>
     </objects>
 </document>
