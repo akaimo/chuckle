@@ -11,7 +11,7 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var postingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var postingTableView: UITableView!
     var postingCollectionView: PostCollectionView!
@@ -90,17 +90,24 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
+    
+    
     // MARK: -
+    // 画像がタップされたとき
     func didClickImageView(recognizer: UIGestureRecognizer) {
         if let imageView = recognizer.view as? UIImageView {
-            // TODO: キーボード的なのを表示
-            println(imageView.tag)
             imgCount = imageView.tag
             
-            collectionAnimation()
+            if !animat {
+                openCollection()
+            }
+            
+            // TODO: タップされた行にフォーカスを当てる
+            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount + 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         }
     }
     
+    // stampを読み込む
     func loadMaterials() {
         let cache = Cache<JSON>(name: "materials")
         let URL = NSURL(string: "http://yuji.website:3001/api/material")!
@@ -117,23 +124,25 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             println(Failer)
         }
     }
+
+    // collectionViewを出す
+    func openCollection() {
+        self.postingTableViewHeight.constant = 250
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
+            self.postingTableView.layoutIfNeeded()
+        })
+        animat = true
+    }
     
-    func collectionAnimation() {
-        if !animat {
-            self.postingTableViewHeight.constant = 250
-            UIView.animateWithDuration(1.0, animations: { () -> Void in
-                self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
-                self.postingTableView.layoutIfNeeded()
-            })
-            animat = true
-        } else {
-            self.postingTableViewHeight.constant = 0
-            UIView.animateWithDuration(1.0, animations: { () -> Void in
-                self.postingCollectionView.frame.origin.y += self.postingCollectionView.frame.height
-                self.postingTableView.layoutIfNeeded()
-            })
-            animat = false
-        }
+    // collectionViewを隠す
+    func closeCollection() {
+        self.postingTableViewHeight.constant = 0
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.postingCollectionView.frame.origin.y += self.postingCollectionView.frame.height
+            self.postingTableView.layoutIfNeeded()
+        })
+        animat = false
     }
     
     
@@ -160,9 +169,14 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         self.postingTableView.reloadData()
         
         if imgCount == 3 {
+            // 4つ目を選択したとき
             imgCount = 0
+            closeCollection()
         } else {
+            // 1~3つ目を選択したとき
+            // TODO: 次の行にフォーカスを移す
             imgCount += 1
+            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         }
     }
     
@@ -186,7 +200,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         postTitle = cell.titleTextField.text
         println("title:\(postTitle)")
         
-        // カラ、空白オンリーは弾く
+        // TODO: カラ、空白オンリーは弾く
         if postTitle == "" {
             // TODO: ポップアップ
             println("タイトルが入力されていない")
