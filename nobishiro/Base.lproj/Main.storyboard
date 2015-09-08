@@ -73,7 +73,7 @@
                                 <action selector="backBtnTap:" destination="oMM-xB-o2j" id="gCA-UN-Nkf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="投稿" id="Zda-TG-XmA">
+                        <barButtonItem key="rightBarButtonItem" title="投稿する" id="Zda-TG-XmA">
                             <connections>
                                 <action selector="tapPostingBtn:" destination="oMM-xB-o2j" id="rwk-qZ-7BX"/>
                             </connections>
@@ -89,15 +89,16 @@
             </objects>
             <point key="canvasLocation" x="1363" y="1411"/>
         </scene>
-        <!--Item-->
+        <!--新着-->
         <scene sceneID="jt2-D6-KNl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gcd-5q-F1c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="XbH-xj-5Hu"/>
+                    <tabBarItem key="tabBarItem" title="新着" id="XbH-xj-5Hu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tjl-UQ-oI2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.96078431369999995" green="0.6705882353" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -117,6 +118,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.96078431372549022" green="0.6705882352941176" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="gcd-5q-F1c" kind="relationship" relationship="viewControllers" id="sXw-M6-UuT"/>
@@ -130,15 +132,17 @@
             </objects>
             <point key="canvasLocation" x="-186" y="1446"/>
         </scene>
-        <!--Item-->
+        <!--大喜利する-->
         <scene sceneID="D3K-1X-RZY">
             <objects>
                 <navigationController storyboardIdentifier="NavigationToPosting" automaticallyAdjustsScrollViewInsets="NO" id="t0L-2b-oI9" customClass="NavigationToPostingViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="9wD-GW-GVS"/>
+                    <tabBarItem key="tabBarItem" title="大喜利する" id="9wD-GW-GVS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sgU-M4-mgL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -215,6 +219,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wOa-yw-0qN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.96078431369999995" green="0.6705882353" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -234,6 +239,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GTz-fp-F3h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.96078431369999995" green="0.6705882353" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -253,6 +259,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y5i-6D-xsh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.96078431369999995" green="0.6705882353" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
