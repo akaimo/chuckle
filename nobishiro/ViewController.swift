@@ -12,12 +12,18 @@ import Himotoki
 import CoreGraphics
 import QuartzCore
 import Social
+import Alamofire
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private weak var timelineTableView: UITableView!
     private let refreshControl = UIRefreshControl()
     private var works: [Work] = [] {
+        didSet {
+            timelineTableView.reloadData()
+        }
+    }
+    private var myFavorites: [Int] = [] {
         didSet {
             timelineTableView.reloadData()
         }
@@ -36,43 +42,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
         loadWorks()
+        loadFavorites()
 
         refreshControl.addTarget(self, action: "loadWorks", forControlEvents: .ValueChanged)
         timelineTableView.addSubview(refreshControl)
     }
 
     func loadWorks() {
-        Shared.JSONCache.removeAll()
-        let cache = Cache<JSON>(name: "works")
-        let URL = NSURL(string: "http://yuji.website:3001/api/work")!
-        cache.fetch(URL: URL).onSuccess{ JSON in
-            if let json = JSON.dictionary,
-                worksData: WorksData = decode(json) {
-                self.works = worksData.data
-            } else {
-                println("can't decode")
-            }
-            self.refreshControl.endRefreshing()
-        }.onFailure{Failer in
-            println(Failer)
-            self.refreshControl.endRefreshing()
+        Alamofire.request(.GET, "http://yuji.website:3001/api/work")
+            .responseJSON { request, response, JSON, error in
+                switch (JSON, error) {
+                case (.Some(let json), .None):
+                    if let worksData: WorksData = decode(json) {
+                        self.works = worksData.data
+                    }
+                case (.None, .Some):
+                    println(error)
+                default:
+                    println("both json and error are nil!")
+                }
+                self.refreshControl.endRefreshing()
         }
-
-        let cacheFavo = Cache<JSON>(name: "favorites")
-        let URLFavo = NSURL(string: "http://yuji.website:3001/api/favorite")!
-
-        println("favo")
-        cacheFavo.fetch(URL: URLFavo).onSuccess{ JSON in
-            if let json = JSON.dictionary,
-                favoritesData: FavoritesData = decode(json) {
-                    println(favoritesData.data)
-                    println(favoritesData.status)
-            } else {
-                println("can't decode")
-            }
-            }.onFailure{Failer in
-                println(Failer)
-        }
+/*
 
         let cacheRank = Cache<JSON>(name: "ranking")
         let URLRank = NSURL(string: "http://yuji.website:3001/api/ranking")!
@@ -86,11 +77,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             }.onFailure{Failer in
                 println(Failer)
+        }*/
+    }
+
+    func loadFavorites() {
+        Alamofire.request(.GET, "http://yuji.website:3001/api/favorite")
+            .responseJSON { request, response, JSON, error in
+                switch (JSON, error) {
+                case (.Some(let json), .None):
+                    if let favoritesData: FavoritesData = decode(json) {
+                        self.myFavorites = favoritesData.data.map{$0.workId}
+                    }
+                case (.None, .Some):
+                    println(error)
+                default:
+                    println("both json and error are nil!")
+                }
+                self.refreshControl.endRefreshing()
         }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("count: \(works.count)")
         return works.count
     }
 
@@ -113,56 +120,148 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         switch materials.count {
         case 2:
+
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[0]) as! TwoPanelMangaTableViewCell
+
             cell.title.text = works[indexPath.row].title
+
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
+
+            cell.postToTwitter.tag = works[indexPath.row].workId
+            cell.postToTwitter.addTarget(self, action: "shareWithTwitter:", forControlEvents: .TouchUpInside)
+            cell.postToFacebook.tag = works[indexPath.row].workId
+            cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
+            cell.postToLine.tag = works[indexPath.row].workId
+            cell.postToLine.addTarget(self, action: "shareWithLine:", forControlEvents: .TouchUpInside)
+            cell.postToFavorite.tag = works[indexPath.row].workId
+            cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
+
+            if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+                println("yellow")
+                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+            } else {
+                println("black")
+                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+            }
+
+            if works[indexPath.row].favoriteCount > 1000 {
+                let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
+                cell.favoriteCount.text = String(format: "%.1fK", double)
+            } else {
+                cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+            }
+
             return cell
+
         case 3:
+
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[1]) as! ThreePanelMangaTableViewCell
+
             cell.title.text = works[indexPath.row].title
+
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
+
+            cell.postToTwitter.tag = works[indexPath.row].workId
+            cell.postToTwitter.addTarget(self, action: "shareWithTwitter:", forControlEvents: .TouchUpInside)
+            cell.postToFacebook.tag = works[indexPath.row].workId
+            cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
+            cell.postToLine.tag = works[indexPath.row].workId
+            cell.postToLine.addTarget(self, action: "shareWithLine:", forControlEvents: .TouchUpInside)
+            cell.postToFavorite.tag = works[indexPath.row].workId
+            cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
+
+            if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+                println("yellow")
+                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+            } else {
+                println("black")
+                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+            }
+
+            if works[indexPath.row].favoriteCount > 1000 {
+                let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
+                cell.favoriteCount.text = String(format: "%.1fK", double)
+            } else {
+                cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+            }
+
             return cell
+
         case 4:
+
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[2]) as! FourPanelMangaTableViewCell
+
             cell.title.text = works[indexPath.row].title
+
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
             cell.fourPanel.hnk_setImageFromURL(NSURL(string: materials[3].url)!)
+
+            cell.postToTwitter.tag = works[indexPath.row].workId
+            cell.postToTwitter.addTarget(self, action: "shareWithTwitter:", forControlEvents: .TouchUpInside)
+            cell.postToFacebook.tag = works[indexPath.row].workId
+            cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
+            cell.postToLine.tag = works[indexPath.row].workId
+            cell.postToLine.addTarget(self, action: "shareWithLine:", forControlEvents: .TouchUpInside)
+            cell.postToFavorite.tag = works[indexPath.row].workId
+            cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
+
+            if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+                println("yellow")
+                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+            } else {
+                println("black")
+                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+            }
+
+            if works[indexPath.row].favoriteCount > 1000 {
+                let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
+                cell.favoriteCount.text = String(format: "%.1fK", double)
+            } else {
+                cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+            }
+
             return cell
+            
         default:
             return UITableViewCell()
         }
     }
 
-    func makeImageAndTweet(sender: UIButton) {
-        let composeView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        composeView.setInitialText("")
-        composeView.addImage(makeImage([]))
-        self.presentViewController(composeView, animated: true, completion: nil)
+    func postToFavorite(sender: UIButton) {
+        println(sender.tag)
+        Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+            switch (JSON, error) {
+            case (.Some, .None):
+                self.loadWorks()
+                self.loadFavorites()
+            default:
+                println("error")
+            }
+        }
     }
 
-    func line() {
+    func shareWithTwitter(sender: UIButton) {
+        //TODO
+        println("shareWithTwitter")
+    }
+
+    func shareWithFacebook(sender: UIButton) {
+    }
+
+    func shareWithLine(sender: UIButton) {
+        //TODO
+        println("shareWithLine")
+        /*
         let pasteBoard = UIPasteboard.pasteboardWithUniqueName()
         pasteBoard.setData(UIImagePNGRepresentation(makeImage([])), forPasteboardType: "public.png")
         let lineURLString = "line://msg/image/\(pasteBoard.name)"
 
-        UIApplication.sharedApplication().openURL(NSURL(string: lineURLString)!)
-    }
-
-    func makeImage(images: [UIImage]) -> UIImage {
-        let images: [UIImage] = []
-        UIGraphicsBeginImageContext(CGSizeMake(150, CGFloat(150 * images.count)))
-        for (i, image) in enumerate(images) {
-            image.drawAtPoint(CGPointMake(0, CGFloat(150 * i)))
-        }
-        let mangaImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return mangaImage
+        UIApplication.sharedApplication().openURL(NSURL(string: lineURLString)!)*/
     }
 }
 

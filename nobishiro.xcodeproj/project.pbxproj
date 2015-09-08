@@ -44,6 +44,12 @@
 		B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888C91B9D2D7300D4972E /* Favorite.swift */; };
 		B58888CC1B9D2DAF00D4972E /* FavoritesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888CB1B9D2DAF00D4972E /* FavoritesData.swift */; };
 		B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888CD1B9D367300D4972E /* InitialTabBarController.swift */; };
+		B59950A51B9EBC310039C782 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = B599509F1B9EBC310039C782 /* facebook.png */; };
+		B59950A61B9EBC310039C782 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = B59950A01B9EBC310039C782 /* line.png */; };
+		B59950A71B9EBC310039C782 /* numberOfStars.png in Resources */ = {isa = PBXBuildFile; fileRef = B59950A11B9EBC310039C782 /* numberOfStars.png */; };
+		B59950A81B9EBC310039C782 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = B59950A21B9EBC310039C782 /* star.png */; };
+		B59950A91B9EBC310039C782 /* stared.png in Resources */ = {isa = PBXBuildFile; fileRef = B59950A31B9EBC310039C782 /* stared.png */; };
+		B59950AA1B9EBC310039C782 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = B59950A41B9EBC310039C782 /* twitter.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +117,12 @@
 		B58888C91B9D2D7300D4972E /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		B58888CB1B9D2DAF00D4972E /* FavoritesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesData.swift; sourceTree = "<group>"; };
 		B58888CD1B9D367300D4972E /* InitialTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialTabBarController.swift; sourceTree = "<group>"; };
+		B599509F1B9EBC310039C782 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		B59950A01B9EBC310039C782 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
+		B59950A11B9EBC310039C782 /* numberOfStars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = numberOfStars.png; sourceTree = "<group>"; };
+		B59950A21B9EBC310039C782 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		B59950A31B9EBC310039C782 /* stared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stared.png; sourceTree = "<group>"; };
+		B59950A41B9EBC310039C782 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +172,7 @@
 		99593B451B983C82000C51C1 /* nobishiro */ = {
 			isa = PBXGroup;
 			children = (
+				B599509E1B9EBC310039C782 /* img */,
 				B5105AD51B99418400BD9ECD /* Models */,
 				B57B35071B9860A500C156A2 /* Cells */,
 				99593B481B983C82000C51C1 /* AppDelegate.swift */,
@@ -241,6 +254,19 @@
 				B57B35041B985C9300C156A2 /* FourPanelMangaTableViewCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		B599509E1B9EBC310039C782 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				B599509F1B9EBC310039C782 /* facebook.png */,
+				B59950A01B9EBC310039C782 /* line.png */,
+				B59950A11B9EBC310039C782 /* numberOfStars.png */,
+				B59950A21B9EBC310039C782 /* star.png */,
+				B59950A31B9EBC310039C782 /* stared.png */,
+				B59950A41B9EBC310039C782 /* twitter.png */,
+			);
+			path = img;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,15 +352,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57B34FE1B98470A00C156A2 /* TwoPanelMangaTableViewCell.xib in Resources */,
+				B59950AA1B9EBC310039C782 /* twitter.png in Resources */,
 				B57B35061B985C9300C156A2 /* FourPanelMangaTableViewCell.xib in Resources */,
 				99593B4E1B983C82000C51C1 /* Main.storyboard in Resources */,
+				B59950A51B9EBC310039C782 /* facebook.png in Resources */,
+				B59950A91B9EBC310039C782 /* stared.png in Resources */,
 				99593B531B983C82000C51C1 /* LaunchScreen.xib in Resources */,
 				99593C1A1B9DCA55000C51C1 /* PostCollectionViewCell.xib in Resources */,
+				B59950A71B9EBC310039C782 /* numberOfStars.png in Resources */,
 				99593BA31B997AA4000C51C1 /* PostingTitleCustomCell.xib in Resources */,
 				99593C1C1B9DCCE3000C51C1 /* PostCollectionView.xib in Resources */,
 				B57B35021B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib in Resources */,
 				99593B501B983C82000C51C1 /* Images.xcassets in Resources */,
+				B59950A81B9EBC310039C782 /* star.png in Resources */,
 				99593B9D1B99474A000C51C1 /* PostingTableViewCell.xib in Resources */,
+				B59950A61B9EBC310039C782 /* line.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
