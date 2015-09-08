@@ -34,7 +34,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
         postingTableView.registerNib(UINib(nibName: "PostingTitleCustomCell", bundle: nil), forCellReuseIdentifier: "Title")
-        postingTableView.allowsSelection = false
         
         postingCollectionView = PostCollectionView.instance()
         postingCollectionView.postCollectionView.dataSource = self
@@ -71,6 +70,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         switch indexPath.row {
         case 0:
             let cell = postingTableView.dequeueReusableCellWithIdentifier("Title") as! PostingTitleCustomCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             
             return cell
             
@@ -91,12 +91,19 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             
             cell.postingImageView.tag = indexPath.row - 1
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
             cell.postingImageView.addGestureRecognizer(gesture)
             
             return cell
         }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        closeCollection()
+        focusNum = nil
+        self.postingTableView.reloadData()
     }
     
     
@@ -112,8 +119,8 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             
             focusNum = imgCount
-            self.postingTableView.reloadData()
             self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount + 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            self.postingTableView.reloadData()
         }
     }
     
