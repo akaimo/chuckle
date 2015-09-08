@@ -120,14 +120,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         switch materials.count {
         case 2:
+
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[0]) as! TwoPanelMangaTableViewCell
+
             cell.title.text = works[indexPath.row].title
+
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
-            //cell.postToTwitter.tag = works[indexPath.row].workId
-            //cell.postToTwitter.addTarget(self, action: "shareWithTwitter:", forControlEvents: .TouchUpInside)
+
+            cell.postToTwitter.tag = works[indexPath.row].workId
+            cell.postToTwitter.addTarget(self, action: "shareWithTwitter:", forControlEvents: .TouchUpInside)
+            cell.postToFacebook.tag = works[indexPath.row].workId
+            cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
+            cell.postToLine.tag = works[indexPath.row].workId
+            cell.postToLine.addTarget(self, action: "shareWithLine:", forControlEvents: .TouchUpInside)
             cell.postToFavorite.tag = works[indexPath.row].workId
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
+
+            if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+                println("yellow")
+                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+            } else {
+                println("black")
+                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+            }
+
+            if works[indexPath.row].favoriteCount > 1000 {
+                let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
+                cell.favoriteCount.text = String(format: "%.1fK", double)
+            } else {
+                cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+            }
+
             return cell
 
         case 3:
@@ -140,6 +164,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
 
+            cell.postToTwitter.tag = works[indexPath.row].workId
+            cell.postToTwitter.addTarget(self, action: "shareWithTwitter:", forControlEvents: .TouchUpInside)
+            cell.postToFacebook.tag = works[indexPath.row].workId
+            cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
+            cell.postToLine.tag = works[indexPath.row].workId
+            cell.postToLine.addTarget(self, action: "shareWithLine:", forControlEvents: .TouchUpInside)
             cell.postToFavorite.tag = works[indexPath.row].workId
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
@@ -161,13 +191,42 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return cell
 
         case 4:
+
             let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[2]) as! FourPanelMangaTableViewCell
+
             cell.title.text = works[indexPath.row].title
+
             cell.firstPanel.hnk_setImageFromURL(NSURL(string: materials[0].url)!)
             cell.secondPanel.hnk_setImageFromURL(NSURL(string: materials[1].url)!)
             cell.thirdPanel.hnk_setImageFromURL(NSURL(string: materials[2].url)!)
             cell.fourPanel.hnk_setImageFromURL(NSURL(string: materials[3].url)!)
+
+            cell.postToTwitter.tag = works[indexPath.row].workId
+            cell.postToTwitter.addTarget(self, action: "shareWithTwitter:", forControlEvents: .TouchUpInside)
+            cell.postToFacebook.tag = works[indexPath.row].workId
+            cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
+            cell.postToLine.tag = works[indexPath.row].workId
+            cell.postToLine.addTarget(self, action: "shareWithLine:", forControlEvents: .TouchUpInside)
+            cell.postToFavorite.tag = works[indexPath.row].workId
+            cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
+
+            if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+                println("yellow")
+                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+            } else {
+                println("black")
+                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+            }
+
+            if works[indexPath.row].favoriteCount > 1000 {
+                let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
+                cell.favoriteCount.text = String(format: "%.1fK", double)
+            } else {
+                cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+            }
+
             return cell
+            
         default:
             return UITableViewCell()
         }
@@ -185,47 +244,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
-/*
-    func findWork(workId: Int) -> Work? {
-        for work in works {
-            if work.workId == workId {
-                return work
-            }
-        }
-        return nil
-    }
 
     func shareWithTwitter(sender: UIButton) {
-        let composeView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        if let work = findWork(sender.tag) {
-            composeView.setInitialText("\(work.title)だよ!")
-            composeView.addImage(makeImage(work.workId))
-            self.presentViewController(composeView, animated: true, completion: nil)
-        } else {
-            println("cant find work")
-        }
+        //TODO
+        println("shareWithTwitter")
     }
 
-    func line() {
+    func shareWithFacebook(sender: UIButton) {
+    }
+
+    func shareWithLine(sender: UIButton) {
+        //TODO
+        println("shareWithLine")
+        /*
         let pasteBoard = UIPasteboard.pasteboardWithUniqueName()
         pasteBoard.setData(UIImagePNGRepresentation(makeImage([])), forPasteboardType: "public.png")
         let lineURLString = "line://msg/image/\(pasteBoard.name)"
 
-        UIApplication.sharedApplication().openURL(NSURL(string: lineURLString)!)
+        UIApplication.sharedApplication().openURL(NSURL(string: lineURLString)!)*/
     }
-
-    func makeImage(workId: Int) -> UIImage {
-        let URLs = findWork(workId)?.materials.map{$0.url}
-        let cache = Shared.imageCache
-        let images: [UIImage] = []
-        UIGraphicsBeginImageContext(CGSizeMake(150, CGFloat(150 * images.count)))
-        for (i, image) in enumerate(images) {
-            image.drawAtPoint(CGPointMake(0, CGFloat(150 * i)))
-        }
-        let mangaImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return mangaImage
-    }*/
 }
 
