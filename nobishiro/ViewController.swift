@@ -90,7 +90,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("count: \(works.count)")
         return works.count
     }
 
