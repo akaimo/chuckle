@@ -59,9 +59,8 @@
                                     <constraint firstAttribute="width" constant="112" id="Oxh-nt-xBj"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NT4-nA-PyH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NumberOfStars" translatesAutoresizingMaskIntoConstraints="NO" id="NT4-nA-PyH">
                                 <rect key="frame" x="245" y="412" width="15" height="14"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="5UX-OF-8pt"/>
                                     <constraint firstAttribute="height" constant="14" id="ok2-M0-H85"/>
@@ -76,53 +75,50 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QAm-22-awk">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HG0-BP-hNg">
                                 <rect key="frame" x="10" y="437" width="284" height="1"/>
                                 <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="USN-k1-lgH"/>
+                                    <constraint firstAttribute="height" constant="1" id="Gyr-qx-GhN"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obl-rh-Hn6" userLabel="postToTwitter">
-                                <rect key="frame" x="10" y="448" width="35" height="37"/>
-                                <color key="backgroundColor" red="0.0" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="Y98-pi-aGA"/>
-                                    <constraint firstAttribute="height" constant="37" id="qXD-P3-sQe"/>
-                                </constraints>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjp-3H-U4c" userLabel="postToFacebook">
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjp-3H-U4c" userLabel="postToFacebook">
                                 <rect key="frame" x="55" y="448" width="35" height="37"/>
-                                <color key="backgroundColor" red="0.0" green="0.042274876644736843" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="fid-Xf-HxU"/>
                                     <constraint firstAttribute="height" constant="37" id="nqg-Uw-biv"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" image="Facebook">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRP-5P-JLW" userLabel="postToLine">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRP-5P-JLW" userLabel="postToLine">
                                 <rect key="frame" x="100" y="448" width="35" height="37"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.062573670504386017" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="9e4-Hi-R7C"/>
                                     <constraint firstAttribute="height" constant="37" id="UEO-zN-ZNB"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" image="Line">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cm-Cl-rpb" userLabel="postToFavorite">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cm-Cl-rpb" userLabel="postToFavorite">
                                 <rect key="frame" x="267" y="453" width="26" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="26" id="mvX-9m-azx"/>
                                     <constraint firstAttribute="height" constant="24" id="wft-r2-f07"/>
                                 </constraints>
-                                <state key="normal" title="星">
+                                <state key="normal" image="Star">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obl-rh-Hn6" userLabel="postToTwitter">
+                                <rect key="frame" x="10" y="448" width="35" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="Y98-pi-aGA"/>
+                                    <constraint firstAttribute="height" constant="37" id="qXD-P3-sQe"/>
+                                </constraints>
+                                <state key="normal" image="Twitter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -134,26 +130,26 @@
                             <constraint firstAttribute="trailing" secondItem="xCn-gO-r0A" secondAttribute="trailing" id="6SI-D0-557"/>
                             <constraint firstItem="obl-rh-Hn6" firstAttribute="leading" secondItem="W2b-lL-ZqT" secondAttribute="leading" constant="10" id="70S-Ba-eeA"/>
                             <constraint firstAttribute="centerX" secondItem="ZvJ-43-3vl" secondAttribute="centerX" id="BgQ-fQ-1gm"/>
+                            <constraint firstItem="HG0-BP-hNg" firstAttribute="top" secondItem="tes-rC-RLf" secondAttribute="bottom" constant="9" id="Cdr-3g-zll"/>
                             <constraint firstItem="ZvJ-43-3vl" firstAttribute="top" secondItem="xCn-gO-r0A" secondAttribute="bottom" constant="10" id="Clm-X9-9Ge"/>
                             <constraint firstItem="xCn-gO-r0A" firstAttribute="leading" secondItem="W2b-lL-ZqT" secondAttribute="leading" id="IEf-Ve-ehN"/>
                             <constraint firstAttribute="centerX" secondItem="Nna-sW-jwT" secondAttribute="centerX" id="Jlk-9N-01s"/>
+                            <constraint firstItem="HG0-BP-hNg" firstAttribute="top" secondItem="n85-DC-frC" secondAttribute="bottom" constant="9" id="NK5-50-BKP"/>
                             <constraint firstItem="iRP-5P-JLW" firstAttribute="leading" secondItem="gjp-3H-U4c" secondAttribute="trailing" constant="10" id="NgY-Id-3VU"/>
                             <constraint firstItem="n85-DC-frC" firstAttribute="top" secondItem="Nna-sW-jwT" secondAttribute="bottom" constant="3" id="P4I-kA-zfX"/>
                             <constraint firstAttribute="trailing" secondItem="tes-rC-RLf" secondAttribute="trailing" constant="9" id="VGg-1x-XGU"/>
                             <constraint firstAttribute="centerX" secondItem="n85-DC-frC" secondAttribute="centerX" id="Xb1-UN-Hic"/>
-                            <constraint firstItem="QAm-22-awk" firstAttribute="top" secondItem="tes-rC-RLf" secondAttribute="bottom" constant="9" id="f8u-Ul-IHu"/>
                             <constraint firstAttribute="bottom" secondItem="obl-rh-Hn6" secondAttribute="bottom" constant="10" id="fEW-LK-RXT"/>
-                            <constraint firstItem="obl-rh-Hn6" firstAttribute="top" secondItem="QAm-22-awk" secondAttribute="bottom" constant="10" id="hH8-bS-gZK"/>
+                            <constraint firstAttribute="trailing" secondItem="HG0-BP-hNg" secondAttribute="trailing" constant="10" id="jem-Mo-eE3"/>
                             <constraint firstAttribute="bottom" secondItem="gjp-3H-U4c" secondAttribute="bottom" constant="10" id="kHU-Kr-IFO"/>
                             <constraint firstItem="xCn-gO-r0A" firstAttribute="top" secondItem="W2b-lL-ZqT" secondAttribute="top" id="kYy-BH-5YD"/>
-                            <constraint firstAttribute="trailing" secondItem="QAm-22-awk" secondAttribute="trailing" constant="10" id="lU1-Px-TXO"/>
                             <constraint firstAttribute="bottom" secondItem="iRP-5P-JLW" secondAttribute="bottom" constant="10" id="nAC-0v-wSz"/>
                             <constraint firstAttribute="bottom" secondItem="1Cm-Cl-rpb" secondAttribute="bottom" constant="18" id="nEL-pF-lbu"/>
                             <constraint firstItem="tes-rC-RLf" firstAttribute="leading" secondItem="NT4-nA-PyH" secondAttribute="trailing" constant="3" id="naN-zn-aYz"/>
-                            <constraint firstItem="QAm-22-awk" firstAttribute="leading" secondItem="W2b-lL-ZqT" secondAttribute="leading" constant="10" id="wGn-fI-vZh"/>
                             <constraint firstItem="Nna-sW-jwT" firstAttribute="top" secondItem="ZvJ-43-3vl" secondAttribute="bottom" constant="3" id="xpU-7E-06k"/>
                             <constraint firstAttribute="trailing" secondItem="1Cm-Cl-rpb" secondAttribute="trailing" constant="11" id="xpg-r7-wUO"/>
-                            <constraint firstItem="QAm-22-awk" firstAttribute="top" secondItem="n85-DC-frC" secondAttribute="bottom" constant="9" id="zgf-5O-zDZ"/>
+                            <constraint firstItem="HG0-BP-hNg" firstAttribute="leading" secondItem="W2b-lL-ZqT" secondAttribute="leading" constant="10" id="zL9-jX-kBz"/>
+                            <constraint firstItem="obl-rh-Hn6" firstAttribute="top" secondItem="HG0-BP-hNg" secondAttribute="bottom" constant="10" id="zoh-Fh-IiZ"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -185,4 +181,11 @@
             <point key="canvasLocation" x="307.5" y="564"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Facebook" width="70" height="74"/>
+        <image name="Line" width="70" height="74"/>
+        <image name="NumberOfStars" width="30" height="28"/>
+        <image name="Star" width="52" height="50"/>
+        <image name="Twitter" width="70" height="74"/>
+    </resources>
 </document>
