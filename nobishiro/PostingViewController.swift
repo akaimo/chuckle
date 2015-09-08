@@ -18,6 +18,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     private var imgCount: Int = 0
     private var imgArray: [Int?] = [nil, nil, nil, nil]
+    private var focusNum: Int? = nil
     private var postTitle: String = ""
     private var animat = false
     private var materials: [Material] = [] {
@@ -39,7 +40,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         postingCollectionView.postCollectionView.dataSource = self
         postingCollectionView.postCollectionView.delegate = self
         postingCollectionView.postCollectionView.registerNib(UINib(nibName: "PostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Stamp")
-        postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 250)
+        postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 230)
         self.view.addSubview(postingCollectionView)
         
         
@@ -81,6 +82,14 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             } else {
                 cell.postingImageView.image = UIImage(named: "Image")
             }
+            
+            if focusNum != nil && focusNum! == (indexPath.row - 1) {
+                cell.postingImageView.layer.borderColor = UIColor(red: 247/255, green: 152/255, blue: 0/255, alpha: 1).CGColor
+                cell.postingImageView.layer.borderWidth = 2
+            } else {
+                cell.postingImageView.layer.borderWidth = 0
+            }
+            
             cell.postingImageView.tag = indexPath.row - 1
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
@@ -102,7 +111,8 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
                 openCollection()
             }
             
-            // TODO: タップされた行にフォーカスを当てる
+            focusNum = imgCount
+            self.postingTableView.reloadData()
             self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount + 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         }
     }
@@ -127,7 +137,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 
     // collectionViewを出す
     func openCollection() {
-        self.postingTableViewHeight.constant = 250
+        self.postingTableViewHeight.constant = 230
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
             self.postingTableView.layoutIfNeeded()
@@ -138,7 +148,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     // collectionViewを隠す
     func closeCollection() {
         self.postingTableViewHeight.constant = 0
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.postingCollectionView.frame.origin.y += self.postingCollectionView.frame.height
             self.postingTableView.layoutIfNeeded()
         })
@@ -171,11 +181,15 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         if imgCount == 3 {
             // 4つ目を選択したとき
             imgCount = 0
+            focusNum = nil
+            self.postingTableView.reloadData()
             closeCollection()
         } else {
             // 1~3つ目を選択したとき
             // TODO: 次の行にフォーカスを移す
             imgCount += 1
+            focusNum = imgCount
+            self.postingTableView.reloadData()
             self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         }
     }
