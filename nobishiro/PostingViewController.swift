@@ -162,6 +162,20 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         animat = false
     }
     
+    // 実機チェック
+    func platformName() -> String {
+        var size: size_t = 0;
+        sysctlbyname("hw.machine", nil, &size, nil, 0)
+        var machine = UnsafeMutablePointer<CChar>(malloc(size))
+        sysctlbyname("hw.machine", machine, &size, nil, 0)
+        var platformName = NSString(CString: machine, encoding: NSUTF8StringEncoding)
+        free(machine)
+        
+        return platformName! as String
+    }
+    
+    
+    
     
     // MARK: - UICollectionViewDelegate Protocol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -189,8 +203,9 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             // 4つ目を選択したとき
             imgCount = 0
             focusNum = nil
-            self.postingTableView.reloadData()
+//            self.postingTableView.reloadData()
             closeCollection()
+            self.postingTableView.reloadData()
         } else {
             // 1~3つ目を選択したとき
             // TODO: 次の行にフォーカスを移す
@@ -217,9 +232,16 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         println(postMaterial)
         
-        var cell: PostingTitleCustomCell = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! PostingTitleCustomCell
-        postTitle = cell.titleTextField.text
-        println("title:\(postTitle)")
+        
+        // タイトルが入力されていないとcellがnilになってしまう
+        // 現時点では原因が不明なのでnilチェックで回避している
+        var cell: PostingTitleCustomCell? = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PostingTitleCustomCell
+        if let titleCell = cell {
+            postTitle = titleCell.titleTextField.text
+        } else {
+            println("タイトルがカラ")
+            return
+        }
         
         // TODO: カラ、空白オンリーは弾く
         if postTitle == "" {
@@ -228,8 +250,23 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             return
         }
         
+        var userID: AnyObject!
+        var platform = platformName()
+        if platform == "x86_64" {
+            // simulator
+            userID = 1
+        } else {
+            // 実機処理
+            let ud = NSUserDefaults.standardUserDefaults()
+            userID = ud.objectForKey("userID")
+        }
+        
+        println("userID:\(userID)")
+        println("title:\(postTitle)")
+        
         let parameters: [String: AnyObject] = [
             "title": postTitle,
+            "user_id": userID,
             "materials": postMaterial
         ]
         Alamofire.request(.POST, "http://yuji.website:3001/api/work", parameters: parameters, encoding: .JSON).responseJSON{ request, response, JSON, error in
