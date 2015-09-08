@@ -12,6 +12,7 @@ import Himotoki
 import Alamofire
 
 class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    @IBOutlet weak var postingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var postingTableView: UITableView!
     var postingCollectionView: PostCollectionView!
     
@@ -119,13 +120,17 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionAnimation() {
         if !animat {
+            self.postingTableViewHeight.constant = 250
             UIView.animateWithDuration(1.0, animations: { () -> Void in
                 self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
+                self.postingTableView.layoutIfNeeded()
             })
             animat = true
         } else {
+            self.postingTableViewHeight.constant = 0
             UIView.animateWithDuration(1.0, animations: { () -> Void in
                 self.postingCollectionView.frame.origin.y += self.postingCollectionView.frame.height
+                self.postingTableView.layoutIfNeeded()
             })
             animat = false
         }

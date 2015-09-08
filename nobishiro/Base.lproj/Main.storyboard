@@ -81,6 +81,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="postingTableView" destination="rY7-aU-mtF" id="XeZ-ZJ-vaL"/>
+                        <outlet property="postingTableViewHeight" destination="7ZI-t6-aFD" id="LUf-4j-1Lv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBM-cN-5ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
