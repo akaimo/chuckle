@@ -12,6 +12,7 @@ import Himotoki
 struct Work: Decodable {
     let workId: Int
     let userId: Int
+    let favoriteCount: Int
     let title: String
     let materials: [Material]
 
@@ -21,6 +22,7 @@ struct Work: Decodable {
         return build(create)(
             e <| "work_id",
             e <| "user_id",
+            e <| "favorite_count",
             e <| "title",
             e <|| "materials"
         )
