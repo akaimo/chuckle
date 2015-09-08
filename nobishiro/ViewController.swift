@@ -237,81 +237,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
-    enum SNS {
-        case Twitter
-        case Facebook
-        case LINE
-    }
-    func postToSocial(forServiceType: String, image: UIImage) {
-        let composeView = SLComposeViewController(forServiceType: forServiceType)
-        composeView.setInitialText("何が好きでXcode開いてるのにvimでSwift書かないといけないんですかね(激怒)")
-        composeView.addImage(image)
-        self.presentViewController(composeView, animated: true, completion: nil)
-    }
-    func postToLINE(image: UIImage) {
-        let pasteBoard = UIPasteboard.pasteboardWithUniqueName()
-        pasteBoard.setData(UIImagePNGRepresentation(image), forPasteboardType: "chuckle.png")
-        let lineURLString = "line://msg/image/\(pasteBoard.name)"
-        UIApplication.sharedApplication().openURL(NSURL(string: lineURLString)!)
-    }
-    func shareWithSNS(sns: SNS, workID: Int) {
-        let cache = Cache<UIImage>(name: "shareImage")
-        Alamofire.request(.GET, "http://yuji.website:3001/api/share_image/\(workID)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
-            switch (JSON, error) {
-            case (.Some(let json), .None):
-                println(json)
-                if let shareImageData: ShareImageData = decode(json) {
-                    let URL = NSURL(string: shareImageData.data)!
-                    cache.fetch(URL: URL).onSuccess{ image in
-                        switch sns {
-                        case .Twitter:
-                            println("type: twitter")
-                            self.postToSocial(SLServiceTypeTwitter, image: image)
-                        case .Facebook:
-                            println("type: facebook")
-                            self.postToSocial(SLServiceTypeFacebook, image: image)
-                        case .LINE:
-                            println("type: line")
-                            self.postToLINE(image)
-                        }
-                    }.onFailure{ Failer in
-                            println(Failer)
-                    }
-                } else {
-                    println("cant decode")
-                }
-            default:
-                println(error)
-            }
-        }
-    }
-
     func shareWithTwitter(sender: UIButton) {
         println("shareWithTwitter")
-        shareWithSNS(.Twitter, workID: sender.tag)
+        SNS.shareWithSNS(self, sns: .Twitter, workID: sender.tag)
     }
 
     func shareWithFacebook(sender: UIButton) {
         println("shareWithFacebook")
-        shareWithSNS(.Facebook, workID: sender.tag)
+        SNS.shareWithSNS(self, sns: .Facebook, workID: sender.tag)
     }
 
     func shareWithLINE(sender: UIButton) {
         println("shareWithLINE")
-        shareWithSNS(.LINE, workID: sender.tag)
-    }
-}
-
-struct ShareImageData: Decodable  {
-    let data: String
-    let status: String
-
-    static func decode(e: Extractor) -> ShareImageData? {
-        let create = { ShareImageData($0) }
-
-        return build(create)(
-            e <| "data",
-            e <| "status"
-        )
+        SNS.shareWithSNS(self, sns: .LINE, workID: sender.tag)
     }
 }
