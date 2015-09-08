@@ -138,11 +138,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
             if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
-                println("yellow")
-                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+                cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
-                println("black")
-                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+                cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
             }
 
             if works[indexPath.row].favoriteCount > 1000 {
@@ -174,11 +172,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
             if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
-                println("yellow")
-                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+                cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
-                println("black")
-                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+                cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
             }
 
             if works[indexPath.row].favoriteCount > 1000 {
@@ -211,11 +207,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
             if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
-                println("yellow")
-                cell.postToFavorite.backgroundColor = UIColor.yellowColor()
+                cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
-                println("black")
-                cell.postToFavorite.backgroundColor = UIColor.grayColor()
+                cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
             }
 
             if works[indexPath.row].favoriteCount > 1000 {

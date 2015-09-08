@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="height" constant="112" id="kui-nk-zRW"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NumberOfStars" translatesAutoresizingMaskIntoConstraints="NO" id="Nab-mI-ubK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="numberOfStars" translatesAutoresizingMaskIntoConstraints="NO" id="Nab-mI-ubK">
                                 <rect key="frame" x="296" y="568" width="15" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="Mam-rA-Kb1"/>
@@ -93,7 +93,7 @@
                                     <constraint firstAttribute="height" constant="37" id="93s-CI-ZVV"/>
                                     <constraint firstAttribute="width" constant="35" id="Plu-9d-mNh"/>
                                 </constraints>
-                                <state key="normal" image="Twitter">
+                                <state key="normal" image="twitter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -103,7 +103,7 @@
                                     <constraint firstAttribute="width" constant="35" id="G2K-Tk-761"/>
                                     <constraint firstAttribute="height" constant="37" id="rvi-0P-HN6"/>
                                 </constraints>
-                                <state key="normal" image="Facebook">
+                                <state key="normal" image="facebook">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -113,7 +113,7 @@
                                     <constraint firstAttribute="height" constant="37" id="5DZ-Ik-DaQ"/>
                                     <constraint firstAttribute="width" constant="35" id="qrL-8D-OaG"/>
                                 </constraints>
-                                <state key="normal" image="Line">
+                                <state key="normal" image="line">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -123,7 +123,7 @@
                                     <constraint firstAttribute="width" constant="26" id="i1f-qM-b3k"/>
                                     <constraint firstAttribute="height" constant="24" id="mRm-5i-pyY"/>
                                 </constraints>
-                                <state key="normal" image="Star">
+                                <state key="normal" image="star">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -190,10 +190,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Facebook" width="70" height="74"/>
-        <image name="Line" width="70" height="74"/>
-        <image name="NumberOfStars" width="30" height="28"/>
-        <image name="Star" width="52" height="50"/>
-        <image name="Twitter" width="70" height="74"/>
+        <image name="facebook" width="70" height="74"/>
+        <image name="line" width="70" height="74"/>
+        <image name="numberOfStars" width="30" height="28"/>
+        <image name="star" width="52" height="50"/>
+        <image name="twitter" width="70" height="74"/>
     </resources>
 </document>
