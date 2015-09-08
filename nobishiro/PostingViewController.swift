@@ -11,16 +11,19 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PostingViewController: UIViewController {
+class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var postingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var postingTableView: UITableView!
-    @IBOutlet weak var postingCollectionView: UICollectionView!
+    var postingCollectionView: PostCollectionView!
     
     private var imgCount: Int = 0
     private var imgArray: [Int?] = [nil, nil, nil, nil]
+    private var focusNum: Int? = nil
     private var postTitle: String = ""
+    private var animat = false
     private var materials: [Material] = [] {
         didSet {
-            postingCollectionView.reloadData()
+            postingCollectionView.postCollectionView.reloadData()
         }
     }
     
@@ -31,7 +34,14 @@ class PostingViewController: UIViewController {
 
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
         postingTableView.registerNib(UINib(nibName: "PostingTitleCustomCell", bundle: nil), forCellReuseIdentifier: "Title")
-        postingTableView.allowsSelection = false
+        
+        postingCollectionView = PostCollectionView.instance()
+        postingCollectionView.postCollectionView.dataSource = self
+        postingCollectionView.postCollectionView.delegate = self
+        postingCollectionView.postCollectionView.registerNib(UINib(nibName: "PostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Stamp")
+        postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 230)
+        self.view.addSubview(postingCollectionView)
+        
         
         loadMaterials()
     }
@@ -60,6 +70,7 @@ class PostingViewController: UIViewController {
         switch indexPath.row {
         case 0:
             let cell = postingTableView.dequeueReusableCellWithIdentifier("Title") as! PostingTitleCustomCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             
             return cell
             
@@ -71,7 +82,16 @@ class PostingViewController: UIViewController {
             } else {
                 cell.postingImageView.image = UIImage(named: "Image")
             }
+            
+            if focusNum != nil && focusNum! == (indexPath.row - 1) {
+                cell.postingImageView.layer.borderColor = UIColor(red: 247/255, green: 152/255, blue: 0/255, alpha: 1).CGColor
+                cell.postingImageView.layer.borderWidth = 2
+            } else {
+                cell.postingImageView.layer.borderWidth = 0
+            }
+            
             cell.postingImageView.tag = indexPath.row - 1
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
             cell.postingImageView.addGestureRecognizer(gesture)
@@ -80,15 +100,31 @@ class PostingViewController: UIViewController {
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        closeCollection()
+        focusNum = nil
+        self.postingTableView.reloadData()
+    }
+    
+    
+    
     // MARK: -
+    // 画像がタップされたとき
     func didClickImageView(recognizer: UIGestureRecognizer) {
         if let imageView = recognizer.view as? UIImageView {
-            // TODO: キーボード的なのを表示
-            println(imageView.tag)
             imgCount = imageView.tag
+            
+            if !animat {
+                openCollection()
+            }
+            
+            focusNum = imgCount
+            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount + 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            self.postingTableView.reloadData()
         }
     }
     
+    // stampを読み込む
     func loadMaterials() {
         let cache = Cache<JSON>(name: "materials")
         let URL = NSURL(string: "http://yuji.website:3001/api/material")!
@@ -105,13 +141,33 @@ class PostingViewController: UIViewController {
             println(Failer)
         }
     }
+
+    // collectionViewを出す
+    func openCollection() {
+        self.postingTableViewHeight.constant = 230
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
+            self.postingTableView.layoutIfNeeded()
+        })
+        animat = true
+    }
+    
+    // collectionViewを隠す
+    func closeCollection() {
+        self.postingTableViewHeight.constant = 0
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.postingCollectionView.frame.origin.y += self.postingCollectionView.frame.height
+            self.postingTableView.layoutIfNeeded()
+        })
+        animat = false
+    }
     
     
     // MARK: - UICollectionViewDelegate Protocol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let material = materials[indexPath.row]
         
-        let cell:PostingCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! PostingCollectionViewCell
+        let cell:PostCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("Stamp", forIndexPath: indexPath) as! PostCollectionViewCell
         cell.stampImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
         cell.backgroundColor = UIColor.blackColor()
         return cell
@@ -130,9 +186,18 @@ class PostingViewController: UIViewController {
         self.postingTableView.reloadData()
         
         if imgCount == 3 {
+            // 4つ目を選択したとき
             imgCount = 0
+            focusNum = nil
+            self.postingTableView.reloadData()
+            closeCollection()
         } else {
+            // 1~3つ目を選択したとき
+            // TODO: 次の行にフォーカスを移す
             imgCount += 1
+            focusNum = imgCount
+            self.postingTableView.reloadData()
+            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         }
     }
     
@@ -156,7 +221,7 @@ class PostingViewController: UIViewController {
         postTitle = cell.titleTextField.text
         println("title:\(postTitle)")
         
-        // カラ、空白オンリーは弾く
+        // TODO: カラ、空白オンリーは弾く
         if postTitle == "" {
             // TODO: ポップアップ
             println("タイトルが入力されていない")
