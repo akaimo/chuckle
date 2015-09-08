@@ -11,7 +11,8 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+    @IBOutlet weak var postBtn: UIBarButtonItem!
     @IBOutlet weak var postingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var postingTableView: UITableView!
     var postingCollectionView: PostCollectionView!
@@ -42,6 +43,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 230)
         self.view.addSubview(postingCollectionView)
         
+        postBtn.enabled = false
         
         loadMaterials()
     }
@@ -71,6 +73,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         case 0:
             let cell = postingTableView.dequeueReusableCellWithIdentifier("Title") as! PostingTitleCustomCell
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.titleTextField.delegate = self
             
             return cell
             
@@ -162,6 +165,42 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         animat = false
     }
     
+    // 実機チェック
+    func platformName() -> String {
+        var size: size_t = 0;
+        sysctlbyname("hw.machine", nil, &size, nil, 0)
+        var machine = UnsafeMutablePointer<CChar>(malloc(size))
+        sysctlbyname("hw.machine", machine, &size, nil, 0)
+        var platformName = NSString(CString: machine, encoding: NSUTF8StringEncoding)
+        free(machine)
+        
+        return platformName! as String
+    }
+    
+    func postCheck() {
+        if imgArray[0] != nil && imgArray[1] != nil && titleCheck() {
+           postBtn.enabled = true
+        } else {
+            postBtn.enabled = false
+        }
+    }
+    
+    func titleCheck() -> Bool {
+        var cell: PostingTitleCustomCell? = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PostingTitleCustomCell
+        if cell == nil {
+            return false
+        }
+        
+        postTitle = cell!.titleTextField.text
+        if postTitle == "" {
+            return false
+        }
+        
+        return true
+    }
+    
+    
+    
     
     // MARK: - UICollectionViewDelegate Protocol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -189,22 +228,31 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             // 4つ目を選択したとき
             imgCount = 0
             focusNum = nil
-            self.postingTableView.reloadData()
             closeCollection()
+            self.postingTableView.reloadData()
         } else {
             // 1~3つ目を選択したとき
-            // TODO: 次の行にフォーカスを移す
             imgCount += 1
             focusNum = imgCount
             self.postingTableView.reloadData()
             self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         }
+        
+        postCheck()
+    }
+    
+    
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        println("hoge")
+        postCheck()
+        textField.resignFirstResponder()
+        return true
     }
     
     
     @IBAction func tapPostingBtn(sender: AnyObject) {
         if imgArray[0] == nil || imgArray[1] == nil {
-            // TODO: ポップアップ
             println("画像が選択されていない")
             return
         }
@@ -217,19 +265,39 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         println(postMaterial)
         
-        var cell: PostingTitleCustomCell = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! PostingTitleCustomCell
-        postTitle = cell.titleTextField.text
-        println("title:\(postTitle)")
+        // タイトルが入力されていないとcellがnilになってしまう
+        // 現時点では原因が不明なのでnilチェックで回避している
+        var cell: PostingTitleCustomCell? = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PostingTitleCustomCell
+        if let titleCell = cell {
+            postTitle = titleCell.titleTextField.text
+        } else {
+            println("タイトルがカラ")
+            return
+        }
         
         // TODO: カラ、空白オンリーは弾く
         if postTitle == "" {
-            // TODO: ポップアップ
             println("タイトルが入力されていない")
             return
         }
         
+        var userID: AnyObject!
+        var platform = platformName()
+        if platform == "x86_64" {
+            // simulator
+            userID = 1
+        } else {
+            // 実機処理
+            let ud = NSUserDefaults.standardUserDefaults()
+            userID = ud.objectForKey("userID")
+        }
+        
+        println("userID:\(userID)")
+        println("title:\(postTitle)")
+        
         let parameters: [String: AnyObject] = [
             "title": postTitle,
+            "user_id": userID,
             "materials": postMaterial
         ]
         Alamofire.request(.POST, "http://yuji.website:3001/api/work", parameters: parameters, encoding: .JSON).responseJSON{ request, response, JSON, error in
