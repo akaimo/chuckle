@@ -29,7 +29,8 @@ class ThreePanelMangaTableViewCell: UITableViewCell {
     }
 
     class func height() -> CGFloat {
-        return 512
+        // TODO:
+        return 660
     }
 
     override func prepareForReuse() {
