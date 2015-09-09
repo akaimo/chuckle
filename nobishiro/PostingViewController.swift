@@ -46,7 +46,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         
         postBtn.enabled = false
         
-        collectionOriginY = self.postingCollectionView.frame.origin.y - self.postingCollectionView.frame.height
+        collectionOriginY = self.postingCollectionView.frame.origin.y
         
         loadMaterials()
     }
@@ -156,8 +156,9 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     // collectionViewを出す
     func openCollection() {
         self.postingTableViewHeight.constant = 230
+        self.postingCollectionView.frame.origin.y = self.collectionOriginY
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.postingCollectionView.frame.origin.y = self.collectionOriginY
+            self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
             self.postingTableView.layoutIfNeeded()
         })
         animat = true
