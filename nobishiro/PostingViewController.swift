@@ -89,7 +89,14 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
                 cell.deleteBtn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
                 cell.deleteBtn.hidden = false
             } else {
-                cell.postingImageView.image = UIImage(named: "Image")
+                switch indexPath.row - 1 {
+                case 0, 1:
+                    cell.postingImageView.image = UIImage(named: "Image")
+                case 2, 3:
+                    cell.postingImageView.image = UIImage(named: "Image2")
+                default:
+                    cell.postingImageView.image = UIImage(named: "Image2")
+                }
                 cell.deleteBtn.hidden = true
             }
             
@@ -143,7 +150,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         cache.fetch(URL: URL).onSuccess{ JSON in
             if let json = JSON.dictionary, materialData: MaterialsData = decode(json) {
                 self.materials = materialData.data
-                println("data:\(materialData.data)")
+//                println("data:\(materialData.data)")
                 println("error:\(materialData.error)")
             } else {
                 println("can't decode")

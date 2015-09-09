@@ -68,7 +68,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y9H-TS-UZU">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="GGh-98-JJ0">
+                        <barButtonItem key="leftBarButtonItem" image="PostCancel" id="GGh-98-JJ0">
                             <connections>
                                 <action selector="backBtnTap:" destination="oMM-xB-o2j" id="gCA-UN-Nkf"/>
                             </connections>
@@ -294,4 +294,7 @@
             <point key="canvasLocation" x="-802" y="2248"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="PostCancel" width="17" height="16"/>
+    </resources>
 </document>
