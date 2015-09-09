@@ -35,7 +35,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         self.navigationController?.navigationBarHidden = false
 
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
-        postingTableView.registerNib(UINib(nibName: "PostingTitleCustomCell", bundle: nil), forCellReuseIdentifier: "Title")
         
         postingCollectionView = PostCollectionView.instance()
         postingCollectionView.postCollectionView.dataSource = self
@@ -59,62 +58,47 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: - UITableViewDelegate Protocol
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            return 70
-        default:
-            return 160
-        }
+        return 160
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = postingTableView.dequeueReusableCellWithIdentifier("Title") as! PostingTitleCustomCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.titleTextField.delegate = self
-            
-            return cell
-            
-        default:
-            let cell = postingTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
-            if let count = imgArray[indexPath.row - 1] {
-                let material = materials[imgArray[indexPath.row - 1]!]
-                cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
-                cell.deleteBtn.tag = indexPath.row - 1
-                cell.deleteBtn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
-                cell.deleteBtn.hidden = false
-            } else {
-                switch indexPath.row - 1 {
-                case 0, 1:
-                    cell.postingImageView.image = UIImage(named: "Image")
-                case 2, 3:
-                    cell.postingImageView.image = UIImage(named: "Image2")
-                default:
-                    cell.postingImageView.image = UIImage(named: "Image2")
-                }
-                cell.deleteBtn.hidden = true
+        let cell = postingTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
+        if let count = imgArray[indexPath.row] {
+            let material = materials[imgArray[indexPath.row]!]
+            cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+            cell.deleteBtn.tag = indexPath.row
+            cell.deleteBtn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
+            cell.deleteBtn.hidden = false
+        } else {
+            switch indexPath.row {
+            case 0, 1:
+                cell.postingImageView.image = UIImage(named: "Image")
+            case 2, 3:
+                cell.postingImageView.image = UIImage(named: "Image2")
+            default:
+                cell.postingImageView.image = UIImage(named: "Image2")
             }
-            
-            if focusNum != nil && focusNum! == (indexPath.row - 1) {
-                cell.postingImageView.layer.borderColor = UIColor(red: 247/255, green: 152/255, blue: 0/255, alpha: 1).CGColor
-                cell.postingImageView.layer.borderWidth = 2
-            } else {
-                cell.postingImageView.layer.borderWidth = 0
-            }
-            
-            cell.postingImageView.tag = indexPath.row - 1
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            
-            let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
-            cell.postingImageView.addGestureRecognizer(gesture)
-            
-            return cell
+            cell.deleteBtn.hidden = true
         }
+        
+        if focusNum != nil && focusNum! == indexPath.row {
+            cell.postingImageView.layer.borderColor = UIColor(red: 247/255, green: 152/255, blue: 0/255, alpha: 1).CGColor
+            cell.postingImageView.layer.borderWidth = 2
+        } else {
+            cell.postingImageView.layer.borderWidth = 0
+        }
+        
+        cell.postingImageView.tag = indexPath.row
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
+        cell.postingImageView.addGestureRecognizer(gesture)
+        
+        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -137,7 +121,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             
             focusNum = imgCount
-            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount + 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
             self.postingTableView.reloadData()
         }
     }
@@ -181,32 +165,12 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         animat = false
     }
     
-    // 実機チェック
-    func platformName() -> String {
-        var size: size_t = 0;
-        sysctlbyname("hw.machine", nil, &size, nil, 0)
-        var machine = UnsafeMutablePointer<CChar>(malloc(size))
-        sysctlbyname("hw.machine", machine, &size, nil, 0)
-        var platformName = NSString(CString: machine, encoding: NSUTF8StringEncoding)
-        free(machine)
-        
-        return platformName! as String
-    }
-    
     func postCheck() {
-        if imgArray[0] != nil && imgArray[1] != nil && titleCheck() {
+        if imgArray[0] != nil && imgArray[1] != nil {
            postBtn.enabled = true
         } else {
             postBtn.enabled = false
         }
-    }
-    
-    func titleCheck() -> Bool {
-        if postTitle == "" {
-            return false
-        }
-        
-        return true
     }
     
     // 画像の削除ボタンをタップ
@@ -259,21 +223,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     
-    // MARK: - UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.postTitle = textField.text
-        postCheck()
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        self.postTitle = textField.text
-        postCheck()
-        return true
-    }
-    
-    
     // MARK: -
     @IBAction func tapPostingBtn(sender: AnyObject) {
         if imgArray[0] == nil || imgArray[1] == nil {
@@ -289,39 +238,10 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         println(postMaterial)
         
-        // TODO: カラ、空白オンリーは弾く
-        if postTitle == "" {
-            println("タイトルが入力されていない")
-            return
-        }
-        
-        var userID: AnyObject!
-        var platform = platformName()
-        if platform == "x86_64" {
-            // simulator
-            userID = 1
-        } else {
-            // 実機処理
-            let ud = NSUserDefaults.standardUserDefaults()
-            userID = ud.objectForKey("userID")
-        }
-        
-        println("userID:\(userID)")
-        println("title:\(postTitle)")
-        
-        let parameters: [String: AnyObject] = [
-            "title": postTitle,
-            "user_id": userID,
-            "materials": postMaterial
-        ]
-        Alamofire.request(.POST, "http://yuji.website:3001/api/work", parameters: parameters, encoding: .JSON).responseJSON{ request, response, JSON, error in
-            println(request)
-            println(response)
-            println(JSON)
-            println(error)
-        }
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let previewVC: PreviewViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PreviewVC") as! PreviewViewController
+        previewVC.imgArray = postMaterial
+        previewVC.materials = self.materials
+        self.navigationController?.pushViewController(previewVC, animated: true)
     }
 
     @IBAction func backBtnTap(sender: AnyObject) {
