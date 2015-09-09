@@ -57,6 +57,7 @@
 		BA428AFF1B9F332A00CE73F0 /* NotificationsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428AFE1B9F332A00CE73F0 /* NotificationsData.swift */; };
 		BA428B021B9F3B1F00CE73F0 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428B001B9F3B1F00CE73F0 /* NotificationTableViewCell.swift */; };
 		BA428B031B9F3B1F00CE73F0 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA428B011B9F3B1F00CE73F0 /* NotificationTableViewCell.xib */; };
+		BAFF71DB1BA0925100D8D9E5 /* RAMAnimatedTabBarController in Resources */ = {isa = PBXBuildFile; fileRef = BAFF71DA1BA0925100D8D9E5 /* RAMAnimatedTabBarController */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		BA428AFE1B9F332A00CE73F0 /* NotificationsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsData.swift; sourceTree = "<group>"; };
 		BA428B001B9F3B1F00CE73F0 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		BA428B011B9F3B1F00CE73F0 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		BAFF71DA1BA0925100D8D9E5 /* RAMAnimatedTabBarController */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RAMAnimatedTabBarController; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 				B566B1CD1B9FBC3E002612A6 /* RankingViewController.swift */,
 				B56E16A61B9FC40C00B18DCB /* MyPageViewController.swift */,
 				B5D314E31BA06D9900108C89 /* UserDefaults.swift */,
+				BAFF71DA1BA0925100D8D9E5 /* RAMAnimatedTabBarController */,
 			);
 			path = nobishiro;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				99593C1C1B9DCCE3000C51C1 /* PostCollectionView.xib in Resources */,
 				BA428B031B9F3B1F00CE73F0 /* NotificationTableViewCell.xib in Resources */,
 				B57B35021B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib in Resources */,
+				BAFF71DB1BA0925100D8D9E5 /* RAMAnimatedTabBarController in Resources */,
 				99593B501B983C82000C51C1 /* Images.xcassets in Resources */,
 				99593B9D1B99474A000C51C1 /* PostingTableViewCell.xib in Resources */,
 			);
