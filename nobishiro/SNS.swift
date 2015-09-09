@@ -15,7 +15,7 @@ import Alamofire
 struct SNS {
     static func postToSocial(viewController: UIViewController, forServiceType: String, image: UIImage) {
         let composeView = SLComposeViewController(forServiceType: forServiceType)
-        composeView.setInitialText("何が好きでXcode開いてるのにvimでSwift書かないといけないんですかね(激怒)")
+        composeView.setInitialText("chuckleで作品を作ったよ! #chuckle")
         composeView.addImage(image)
         viewController.presentViewController(composeView, animated: true, completion: nil)
     }

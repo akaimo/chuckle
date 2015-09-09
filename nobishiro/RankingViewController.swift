@@ -36,6 +36,9 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
             rankingTableView.delegate = self
             rankingTableView.allowsSelection = false
 
+            let titleImageView = UIImageView(image: UIImage(named: "rankingNav"))
+            self.navigationItem.titleView = titleImageView
+        
             for identifier in identifiers {
                 rankingTableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
             }
@@ -90,11 +93,11 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
             switch works[indexPath.row].materials.count {
             case 2:
-                return TwoPanelMangaTableViewCell.height()
+                return WorkCell.calculateCellHeight(2, title: works[indexPath.row].title)
             case 3:
-                return ThreePanelMangaTableViewCell.height()
+                return WorkCell.calculateCellHeight(3, title: works[indexPath.row].title)
             case 4:
-                return FourPanelMangaTableViewCell.height()
+                return WorkCell.calculateCellHeight(4, title: works[indexPath.row].title)
             default:
                 return 0
             }

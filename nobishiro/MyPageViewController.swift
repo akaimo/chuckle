@@ -35,6 +35,9 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
         myWorksTableView.dataSource = self
         myWorksTableView.delegate = self
         myWorksTableView.allowsSelection = false
+        
+        let titleImageView = UIImageView(image: UIImage(named: "myPageNav"))
+        self.navigationItem.titleView = titleImageView
 
         for identifier in identifiers {
             myWorksTableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
@@ -97,11 +100,11 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch works[indexPath.row].materials.count {
         case 2:
-            return TwoPanelMangaTableViewCell.height()
+            return WorkCell.calculateCellHeight(2, title: works[indexPath.row].title)
         case 3:
-            return ThreePanelMangaTableViewCell.height()
+            return WorkCell.calculateCellHeight(3, title: works[indexPath.row].title)
         case 4:
-            return FourPanelMangaTableViewCell.height()
+            return WorkCell.calculateCellHeight(4, title: works[indexPath.row].title)
         default:
             return 0
         }

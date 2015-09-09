@@ -20,8 +20,13 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CiA-MD-9Yu">
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="84"/>
                                 <subviews>
+<<<<<<< HEAD
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90G-P4-wDv" userLabel="title">
                                         <rect key="frame" x="10" y="10" width="284" height="64"/>
+=======
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほ" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90G-P4-wDv" userLabel="title">
+                                        <rect key="frame" x="10" y="10" width="284" height="63.5"/>
+>>>>>>> fab9844951c296c6d1340efff74b2bbcfe433728
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -41,31 +46,51 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+<<<<<<< HEAD
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQL-eq-iwB" userLabel="firstPanel">
                                 <rect key="frame" x="77" y="94" width="150" height="150"/>
+=======
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XQL-eq-iwB" userLabel="firstPanel">
+                                <rect key="frame" x="77" y="93" width="150" height="150"/>
+>>>>>>> fab9844951c296c6d1340efff74b2bbcfe433728
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="sWj-gW-jDH"/>
                                     <constraint firstAttribute="height" constant="150" id="z4L-ON-zrR"/>
                                 </constraints>
                             </imageView>
+<<<<<<< HEAD
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17d-1y-XDn" userLabel="secondPanel">
                                 <rect key="frame" x="77" y="247" width="150" height="150"/>
+=======
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="17d-1y-XDn" userLabel="secondPanel">
+                                <rect key="frame" x="77" y="246" width="150" height="150"/>
+>>>>>>> fab9844951c296c6d1340efff74b2bbcfe433728
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Cbn-IG-hzP"/>
                                     <constraint firstAttribute="height" constant="150" id="uIQ-Wo-EwY"/>
                                 </constraints>
                             </imageView>
+<<<<<<< HEAD
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="numberOfStars" translatesAutoresizingMaskIntoConstraints="NO" id="CkW-ir-Ape">
                                 <rect key="frame" x="245" y="381" width="15" height="14"/>
+=======
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="numberOfStars" translatesAutoresizingMaskIntoConstraints="NO" id="CkW-ir-Ape">
+                                <rect key="frame" x="245" y="380" width="15" height="14"/>
+>>>>>>> fab9844951c296c6d1340efff74b2bbcfe433728
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="5ut-OC-rk7"/>
                                     <constraint firstAttribute="height" constant="14" id="9ld-rL-7lP"/>
                                 </constraints>
                             </imageView>
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="9999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxv-wF-Sby" userLabel="favoriteCount">
                                 <rect key="frame" x="263" y="380" width="32" height="17"/>
+=======
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxv-wF-Sby" userLabel="favoriteCount">
+                                <rect key="frame" x="263" y="379" width="32" height="17"/>
+>>>>>>> fab9844951c296c6d1340efff74b2bbcfe433728
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="5YH-Mx-irA"/>
                                 </constraints>
@@ -73,15 +98,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+<<<<<<< HEAD
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5EV-aF-E67">
                                 <rect key="frame" x="10" y="406" width="284" height="1"/>
+=======
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5EV-aF-E67">
+                                <rect key="frame" x="10" y="405" width="284" height="1"/>
+>>>>>>> fab9844951c296c6d1340efff74b2bbcfe433728
                                 <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Rwe-XI-MM9"/>
                                 </constraints>
                             </view>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F5-GY-BeO" userLabel="postToTwitter">
                                 <rect key="frame" x="10" y="417" width="35" height="37"/>
+=======
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F5-GY-BeO" userLabel="postToTwitter">
+                                <rect key="frame" x="10" y="416" width="35" height="37"/>
+>>>>>>> fab9844951c296c6d1340efff74b2bbcfe433728
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="HDP-zW-grt"/>
                                     <constraint firstAttribute="height" constant="37" id="eF6-yq-wV3"/>
