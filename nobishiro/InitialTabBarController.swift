@@ -19,6 +19,7 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
         UITabBarItem.appearance().setTitleTextAttributes(normalAttributes, forState: .Normal)
         let selectedAttributes: [NSObject: AnyObject] = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UITabBarItem.appearance().setTitleTextAttributes(selectedAttributes, forState: .Selected)
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -35,6 +35,9 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
         myWorksTableView.dataSource = self
         myWorksTableView.delegate = self
         myWorksTableView.allowsSelection = false
+        
+        let titleImageView = UIImageView(image: UIImage(named: "myPageNav"))
+        self.navigationItem.titleView = titleImageView
 
         for identifier in identifiers {
             myWorksTableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
