@@ -52,14 +52,8 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
 
     func loadWorks() {
         let userID: Int!
-        var platform = platformName()
-        if platform == "x86_64" {
-            userID = 1
-        } else {
-            let ud = NSUserDefaults.standardUserDefaults()
-            userID = ud.objectForKey("userID") as! Int
-        }
-        Alamofire.request(.GET, "http://yuji.website:3001/api/work?user_id=\(userID)")
+
+        Alamofire.request(.GET, "http://yuji.website:3001/api/work?user_id=\(UserDefaults.getUserID())")
             .responseJSON { request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some(let json), .None):
@@ -77,7 +71,7 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     func loadFavorites() {
-        Alamofire.request(.GET, "http://yuji.website:3001/api/favorite")
+        Alamofire.request(.GET, "http://yuji.website:3001/api/favorite?user_id=\(UserDefaults.getUserID())")
             .responseJSON { request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some(let json), .None):
@@ -248,17 +242,5 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
     func shareWithLINE(sender: UIButton) {
         println("shareWithLINE")
         SNS.shareWithSNS(self, sns: .LINE, workID: sender.tag)
-    }
-
-    // 実機チェック
-    func platformName() -> String {
-        var size: size_t = 0;
-        sysctlbyname("hw.machine", nil, &size, nil, 0)
-        var machine = UnsafeMutablePointer<CChar>(malloc(size))
-        sysctlbyname("hw.machine", machine, &size, nil, 0)
-        var platformName = NSString(CString: machine, encoding: NSUTF8StringEncoding)
-        free(machine)
-
-        return platformName! as String
     }
 }
