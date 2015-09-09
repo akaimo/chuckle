@@ -68,7 +68,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y9H-TS-UZU">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="GGh-98-JJ0">
+                        <barButtonItem key="leftBarButtonItem" image="PostCancel" id="GGh-98-JJ0">
                             <connections>
                                 <action selector="backBtnTap:" destination="oMM-xB-o2j" id="gCA-UN-Nkf"/>
                             </connections>
@@ -299,6 +299,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="PostCancel" width="17" height="16"/>
         <image name="alermTab" width="54" height="96"/>
         <image name="chuckle" width="145" height="117"/>
         <image name="myPageTab" width="54" height="96"/>
