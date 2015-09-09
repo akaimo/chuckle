@@ -153,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="634" y="1411"/>
         </scene>
-        <!--View Controller-->
+        <!--Ranking View Controller-->
         <scene sceneID="PrE-Mf-01O">
             <objects>
-                <viewController id="2Z8-Dh-XS6" sceneMemberID="viewController">
+                <viewController id="2Z8-Dh-XS6" customClass="RankingViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KbR-yo-HFW"/>
                         <viewControllerLayoutGuide type="bottom" id="YkI-ip-lQf"/>
@@ -164,9 +164,24 @@
                     <view key="view" contentMode="scaleToFill" id="nO5-UI-O7E">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Tfg-y7-4gl" userLabel="rankingTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Tfg-y7-4gl" secondAttribute="centerX" id="L2u-g1-3L1"/>
+                            <constraint firstItem="Tfg-y7-4gl" firstAttribute="width" secondItem="nO5-UI-O7E" secondAttribute="width" id="XbP-U2-zX2"/>
+                            <constraint firstItem="Tfg-y7-4gl" firstAttribute="height" secondItem="nO5-UI-O7E" secondAttribute="height" id="sH0-sm-lVL"/>
+                            <constraint firstAttribute="centerY" secondItem="Tfg-y7-4gl" secondAttribute="centerY" id="xff-8D-dLR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mTW-aR-59E"/>
+                    <connections>
+                        <outlet property="rankingTableView" destination="Tfg-y7-4gl" id="cSx-pX-4bN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBy-A6-weL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

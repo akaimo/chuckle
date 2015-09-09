@@ -61,21 +61,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
                 self.refreshControl.endRefreshing()
         }
-/*
-
-        let cacheRank = Cache<JSON>(name: "ranking")
-        let URLRank = NSURL(string: "http://yuji.website:3001/api/ranking")!
-        cacheRank.fetch(URL: URLRank).onSuccess{ JSON in
-            if let json = JSON.dictionary,
-                rankingData: RankingData = decode(json) {
-                    println(rankingData.data)
-                    println(rankingData.status)
-            } else {
-                println("cant")
-            }
-            }.onFailure{Failer in
-                println(Failer)
-        }*/
     }
 
     func loadFavorites() {
