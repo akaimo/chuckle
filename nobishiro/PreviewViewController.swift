@@ -72,7 +72,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
             
         } else if indexPath.section == 1 {
             let cell = postTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
-            let material = materials[imgArray[indexPath.row]]
+            let material = materials[imgArray[indexPath.row] - 1]
             cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
             
             cell.deleteBtn.hidden = true

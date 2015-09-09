@@ -35,7 +35,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         self.navigationController?.navigationBarHidden = false
 
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
-//        postingTableView.registerNib(UINib(nibName: "PostingTitleCustomCell", bundle: nil), forCellReuseIdentifier: "Title")
         
         postingCollectionView = PostCollectionView.instance()
         postingCollectionView.postCollectionView.dataSource = self
@@ -166,18 +165,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         animat = false
     }
     
-//    // 実機チェック
-//    func platformName() -> String {
-//        var size: size_t = 0;
-//        sysctlbyname("hw.machine", nil, &size, nil, 0)
-//        var machine = UnsafeMutablePointer<CChar>(malloc(size))
-//        sysctlbyname("hw.machine", machine, &size, nil, 0)
-//        var platformName = NSString(CString: machine, encoding: NSUTF8StringEncoding)
-//        free(machine)
-//        
-//        return platformName! as String
-//    }
-    
     func postCheck() {
         if imgArray[0] != nil && imgArray[1] != nil {
            postBtn.enabled = true
@@ -185,14 +172,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             postBtn.enabled = false
         }
     }
-    
-//    func titleCheck() -> Bool {
-//        if postTitle == "" {
-//            return false
-//        }
-//        
-//        return true
-//    }
     
     // 画像の削除ボタンをタップ
     func tapDelete(sender: AnyObject) {
@@ -244,21 +223,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     
-//    // MARK: - UITextFieldDelegate
-//    func textFieldShouldReturn(textField: UITextField) -> Bool {
-//        self.postTitle = textField.text
-//        postCheck()
-//        textField.resignFirstResponder()
-//        return true
-//    }
-//    
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        self.postTitle = textField.text
-//        postCheck()
-//        return true
-//    }
-    
-    
     // MARK: -
     @IBAction func tapPostingBtn(sender: AnyObject) {
         if imgArray[0] == nil || imgArray[1] == nil {
@@ -273,40 +237,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             }
         }
         println(postMaterial)
-        
-        // TODO: カラ、空白オンリーは弾く
-//        if postTitle == "" {
-//            println("タイトルが入力されていない")
-//            return
-//        }
-//        
-//        var userID: AnyObject!
-//        var platform = platformName()
-//        if platform == "x86_64" {
-//            // simulator
-//            userID = 1
-//        } else {
-//            // 実機処理
-//            let ud = NSUserDefaults.standardUserDefaults()
-//            userID = ud.objectForKey("userID")
-//        }
-//        
-//        println("userID:\(userID)")
-//        println("title:\(postTitle)")
-//        
-//        let parameters: [String: AnyObject] = [
-//            "title": postTitle,
-//            "user_id": userID,
-//            "materials": postMaterial
-//        ]
-//        Alamofire.request(.POST, "http://yuji.website:3001/api/work", parameters: parameters, encoding: .JSON).responseJSON{ request, response, JSON, error in
-//            println(request)
-//            println(response)
-//            println(JSON)
-//            println(error)
-//        }
-//
-//        self.dismissViewControllerAnimated(true, completion: nil)
         
         let previewVC: PreviewViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PreviewVC") as! PreviewViewController
         previewVC.imgArray = postMaterial
