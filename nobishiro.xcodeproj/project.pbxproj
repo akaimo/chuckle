@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		992888331BA0377700D5DC09 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992888321BA0377700D5DC09 /* PreviewViewController.swift */; };
 		99593B491B983C82000C51C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B481B983C82000C51C1 /* AppDelegate.swift */; };
 		99593B4B1B983C82000C51C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593B4A1B983C82000C51C1 /* ViewController.swift */; };
 		99593B4E1B983C82000C51C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99593B4C1B983C82000C51C1 /* Main.storyboard */; };
@@ -85,6 +86,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		992888321BA0377700D5DC09 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		99593B431B983C82000C51C1 /* nobishiro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nobishiro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99593B471B983C82000C51C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99593B481B983C82000C51C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				99593B681B983D48000C51C1 /* PostingViewController.swift */,
 				99593C131B9DC91D000C51C1 /* PostCollectionView.swift */,
 				99593C1B1B9DCCE3000C51C1 /* PostCollectionView.xib */,
+				992888321BA0377700D5DC09 /* PreviewViewController.swift */,
 				99593BA41B997B76000C51C1 /* PostingCells */,
 				99593B4C1B983C82000C51C1 /* Main.storyboard */,
 				99593B4F1B983C82000C51C1 /* Images.xcassets */,
@@ -397,6 +400,7 @@
 				B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */,
 				BA428AFD1B9F31C300CE73F0 /* Notification.swift in Sources */,
 				B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */,
+				992888331BA0377700D5DC09 /* PreviewViewController.swift in Sources */,
 				B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */,
 				B503C7501B9D8E7C008C139A /* NavigationToPostingViewController.swift in Sources */,
 				B5BB5E521B9FFC6500EB2680 /* WorkCell.swift in Sources */,
