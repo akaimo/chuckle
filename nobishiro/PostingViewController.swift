@@ -11,7 +11,7 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIApplicationDelegate {
     @IBOutlet weak var postBtn: UIBarButtonItem!
     @IBOutlet weak var postingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var postingTableView: UITableView!
@@ -82,8 +82,12 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             if let count = imgArray[indexPath.row - 1] {
                 let material = materials[imgArray[indexPath.row - 1]!]
                 cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+                cell.deleteBtn.tag = indexPath.row - 1
+                cell.deleteBtn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
+                cell.deleteBtn.hidden = false
             } else {
                 cell.postingImageView.image = UIImage(named: "Image")
+                cell.deleteBtn.hidden = true
             }
             
             if focusNum != nil && focusNum! == (indexPath.row - 1) {
@@ -92,6 +96,21 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             } else {
                 cell.postingImageView.layer.borderWidth = 0
             }
+            
+            // TODO: 削除ボタンを追加
+//            let btn = UIButton()
+//            let img = UIImage(named: "DeleteImage")
+//            btn.setImage(img, forState: .Normal)
+//            btn.frame = CGRectMake(120, 5, 25, 25)
+//            btn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
+//            btn.tag = indexPath.row - 1
+//            cell.postingImageView.addSubview(btn)
+//            
+//            if imgArray[indexPath.row - 1] == nil {
+//                btn.hidden = true
+//            } else {
+//                btn.hidden = false
+//            }
             
             cell.postingImageView.tag = indexPath.row - 1
             cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -199,6 +218,12 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         return true
     }
     
+    // 画像の削除ボタンをタップ
+    func tapDelete(sender: AnyObject) {
+        imgArray[sender.tag] = nil
+        self.postingTableView.reloadData()
+    }
+
     
     
     
@@ -244,7 +269,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: - UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        println("hoge")
         postCheck()
         textField.resignFirstResponder()
         return true
