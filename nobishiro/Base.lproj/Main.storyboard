@@ -256,11 +256,11 @@
             </objects>
             <point key="canvasLocation" x="-180" y="2248"/>
         </scene>
-        <!--アカウント-->
+        <!--マイページ-->
         <scene sceneID="yYZ-aa-r3r">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="st0-fK-hbJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="アカウント" id="UYc-5H-HdD"/>
+                    <tabBarItem key="tabBarItem" title="マイページ" id="UYc-5H-HdD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y5i-6D-xsh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
