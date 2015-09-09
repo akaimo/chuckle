@@ -22,6 +22,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     private var focusNum: Int? = nil
     private var postTitle: String = ""
     private var animat = false
+    private var collectionOriginY: CGFloat = 0.0
     private var materials: [Material] = [] {
         didSet {
             postingCollectionView.postCollectionView.reloadData()
@@ -44,6 +45,8 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         self.view.addSubview(postingCollectionView)
         
         postBtn.enabled = false
+        
+        collectionOriginY = self.postingCollectionView.frame.origin.y - self.postingCollectionView.frame.height
         
         loadMaterials()
     }
@@ -97,21 +100,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
                 cell.postingImageView.layer.borderWidth = 0
             }
             
-            // TODO: 削除ボタンを追加
-//            let btn = UIButton()
-//            let img = UIImage(named: "DeleteImage")
-//            btn.setImage(img, forState: .Normal)
-//            btn.frame = CGRectMake(120, 5, 25, 25)
-//            btn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
-//            btn.tag = indexPath.row - 1
-//            cell.postingImageView.addSubview(btn)
-//            
-//            if imgArray[indexPath.row - 1] == nil {
-//                btn.hidden = true
-//            } else {
-//                btn.hidden = false
-//            }
-            
             cell.postingImageView.tag = indexPath.row - 1
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             
@@ -124,6 +112,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         closeCollection()
+        postCheck()
         focusNum = nil
         self.postingTableView.reloadData()
     }
@@ -168,7 +157,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     func openCollection() {
         self.postingTableViewHeight.constant = 230
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
+            self.postingCollectionView.frame.origin.y = self.collectionOriginY
             self.postingTableView.layoutIfNeeded()
         })
         animat = true
