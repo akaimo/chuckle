@@ -27,11 +27,6 @@ class TwoPanelMangaTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    class func height() -> CGFloat {
-        // TODO:
-        return 480
-    }
-
     override func prepareForReuse() {
         title.text = nil
         firstPanel.image = nil
