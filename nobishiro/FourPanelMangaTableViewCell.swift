@@ -29,9 +29,11 @@ class FourPanelMangaTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    class func height() -> CGFloat {
-        // TODO:
-        return 783
+    class func height(title: String) -> CGFloat {
+        let calculationLabel = UILabel()
+        calculationLabel.text = title
+        let size = calculationLabel.sizeThatFits(CGSizeMake(284, CGFloat.max))
+        return size.height
     }
 
     override func prepareForReuse() {
