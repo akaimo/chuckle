@@ -166,17 +166,17 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         animat = false
     }
     
-    // 実機チェック
-    func platformName() -> String {
-        var size: size_t = 0;
-        sysctlbyname("hw.machine", nil, &size, nil, 0)
-        var machine = UnsafeMutablePointer<CChar>(malloc(size))
-        sysctlbyname("hw.machine", machine, &size, nil, 0)
-        var platformName = NSString(CString: machine, encoding: NSUTF8StringEncoding)
-        free(machine)
-        
-        return platformName! as String
-    }
+//    // 実機チェック
+//    func platformName() -> String {
+//        var size: size_t = 0;
+//        sysctlbyname("hw.machine", nil, &size, nil, 0)
+//        var machine = UnsafeMutablePointer<CChar>(malloc(size))
+//        sysctlbyname("hw.machine", machine, &size, nil, 0)
+//        var platformName = NSString(CString: machine, encoding: NSUTF8StringEncoding)
+//        free(machine)
+//        
+//        return platformName! as String
+//    }
     
     func postCheck() {
         if imgArray[0] != nil && imgArray[1] != nil {
@@ -305,7 +305,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 //            println(JSON)
 //            println(error)
 //        }
-//        
+//
 //        self.dismissViewControllerAnimated(true, completion: nil)
         
         let previewVC: PreviewViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PreviewVC") as! PreviewViewController

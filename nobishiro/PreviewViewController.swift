@@ -116,8 +116,56 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
             postBtn.enabled = true
         }
     }
+    
+    // 実機チェック
+    func platformName() -> String {
+        var size: size_t = 0;
+        sysctlbyname("hw.machine", nil, &size, nil, 0)
+        var machine = UnsafeMutablePointer<CChar>(malloc(size))
+        sysctlbyname("hw.machine", machine, &size, nil, 0)
+        var platformName = NSString(CString: machine, encoding: NSUTF8StringEncoding)
+        free(machine)
+        
+        return platformName! as String
+    }
 
     @IBAction func tapPostBtn(sender: AnyObject) {
-        println(self.postTitle)
+        self.view.endEditing(true)
+        
+        if postTitle == "" {
+            println("タイトルが入力されていない")
+            return
+        }
+        
+        var userID: AnyObject!
+        var platform = platformName()
+        if platform == "x86_64" {
+            // simulator
+            userID = 1
+        } else {
+            // 実機処理
+            let ud = NSUserDefaults.standardUserDefaults()
+            userID = ud.objectForKey("userID")
+            
+            if userID == nil {
+                println("--- uiseID = nil ---")
+                return
+            }
+        }
+        
+        let parameters: [String: AnyObject] = [
+            "title": postTitle,
+            "user_id": userID,
+            "materials": self.imgArray
+        ]
+        Alamofire.request(.POST, "http://yuji.website:3001/api/work", parameters: parameters, encoding: .JSON).responseJSON{ request, response, JSON, error in
+            println(request)
+            println(response)
+            println(JSON)
+            println(error)
+        }
+
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
