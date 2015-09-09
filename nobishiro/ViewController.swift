@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     private var myFavorites: [Int] = [] {
         didSet {
+            println("myFavorites")
             timelineTableView.reloadData()
         }
     }
@@ -45,27 +46,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
         loadWorks()
-        loadFavorites()
+        //loadFavorites()
 
         refreshControl.addTarget(self, action: "loadWorks", forControlEvents: .ValueChanged)
         timelineTableView.addSubview(refreshControl)
     }
 
     func loadWorks() {
-        Alamofire.request(.GET, "http://yuji.website:3001/api/work")
+        Alamofire.request(.GET, "http://yuji.website:3001/api/favorite?user_id=\(UserDefaults.getUserID())")
             .responseJSON { request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some(let json), .None):
-                    if let worksData: WorksData = decode(json) {
-                        self.works = worksData.data
-                        self.nextWorkAPI = worksData.next
+                    if let favoritesData: FavoritesData = decode(json) {
+                        self.myFavorites = favoritesData.data.map{$0.workId}
+                        Alamofire.request(.GET, "http://yuji.website:3001/api/work")
+                            .responseJSON { request, response, JSON, error in
+                                switch (JSON, error) {
+                                case (.Some(let json), .None):
+                                    if let worksData: WorksData = decode(json) {
+                                        self.works = worksData.data
+                                        self.nextWorkAPI = worksData.next
+                                    }
+                                case (.None, .Some):
+                                    println(error)
+                                default:
+                                    println("both json and error are nil!")
+                                }
+                                self.refreshControl.endRefreshing()
+                        }
                     }
                 case (.None, .Some):
                     println(error)
                 default:
                     println("both json and error are nil!")
                 }
-                self.refreshControl.endRefreshing()
         }
     }
 
@@ -234,10 +248,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         sender.setImage(UIImage(named: "starred"), forState: .Normal)
         //未ふぁぼなのでふぁぼする
         if !contains(myFavorites, sender.tag) {
-            Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+            Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?user_id=\(UserDefaults.getUserID())&work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
                 switch (JSON, error) {
-                case (.Some, .None):
-                    self.loadWorks()
+                case (.Some(let json), .None):
+                    //self.loadWorks()
                     self.loadFavorites()
                 default:
                     println("error")

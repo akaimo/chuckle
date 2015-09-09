@@ -228,19 +228,24 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        func postToFavorite(sender: UIButton) {
-            sender.enabled = false
-            sender.setImage(UIImage(named: "starred"), forState: .Normal)
-            Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+    func postToFavorite(sender: UIButton) {
+        sender.enabled = false
+        sender.setImage(UIImage(named: "starred"), forState: .Normal)
+        //未ふぁぼなのでふぁぼする
+        if !contains(myFavorites, sender.tag) {
+            Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?user_id=\(UserDefaults.getUserID())&work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
                 switch (JSON, error) {
-                case (.Some, .None):
-                    self.loadWorks()
+                case (.Some(let json), .None):
+                    //self.loadWorks()
                     self.loadFavorites()
                 default:
                     println("error")
                 }
             }
+        } else {
+            //あんふぁぼ?
         }
+    }
         
         func shareWithTwitter(sender: UIButton) {
             println("shareWithTwitter")
