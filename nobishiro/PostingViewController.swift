@@ -289,16 +289,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         println(postMaterial)
         
-        // タイトルが入力されていないとcellがnilになってしまう
-        // 現時点では原因が不明なのでnilチェックで回避している
-        var cell: PostingTitleCustomCell? = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PostingTitleCustomCell
-        if let titleCell = cell {
-            postTitle = titleCell.titleTextField.text
-        } else {
-            println("タイトルがカラ")
-            return
-        }
-        
         // TODO: カラ、空白オンリーは弾く
         if postTitle == "" {
             println("タイトルが入力されていない")
