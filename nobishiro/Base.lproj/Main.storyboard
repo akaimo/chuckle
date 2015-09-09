@@ -73,7 +73,7 @@
                                 <action selector="backBtnTap:" destination="oMM-xB-o2j" id="gCA-UN-Nkf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="投稿する" id="Zda-TG-XmA">
+                        <barButtonItem key="rightBarButtonItem" title="次へ" id="Zda-TG-XmA">
                             <color key="tintColor" red="0.96862745098039216" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="tapPostingBtn:" destination="oMM-xB-o2j" id="rwk-qZ-7BX"/>
@@ -89,6 +89,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBM-cN-5ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1363" y="1411"/>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="uJh-aP-VDu">
+            <objects>
+                <viewController storyboardIdentifier="PreviewVC" id="fme-uy-2Em" customClass="PreviewViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lcg-c3-SAf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lxx-gs-KwF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZLG-kW-ih1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Cw-gK-dcp">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2Cw-gK-dcp" firstAttribute="top" secondItem="ZLG-kW-ih1" secondAttribute="top" id="7M1-Vd-UqY"/>
+                            <constraint firstAttribute="trailing" secondItem="2Cw-gK-dcp" secondAttribute="trailing" id="PbF-pX-Lqg"/>
+                            <constraint firstItem="2Cw-gK-dcp" firstAttribute="leading" secondItem="ZLG-kW-ih1" secondAttribute="leading" id="h6H-hd-bIv"/>
+                            <constraint firstItem="2Cw-gK-dcp" firstAttribute="bottom" secondItem="Lxx-gs-KwF" secondAttribute="top" id="vS6-ed-T75"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="GqA-BI-IDY"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="postTableView" destination="2Cw-gK-dcp" id="vac-DL-qJB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FtI-ea-gBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2126" y="1411"/>
         </scene>
         <!--新着-->
         <scene sceneID="jt2-D6-KNl">
@@ -301,7 +336,7 @@
     <resources>
         <image name="PostCancel" width="17" height="16"/>
         <image name="alermTab" width="54" height="96"/>
-        <image name="chuckle" width="145" height="117"/>
+        <image name="chuckle" width="125" height="98"/>
         <image name="myPageTab" width="54" height="96"/>
         <image name="newTab" width="54" height="96"/>
         <image name="rankingTab" width="61" height="96"/>

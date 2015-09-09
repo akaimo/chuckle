@@ -306,7 +306,10 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 //            println(error)
 //        }
 //        
-        self.dismissViewControllerAnimated(true, completion: nil)
+//        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        let previewVC: PreviewViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PreviewVC") as! PreviewViewController
+        self.navigationController?.pushViewController(previewVC, animated: true)
     }
 
     @IBAction func backBtnTap(sender: AnyObject) {
