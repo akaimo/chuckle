@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCn-gO-r0A">
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="110"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3コマ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdQ-7Z-Eo1" userLabel="title">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3コマ" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdQ-7Z-Eo1" userLabel="title">
                                         <rect key="frame" x="10" y="10" width="284" height="90"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,8 +184,8 @@
     <resources>
         <image name="facebook" width="35" height="37"/>
         <image name="line" width="35" height="37"/>
-        <image name="numberOfStars" width="15" height="14"/>
-        <image name="star" width="26" height="25"/>
+        <image name="numberOfStars" width="16" height="15"/>
+        <image name="star" width="52" height="50"/>
         <image name="twitter" width="35" height="37"/>
     </resources>
 </document>

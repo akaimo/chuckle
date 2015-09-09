@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -20,16 +21,32 @@
                             <constraint firstAttribute="height" constant="150" id="hhe-Hi-dbk"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnY-D0-l09">
+                        <rect key="frame" x="200" y="13" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="AV1-B2-hqt"/>
+                            <constraint firstAttribute="height" constant="25" id="Vc4-d8-itP"/>
+                        </constraints>
+                        <state key="normal" image="DeleteImage">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="MnY-D0-l09" firstAttribute="leading" secondItem="DO3-ZD-FvD" secondAttribute="trailing" constant="-35" id="EH3-Cs-ruQ"/>
+                    <constraint firstItem="MnY-D0-l09" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="oM4-Tx-TmU"/>
                     <constraint firstAttribute="centerY" secondItem="DO3-ZD-FvD" secondAttribute="centerY" id="t6e-0D-ESK"/>
                     <constraint firstAttribute="centerX" secondItem="DO3-ZD-FvD" secondAttribute="centerX" id="ut6-tt-Aw6"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="deleteBtn" destination="MnY-D0-l09" id="gnd-Ql-9kV"/>
                 <outlet property="postingImageView" destination="DO3-ZD-FvD" id="CjQ-q2-xlw"/>
             </connections>
             <point key="canvasLocation" x="464" y="448"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="DeleteImage" width="25" height="25"/>
+    </resources>
 </document>

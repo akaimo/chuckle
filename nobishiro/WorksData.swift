@@ -12,7 +12,7 @@ import Himotoki
 struct WorksData: Decodable {
     let data: [Work]
     let status: String
-    let next: String
+    let next: String?
 
     static func decode(e: Extractor) -> WorksData? {
         let create = { WorksData($0) }
@@ -20,7 +20,7 @@ struct WorksData: Decodable {
         return build(create)(
             e <|| "data",
             e <| "status",
-            e <| "next"
+            e <|? "next"
         )
     }
 }

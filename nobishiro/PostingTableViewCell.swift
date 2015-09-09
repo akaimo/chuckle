@@ -10,6 +10,7 @@ import UIKit
 
 class PostingTableViewCell: UITableViewCell {
     @IBOutlet weak var postingImageView: UIImageView!
+    @IBOutlet weak var deleteBtn: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +26,4 @@ class PostingTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         postingImageView.image = nil
     }
-    
 }

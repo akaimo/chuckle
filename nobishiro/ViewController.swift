@@ -29,6 +29,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     let identifiers = ["TwoPanelMangaTableViewCell", "ThreePanelMangaTableViewCell", "FourPanelMangaTableViewCell"]
 
+    private var nextWorkAPI: String? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
         timelineTableView.dataSource = self
@@ -56,6 +58,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 case (.Some(let json), .None):
                     if let worksData: WorksData = decode(json) {
                         self.works = worksData.data
+                        self.nextWorkAPI = worksData.next
+                        println("----------")
+                        for work in self.works {
+                            print("\(work.workId), ")
+                        }
+                        println("----------")
                     }
                 case (.None, .Some):
                     println(error)
@@ -90,11 +98,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch works[indexPath.row].materials.count {
         case 2:
-            return TwoPanelMangaTableViewCell.height()
+            return WorkCell.calculateCellHeight(2, title: works[indexPath.row].title)
         case 3:
-            return ThreePanelMangaTableViewCell.height()
+            return WorkCell.calculateCellHeight(3, title: works[indexPath.row].title)
         case 4:
-            return FourPanelMangaTableViewCell.height()
+            return WorkCell.calculateCellHeight(4, title: works[indexPath.row].title)
         default:
             return 0
         }
@@ -242,21 +250,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if self.timelineTableView.contentOffset.y >= self.timelineTableView.contentSize.height - self.timelineTableView.bounds.size.height {
-            println(works.endIndex)/*
-            let lastWorkId = works[works.endIndex].workId
-            Alamofire.request(.GET, "http://yuji.website:3001/api/work?since_id=\(lastWorkId+1)")
-                .responseJSON { request, response, JSON, error in
-                    switch (JSON, error) {
-                    case (.Some(let json), .None):
-                        if let worksData: WorksData = decode(json) {
-                            self.works += worksData.data
+
+            if let nextWorkAPI = nextWorkAPI where count(nextWorkAPI) > 0 {
+                self.nextWorkAPI = nil
+                Alamofire.request(.GET, "http://yuji.website:3001/\(nextWorkAPI)")
+                    .responseJSON { request, response, JSON, error in
+                        switch (JSON, error) {
+                        case (.Some(let json), .None):
+                            if let worksData: WorksData = decode(json) {
+                                self.works += worksData.data
+                                self.nextWorkAPI = worksData.next
+                                println("----------")
+                                for work in self.works {
+                                    print("\(work.workId), ")
+                                }
+                                println("----------")
+                            }
+                        case (.None, .Some):
+                            println(error)
+                        default:
+                            println("both json and error are nil!")
                         }
-                    case (.None, .Some):
-                        println(error)
-                    default:
-                        println("both json and error are nil!")
-                    }
-            }*/
+                }
+            }
         }
     }
 }
