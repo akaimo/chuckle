@@ -109,6 +109,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         closeCollection()
+        postCheck()
         focusNum = nil
         self.postingTableView.reloadData()
     }
