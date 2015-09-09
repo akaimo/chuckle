@@ -185,7 +185,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
-                println("not contains(\(works[indexPath.row].workId)) \(myFavorites)")
                 cell.postToFavorite.enabled = true
                 cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
             }
@@ -249,13 +248,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         sender.setImage(UIImage(named: "starred"), forState: .Normal)
         //未ふぁぼなのでふぁぼする
         if !contains(myFavorites, sender.tag) {
-            println("\(sender.tag) by \(UserDefaults.getUserID())")
-            Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+            Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?user_id=\(UserDefaults.getUserID())&work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some(let json), .None):
-                    println("request: \(request)")
-                    println("response: \(response)")
-                    println("json: \(json)")
                     //self.loadWorks()
                     self.loadFavorites()
                 default:
