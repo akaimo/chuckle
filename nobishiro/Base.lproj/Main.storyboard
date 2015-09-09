@@ -197,10 +197,10 @@
             </objects>
             <point key="canvasLocation" x="-180" y="2972"/>
         </scene>
-        <!--View Controller-->
+        <!--My Page View Controller-->
         <scene sceneID="4FG-0H-q6g">
             <objects>
-                <viewController id="UBA-Nh-fKZ" sceneMemberID="viewController">
+                <viewController id="UBA-Nh-fKZ" customClass="MyPageViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wyi-kB-XvW"/>
                         <viewControllerLayoutGuide type="bottom" id="31f-bX-CEc"/>
@@ -208,9 +208,25 @@
                     <view key="view" contentMode="scaleToFill" id="c56-fv-pIA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RC7-nL-xKU" userLabel="myWorksTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="RC7-nL-xKU" secondAttribute="centerX" id="ID1-DU-fiW"/>
+                            <constraint firstAttribute="centerY" secondItem="RC7-nL-xKU" secondAttribute="centerY" id="KKM-Yo-dKh"/>
+                            <constraint firstItem="RC7-nL-xKU" firstAttribute="height" secondItem="c56-fv-pIA" secondAttribute="height" id="TDU-th-pe6"/>
+                            <constraint firstItem="RC7-nL-xKU" firstAttribute="width" secondItem="c56-fv-pIA" secondAttribute="width" id="pUh-09-LXZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="obw-pH-7Q0"/>
+                    <connections>
+                        <outlet property="myWorksTableView" destination="RC7-nL-xKU" id="sgq-4Q-Ftc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5v-y5-mXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
