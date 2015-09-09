@@ -15,7 +15,7 @@ struct WorkCell {
         calculationLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         calculationLabel.adjustsFontSizeToFitWidth = false
         var title = calculationLabel.sizeThatFits(CGSizeMake(284, CGFloat.max)).height
-        println("titleHeight: \(title)")
+        //println("titleHeight: \(title)")
         title = 70
 
         let cellMargin = 8
