@@ -36,6 +36,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         timelineTableView.dataSource = self
         timelineTableView.delegate = self
         timelineTableView.allowsSelection = false
+        
+        let titleImageView = UIImageView(image: UIImage(named: "newNav"))
+        self.navigationItem.titleView = titleImageView
 
         for identifier in identifiers {
             timelineTableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
