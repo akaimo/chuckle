@@ -41,7 +41,8 @@ class ThreePanelMangaTableViewCell: UITableViewCell {
         secondPanel.image = nil
         thirdPanel.image = nil
         favoriteCount.text = nil
-        postToFavorite.imageView?.image = nil
+        postToFavorite.enabled = false
+        postToFavorite.setImage(nil, forState: .Normal)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

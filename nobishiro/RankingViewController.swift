@@ -55,10 +55,8 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                 .responseJSON { request, response, JSON, error in
                     switch (JSON, error) {
                     case (.Some(let json), .None):
-                        println(json)
                         if let rankingData: RankingData = decode(json) {
                             self.works = rankingData.data
-                            println(rankingData.status)
                         }
                     case (.None, .Some):
                         println(error)
@@ -126,9 +124,14 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.postToFavorite.tag = works[indexPath.row].workId
                 cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
-                if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+                if works[indexPath.row].userId == UserDefaults.getUserID() {
+                    cell.postToFavorite.enabled = false
+                    cell.postToFavorite.setImage(nil, forState: .Normal)
+                } else if contains(myFavorites, works[indexPath.row].workId) {
+                    cell.postToFavorite.enabled = false
                     cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
                 } else {
+                    cell.postToFavorite.enabled = true
                     cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
                 }
 
@@ -160,9 +163,14 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.postToFavorite.tag = works[indexPath.row].workId
                 cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
-                if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+                if works[indexPath.row].userId == UserDefaults.getUserID() {
+                    cell.postToFavorite.enabled = false
+                    cell.postToFavorite.setImage(nil, forState: .Normal)
+                } else if contains(myFavorites, works[indexPath.row].workId) {
+                    cell.postToFavorite.enabled = false
                     cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
                 } else {
+                    cell.postToFavorite.enabled = true
                     cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
                 }
 
@@ -195,9 +203,14 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.postToFavorite.tag = works[indexPath.row].workId
                 cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
-                if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+                if works[indexPath.row].userId == UserDefaults.getUserID() {
+                    cell.postToFavorite.enabled = false
+                    cell.postToFavorite.setImage(nil, forState: .Normal)
+                } else if contains(myFavorites, works[indexPath.row].workId) {
+                    cell.postToFavorite.enabled = false
                     cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
                 } else {
+                    cell.postToFavorite.enabled = true
                     cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
                 }
 
@@ -216,7 +229,8 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         func postToFavorite(sender: UIButton) {
-            println(sender.tag)
+            sender.enabled = false
+            sender.setImage(UIImage(named: "starred"), forState: .Normal)
             Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some, .None):

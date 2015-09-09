@@ -59,11 +59,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     if let worksData: WorksData = decode(json) {
                         self.works = worksData.data
                         self.nextWorkAPI = worksData.next
-                        println("----------")
-                        for work in self.works {
-                            print("\(work.workId), ")
-                        }
-                        println("----------")
                     }
                 case (.None, .Some):
                     println(error)
@@ -130,9 +125,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.postToFavorite.tag = works[indexPath.row].workId
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
-            if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+            if works[indexPath.row].userId == UserDefaults.getUserID() {
+                cell.postToFavorite.enabled = false
+                cell.postToFavorite.setImage(nil, forState: .Normal)
+            } else if contains(myFavorites, works[indexPath.row].workId) {
+                cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
+                cell.postToFavorite.enabled = true
                 cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
             }
 
@@ -164,9 +164,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.postToFavorite.tag = works[indexPath.row].workId
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
-            if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+            if works[indexPath.row].userId == UserDefaults.getUserID() {
+                cell.postToFavorite.enabled = false
+                cell.postToFavorite.setImage(nil, forState: .Normal)
+            } else if contains(myFavorites, works[indexPath.row].workId) {
+                cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
+                cell.postToFavorite.enabled = true
                 cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
             }
 
@@ -199,9 +204,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.postToFavorite.tag = works[indexPath.row].workId
             cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
-            if (myFavorites.reduce(false){$0 || $1 == works[indexPath.row].workId}){
+            if works[indexPath.row].userId == UserDefaults.getUserID() {
+                cell.postToFavorite.enabled = false
+                cell.postToFavorite.setImage(nil, forState: .Normal)
+            } else if contains(myFavorites, works[indexPath.row].workId) {
+                cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
+                cell.postToFavorite.enabled = true
                 cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
             }
 
@@ -220,6 +230,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func postToFavorite(sender: UIButton) {
+        sender.enabled = false
+        sender.setImage(UIImage(named: "starred"), forState: .Normal)
         //未ふぁぼなのでふぁぼする
         if !contains(myFavorites, sender.tag) {
             Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
@@ -263,11 +275,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                             if let worksData: WorksData = decode(json) {
                                 self.works += worksData.data
                                 self.nextWorkAPI = worksData.next
-                                println("----------")
-                                for work in self.works {
-                                    print("\(work.workId), ")
-                                }
-                                println("----------")
                             }
                         case (.None, .Some):
                             println(error)
