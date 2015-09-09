@@ -195,12 +195,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func titleCheck() -> Bool {
-        var cell: PostingTitleCustomCell? = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PostingTitleCustomCell
-        if cell == nil {
-            return false
-        }
-        
-        postTitle = cell!.titleTextField.text
         if postTitle == "" {
             return false
         }
@@ -212,6 +206,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     func tapDelete(sender: AnyObject) {
         imgArray[sender.tag] = nil
         self.postingTableView.reloadData()
+        postCheck()
     }
 
     
@@ -259,12 +254,20 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: - UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.postTitle = textField.text
         postCheck()
         textField.resignFirstResponder()
         return true
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        self.postTitle = textField.text
+        postCheck()
+        return true
+    }
     
+    
+    // MARK: -
     @IBAction func tapPostingBtn(sender: AnyObject) {
         if imgArray[0] == nil || imgArray[1] == nil {
             println("画像が選択されていない")
