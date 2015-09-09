@@ -14,11 +14,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="416.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsB-WP-ZKa">
-                        <rect key="frame" x="8" y="8" width="304" height="463.5"/>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MsB-WP-ZKa">
+                        <rect key="frame" x="8" y="8" width="304" height="464"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CiA-MD-9Yu">
-                                <rect key="frame" x="0.0" y="0.0" width="304" height="83.5"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CiA-MD-9Yu">
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほ" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90G-P4-wDv" userLabel="title">
                                         <rect key="frame" x="10" y="10" width="284" height="63.5"/>

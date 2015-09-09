@@ -46,7 +46,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         
         postBtn.enabled = false
         
-        collectionOriginY = self.postingCollectionView.frame.origin.y - self.postingCollectionView.frame.height
+        collectionOriginY = self.postingCollectionView.frame.origin.y
         
         loadMaterials()
     }
@@ -89,7 +89,14 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
                 cell.deleteBtn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
                 cell.deleteBtn.hidden = false
             } else {
-                cell.postingImageView.image = UIImage(named: "Image")
+                switch indexPath.row - 1 {
+                case 0, 1:
+                    cell.postingImageView.image = UIImage(named: "Image")
+                case 2, 3:
+                    cell.postingImageView.image = UIImage(named: "Image2")
+                default:
+                    cell.postingImageView.image = UIImage(named: "Image2")
+                }
                 cell.deleteBtn.hidden = true
             }
             
@@ -143,7 +150,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         cache.fetch(URL: URL).onSuccess{ JSON in
             if let json = JSON.dictionary, materialData: MaterialsData = decode(json) {
                 self.materials = materialData.data
-                println("data:\(materialData.data)")
+//                println("data:\(materialData.data)")
                 println("error:\(materialData.error)")
             } else {
                 println("can't decode")
@@ -156,8 +163,9 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     // collectionViewを出す
     func openCollection() {
         self.postingTableViewHeight.constant = 230
+        self.postingCollectionView.frame.origin.y = self.collectionOriginY
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.postingCollectionView.frame.origin.y = self.collectionOriginY
+            self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
             self.postingTableView.layoutIfNeeded()
         })
         animat = true
@@ -194,12 +202,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func titleCheck() -> Bool {
-        var cell: PostingTitleCustomCell? = self.postingTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? PostingTitleCustomCell
-        if cell == nil {
-            return false
-        }
-        
-        postTitle = cell!.titleTextField.text
         if postTitle == "" {
             return false
         }
@@ -211,6 +213,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     func tapDelete(sender: AnyObject) {
         imgArray[sender.tag] = nil
         self.postingTableView.reloadData()
+        postCheck()
     }
 
     
@@ -258,12 +261,20 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: - UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.postTitle = textField.text
         postCheck()
         textField.resignFirstResponder()
         return true
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        self.postTitle = textField.text
+        postCheck()
+        return true
+    }
     
+    
+    // MARK: -
     @IBAction func tapPostingBtn(sender: AnyObject) {
         if imgArray[0] == nil || imgArray[1] == nil {
             println("画像が選択されていない")
