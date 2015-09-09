@@ -10,6 +10,7 @@ import UIKit
 
 class PostingTableViewCell: UITableViewCell {
     @IBOutlet weak var postingImageView: UIImageView!
+    @IBOutlet weak var deleteBtn: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,4 +27,8 @@ class PostingTableViewCell: UITableViewCell {
         postingImageView.image = nil
     }
     
+//    @IBAction func tapDeleteBtn(sender: AnyObject) {
+//        println("delete")
+//        self.deleteBtn.hidden = true
+//    }
 }
