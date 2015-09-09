@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
+//  MyPageViewController.swift
 //  nobishiro
 //
-//  Created by akaimo on 2015/09/03.
-//  Copyright (c) 2015年 akaimo. All rights reserved.
+//  Created by S-Shimotori on 9/9/15.
+//  Copyright (c) 2015 akaimo. All rights reserved.
 //
 
 import UIKit
@@ -12,18 +12,19 @@ import Himotoki
 import Social
 import Alamofire
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MyPageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
-    @IBOutlet private weak var timelineTableView: UITableView!
+    @IBOutlet weak var myWorksTableView: UITableView!
+
     private let refreshControl = UIRefreshControl()
     private var works: [Work] = [] {
         didSet {
-            timelineTableView.reloadData()
+            myWorksTableView.reloadData()
         }
     }
     private var myFavorites: [Int] = [] {
         didSet {
-            timelineTableView.reloadData()
+            myWorksTableView.reloadData()
         }
     }
 
@@ -31,31 +32,41 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        timelineTableView.dataSource = self
-        timelineTableView.delegate = self
-        timelineTableView.allowsSelection = false
+        myWorksTableView.dataSource = self
+        myWorksTableView.delegate = self
+        myWorksTableView.allowsSelection = false
 
         for identifier in identifiers {
-            timelineTableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
+            myWorksTableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
         }
 
         loadWorks()
         loadFavorites()
 
         refreshControl.addTarget(self, action: "loadWorks", forControlEvents: .ValueChanged)
-        timelineTableView.addSubview(refreshControl)
+        myWorksTableView.addSubview(refreshControl)
     }
 
     func loadWorks() {
-        Alamofire.request(.GET, "http://yuji.website:3001/api/work")
+        let userID: Int!
+        var platform = platformName()
+        if platform == "x86_64" {
+            userID = 1
+        } else {
+            let ud = NSUserDefaults.standardUserDefaults()
+            userID = ud.objectForKey("userID") as! Int
+        }
+        Alamofire.request(.GET, "http://yuji.website:3001/api/work?user_id=//\(userID)")
             .responseJSON { request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some(let json), .None):
-                    if let worksData: WorksData = decode(json) {
-                        self.works = worksData.data
+                    println(json)
+                    if let rankingData: RankingData = decode(json) {
+                        self.works = rankingData.data
+                        println(rankingData.status)
                     }
                 case (.None, .Some):
-                    println(error)
+                    println("error!!!: \(error)")
                 default:
                     println("both json and error are nil!")
                 }
@@ -104,7 +115,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         switch materials.count {
         case 2:
 
-            let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[0]) as! TwoPanelMangaTableViewCell
+            let cell = myWorksTableView.dequeueReusableCellWithIdentifier(identifiers[0]) as! TwoPanelMangaTableViewCell
 
             cell.title.text = works[indexPath.row].title
 
@@ -137,7 +148,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         case 3:
 
-            let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[1]) as! ThreePanelMangaTableViewCell
+            let cell = myWorksTableView.dequeueReusableCellWithIdentifier(identifiers[1]) as! ThreePanelMangaTableViewCell
 
             cell.title.text = works[indexPath.row].title
 
@@ -171,7 +182,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         case 4:
 
-            let cell = timelineTableView.dequeueReusableCellWithIdentifier(identifiers[2]) as! FourPanelMangaTableViewCell
+            let cell = myWorksTableView.dequeueReusableCellWithIdentifier(identifiers[2]) as! FourPanelMangaTableViewCell
 
             cell.title.text = works[indexPath.row].title
 
@@ -203,7 +214,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
 
             return cell
-            
+
         default:
             return UITableViewCell()
         }
@@ -237,23 +248,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         SNS.shareWithSNS(self, sns: .LINE, workID: sender.tag)
     }
 
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        if self.timelineTableView.contentOffset.y >= self.timelineTableView.contentSize.height - self.timelineTableView.bounds.size.height {
-            println(works.endIndex)/*
-            let lastWorkId = works[works.endIndex].workId
-            Alamofire.request(.GET, "http://yuji.website:3001/api/work?since_id=\(lastWorkId+1)")
-                .responseJSON { request, response, JSON, error in
-                    switch (JSON, error) {
-                    case (.Some(let json), .None):
-                        if let worksData: WorksData = decode(json) {
-                            self.works += worksData.data
-                        }
-                    case (.None, .Some):
-                        println(error)
-                    default:
-                        println("both json and error are nil!")
-                    }
-            }*/
-        }
+    // 実機チェック
+    func platformName() -> String {
+        var size: size_t = 0;
+        sysctlbyname("hw.machine", nil, &size, nil, 0)
+        var machine = UnsafeMutablePointer<CChar>(malloc(size))
+        sysctlbyname("hw.machine", machine, &size, nil, 0)
+        var platformName = NSString(CString: machine, encoding: NSUTF8StringEncoding)
+        free(machine)
+
+        return platformName! as String
     }
 }

@@ -153,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="634" y="1411"/>
         </scene>
-        <!--View Controller-->
+        <!--Ranking View Controller-->
         <scene sceneID="PrE-Mf-01O">
             <objects>
-                <viewController id="2Z8-Dh-XS6" sceneMemberID="viewController">
+                <viewController id="2Z8-Dh-XS6" customClass="RankingViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KbR-yo-HFW"/>
                         <viewControllerLayoutGuide type="bottom" id="YkI-ip-lQf"/>
@@ -164,9 +164,24 @@
                     <view key="view" contentMode="scaleToFill" id="nO5-UI-O7E">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Tfg-y7-4gl" userLabel="rankingTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Tfg-y7-4gl" secondAttribute="centerX" id="L2u-g1-3L1"/>
+                            <constraint firstItem="Tfg-y7-4gl" firstAttribute="width" secondItem="nO5-UI-O7E" secondAttribute="width" id="XbP-U2-zX2"/>
+                            <constraint firstItem="Tfg-y7-4gl" firstAttribute="height" secondItem="nO5-UI-O7E" secondAttribute="height" id="sH0-sm-lVL"/>
+                            <constraint firstAttribute="centerY" secondItem="Tfg-y7-4gl" secondAttribute="centerY" id="xff-8D-dLR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mTW-aR-59E"/>
+                    <connections>
+                        <outlet property="rankingTableView" destination="Tfg-y7-4gl" id="cSx-pX-4bN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBy-A6-weL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -182,10 +197,10 @@
             </objects>
             <point key="canvasLocation" x="-180" y="2972"/>
         </scene>
-        <!--View Controller-->
+        <!--My Page View Controller-->
         <scene sceneID="4FG-0H-q6g">
             <objects>
-                <viewController id="UBA-Nh-fKZ" sceneMemberID="viewController">
+                <viewController id="UBA-Nh-fKZ" customClass="MyPageViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wyi-kB-XvW"/>
                         <viewControllerLayoutGuide type="bottom" id="31f-bX-CEc"/>
@@ -193,9 +208,25 @@
                     <view key="view" contentMode="scaleToFill" id="c56-fv-pIA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RC7-nL-xKU" userLabel="myWorksTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="RC7-nL-xKU" secondAttribute="centerX" id="ID1-DU-fiW"/>
+                            <constraint firstAttribute="centerY" secondItem="RC7-nL-xKU" secondAttribute="centerY" id="KKM-Yo-dKh"/>
+                            <constraint firstItem="RC7-nL-xKU" firstAttribute="height" secondItem="c56-fv-pIA" secondAttribute="height" id="TDU-th-pe6"/>
+                            <constraint firstItem="RC7-nL-xKU" firstAttribute="width" secondItem="c56-fv-pIA" secondAttribute="width" id="pUh-09-LXZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="obw-pH-7Q0"/>
+                    <connections>
+                        <outlet property="myWorksTableView" destination="RC7-nL-xKU" id="sgq-4Q-Ftc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5v-y5-mXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -241,11 +272,11 @@
             </objects>
             <point key="canvasLocation" x="-180" y="2248"/>
         </scene>
-        <!--アカウント-->
+        <!--マイページ-->
         <scene sceneID="yYZ-aa-r3r">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="st0-fK-hbJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="アカウント" id="UYc-5H-HdD"/>
+                    <tabBarItem key="tabBarItem" title="マイページ" id="UYc-5H-HdD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y5i-6D-xsh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
