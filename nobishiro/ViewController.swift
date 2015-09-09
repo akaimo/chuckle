@@ -61,21 +61,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
                 self.refreshControl.endRefreshing()
         }
-/*
-
-        let cacheRank = Cache<JSON>(name: "ranking")
-        let URLRank = NSURL(string: "http://yuji.website:3001/api/ranking")!
-        cacheRank.fetch(URL: URLRank).onSuccess{ JSON in
-            if let json = JSON.dictionary,
-                rankingData: RankingData = decode(json) {
-                    println(rankingData.data)
-                    println(rankingData.status)
-            } else {
-                println("cant")
-            }
-            }.onFailure{Failer in
-                println(Failer)
-        }*/
     }
 
     func loadFavorites() {
@@ -250,5 +235,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func shareWithLINE(sender: UIButton) {
         println("shareWithLINE")
         SNS.shareWithSNS(self, sns: .LINE, workID: sender.tag)
+    }
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.timelineTableView.contentOffset.y >= self.timelineTableView.contentSize.height - self.timelineTableView.bounds.size.height {
+            println(works.endIndex)/*
+            let lastWorkId = works[works.endIndex].workId
+            Alamofire.request(.GET, "http://yuji.website:3001/api/work?since_id=\(lastWorkId+1)")
+                .responseJSON { request, response, JSON, error in
+                    switch (JSON, error) {
+                    case (.Some(let json), .None):
+                        if let worksData: WorksData = decode(json) {
+                            self.works += worksData.data
+                        }
+                    case (.None, .Some):
+                        println(error)
+                    default:
+                        println("both json and error are nil!")
+                    }
+            }*/
+        }
     }
 }
