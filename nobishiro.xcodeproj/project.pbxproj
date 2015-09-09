@@ -46,6 +46,12 @@
 		B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888C91B9D2D7300D4972E /* Favorite.swift */; };
 		B58888CC1B9D2DAF00D4972E /* FavoritesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888CB1B9D2DAF00D4972E /* FavoritesData.swift */; };
 		B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888CD1B9D367300D4972E /* InitialTabBarController.swift */; };
+		BA428AFA1B9F2BF200CE73F0 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428AF81B9F2BF200CE73F0 /* NotificationTableViewController.swift */; };
+		BA428AFB1B9F2BF200CE73F0 /* NotificationTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA428AF91B9F2BF200CE73F0 /* NotificationTableViewController.xib */; };
+		BA428AFD1B9F31C300CE73F0 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428AFC1B9F31C300CE73F0 /* Notification.swift */; };
+		BA428AFF1B9F332A00CE73F0 /* NotificationsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428AFE1B9F332A00CE73F0 /* NotificationsData.swift */; };
+		BA428B021B9F3B1F00CE73F0 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428B001B9F3B1F00CE73F0 /* NotificationTableViewCell.swift */; };
+		BA428B031B9F3B1F00CE73F0 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA428B011B9F3B1F00CE73F0 /* NotificationTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +121,12 @@
 		B58888C91B9D2D7300D4972E /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		B58888CB1B9D2DAF00D4972E /* FavoritesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesData.swift; sourceTree = "<group>"; };
 		B58888CD1B9D367300D4972E /* InitialTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialTabBarController.swift; sourceTree = "<group>"; };
+		BA428AF81B9F2BF200CE73F0 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		BA428AF91B9F2BF200CE73F0 /* NotificationTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTableViewController.xib; sourceTree = "<group>"; };
+		BA428AFC1B9F31C300CE73F0 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		BA428AFE1B9F332A00CE73F0 /* NotificationsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsData.swift; sourceTree = "<group>"; };
+		BA428B001B9F3B1F00CE73F0 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		BA428B011B9F3B1F00CE73F0 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +191,8 @@
 				B58888CD1B9D367300D4972E /* InitialTabBarController.swift */,
 				B503C74F1B9D8E7C008C139A /* NavigationToPostingViewController.swift */,
 				B50304B51B9EEA16008D46C0 /* SNS.swift */,
+				BA428AF81B9F2BF200CE73F0 /* NotificationTableViewController.swift */,
+				BA428AF91B9F2BF200CE73F0 /* NotificationTableViewController.xib */,
 			);
 			path = nobishiro;
 			sourceTree = "<group>";
@@ -232,6 +246,8 @@
 				B58888CB1B9D2DAF00D4972E /* FavoritesData.swift */,
 				B56CA0A81B9D561800AFA16E /* RankingData.swift */,
 				B50304B31B9EE99D008D46C0 /* ShareImageData.swift */,
+				BA428AFC1B9F31C300CE73F0 /* Notification.swift */,
+				BA428AFE1B9F332A00CE73F0 /* NotificationsData.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -245,6 +261,8 @@
 				B57B35001B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib */,
 				B57B35031B985C9300C156A2 /* FourPanelMangaTableViewCell.swift */,
 				B57B35041B985C9300C156A2 /* FourPanelMangaTableViewCell.xib */,
+				BA428B001B9F3B1F00CE73F0 /* NotificationTableViewCell.swift */,
+				BA428B011B9F3B1F00CE73F0 /* NotificationTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -299,7 +317,7 @@
 				TargetAttributes = {
 					99593B421B983C82000C51C1 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = V234C4FQ67;
+						DevelopmentTeam = MK5V3GM3DD;
 					};
 					99593B571B983C82000C51C1 = {
 						CreatedOnToolsVersion = 6.4;
@@ -337,7 +355,9 @@
 				99593B531B983C82000C51C1 /* LaunchScreen.xib in Resources */,
 				99593C1A1B9DCA55000C51C1 /* PostCollectionViewCell.xib in Resources */,
 				99593BA31B997AA4000C51C1 /* PostingTitleCustomCell.xib in Resources */,
+				BA428AFB1B9F2BF200CE73F0 /* NotificationTableViewController.xib in Resources */,
 				99593C1C1B9DCCE3000C51C1 /* PostCollectionView.xib in Resources */,
+				BA428B031B9F3B1F00CE73F0 /* NotificationTableViewCell.xib in Resources */,
 				B57B35021B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib in Resources */,
 				99593B501B983C82000C51C1 /* Images.xcassets in Resources */,
 				99593B9D1B99474A000C51C1 /* PostingTableViewCell.xib in Resources */,
@@ -359,17 +379,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				B50304B61B9EEA16008D46C0 /* SNS.swift in Sources */,
+				BA428B021B9F3B1F00CE73F0 /* NotificationTableViewCell.swift in Sources */,
 				B53B08041B99600D005F5F30 /* MaterialsData.swift in Sources */,
 				B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */,
+				BA428AFD1B9F31C300CE73F0 /* Notification.swift in Sources */,
 				B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */,
 				B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */,
 				B503C7501B9D8E7C008C139A /* NavigationToPostingViewController.swift in Sources */,
+				BA428AFA1B9F2BF200CE73F0 /* NotificationTableViewController.swift in Sources */,
 				B56CA0A91B9D561800AFA16E /* RankingData.swift in Sources */,
 				B5105ADB1B9950E800BD9ECD /* Material.swift in Sources */,
 				99593B4B1B983C82000C51C1 /* ViewController.swift in Sources */,
 				B5105AD91B994F2A00BD9ECD /* WorksData.swift in Sources */,
 				99593B491B983C82000C51C1 /* AppDelegate.swift in Sources */,
 				99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */,
+				BA428AFF1B9F332A00CE73F0 /* NotificationsData.swift in Sources */,
 				B57B35011B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift in Sources */,
 				99593BA21B997AA4000C51C1 /* PostingTitleCustomCell.swift in Sources */,
 				99593C141B9DC91D000C51C1 /* PostCollectionView.swift in Sources */,
@@ -506,7 +530,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuji Fujisaka (93WZF2RG67)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -523,7 +547,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuji Fujisaka (93WZF2RG67)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

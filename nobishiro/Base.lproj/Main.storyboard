@@ -172,19 +172,10 @@
             </objects>
             <point key="canvasLocation" x="448" y="2988"/>
         </scene>
-        <!--View Controller-->
+        <!--Notification Table View Controller-->
         <scene sceneID="TyR-ze-qDt">
             <objects>
-                <viewController id="kVa-si-FPs" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="W09-cd-apE"/>
-                        <viewControllerLayoutGuide type="bottom" id="E7G-Pk-g1M"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JVF-zj-aAt">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                <viewController id="kVa-si-FPs" customClass="NotificationTableViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="NCw-Jc-9Q2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cCV-W5-oOD" userLabel="First Responder" sceneMemberID="firstResponder"/>

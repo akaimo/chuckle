@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="68" id="KGk-i7-Jjw" customClass="NotificationTableViewCell" customModule="nobishiro" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="698" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YdI-KZ-rmv">
+                        <rect key="frame" x="15" y="5" width="668" height="57.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starred" translatesAutoresizingMaskIntoConstraints="NO" id="mjS-HI-mWL">
+                                <rect key="frame" x="10" y="10" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="bPc-1S-qez"/>
+                                    <constraint firstAttribute="height" constant="15" id="zoc-8g-XqS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJb-90-QtP">
+                                <rect key="frame" x="35" y="10" width="276" height="18"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="「作品タイトル」がお気に入りに登録されました！">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="12" name="HiraKakuProN-W3"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="7"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wjw-AP-aGQ">
+                                <rect key="frame" x="611" y="5" width="47" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="Fle-dA-iVw"/>
+                                    <constraint firstAttribute="width" constant="47" id="j3L-t5-hT8"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="wjw-AP-aGQ" secondAttribute="centerY" id="0aZ-jf-kUP"/>
+                            <constraint firstItem="wjw-AP-aGQ" firstAttribute="leading" secondItem="LJb-90-QtP" secondAttribute="trailing" constant="10" id="73s-Gv-iJ8"/>
+                            <constraint firstItem="LJb-90-QtP" firstAttribute="top" secondItem="YdI-KZ-rmv" secondAttribute="top" constant="10" id="AcU-sc-Nh6"/>
+                            <constraint firstItem="LJb-90-QtP" firstAttribute="leading" secondItem="mjS-HI-mWL" secondAttribute="trailing" constant="10" id="Pjm-FJ-N4s"/>
+                            <constraint firstItem="mjS-HI-mWL" firstAttribute="top" secondItem="YdI-KZ-rmv" secondAttribute="top" constant="10" id="b2r-dp-Bwy"/>
+                            <constraint firstAttribute="trailing" secondItem="wjw-AP-aGQ" secondAttribute="trailing" constant="10" id="n89-0c-l5s"/>
+                            <constraint firstItem="mjS-HI-mWL" firstAttribute="leading" secondItem="YdI-KZ-rmv" secondAttribute="leading" constant="10" id="u1S-Qz-w02"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="YdI-KZ-rmv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="0aJ-6T-7S9"/>
+                    <constraint firstAttribute="bottom" secondItem="YdI-KZ-rmv" secondAttribute="bottom" constant="5" id="5nF-MX-Rl3"/>
+                    <constraint firstItem="YdI-KZ-rmv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="6pA-Q6-5FG"/>
+                    <constraint firstAttribute="trailing" secondItem="YdI-KZ-rmv" secondAttribute="trailing" constant="15" id="CNU-J9-dIW"/>
+                    <constraint firstAttribute="centerX" secondItem="YdI-KZ-rmv" secondAttribute="centerX" id="HvB-75-lO6"/>
+                    <constraint firstAttribute="centerY" secondItem="YdI-KZ-rmv" secondAttribute="centerY" id="dHm-Jx-TdI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="thumImageView" destination="wjw-AP-aGQ" id="GXf-lB-C7g"/>
+                <outlet property="title" destination="LJb-90-QtP" id="YZt-nC-W5c"/>
+            </connections>
+            <point key="canvasLocation" x="635" y="263"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="starred" width="52" height="50"/>
+    </resources>
+</document>
