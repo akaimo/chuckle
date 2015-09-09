@@ -56,14 +56,13 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
             let ud = NSUserDefaults.standardUserDefaults()
             userID = ud.objectForKey("userID") as! Int
         }
-        Alamofire.request(.GET, "http://yuji.website:3001/api/work?user_id=//\(userID)")
+        Alamofire.request(.GET, "http://yuji.website:3001/api/work?user_id=\(userID)")
             .responseJSON { request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some(let json), .None):
                     println(json)
-                    if let rankingData: RankingData = decode(json) {
-                        self.works = rankingData.data
-                        println(rankingData.status)
+                    if let worksData: WorksData = decode(json) {
+                        self.works = worksData.data
                     }
                 case (.None, .Some):
                     println("error!!!: \(error)")
