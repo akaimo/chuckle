@@ -36,6 +36,9 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
             rankingTableView.delegate = self
             rankingTableView.allowsSelection = false
 
+            let titleImageView = UIImageView(image: UIImage(named: "rankingNav"))
+            self.navigationItem.titleView = titleImageView
+        
             for identifier in identifiers {
                 rankingTableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
             }

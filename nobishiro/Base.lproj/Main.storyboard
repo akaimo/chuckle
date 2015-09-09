@@ -74,6 +74,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="投稿する" id="Zda-TG-XmA">
+                            <color key="tintColor" red="0.96862745100000003" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="tapPostingBtn:" destination="oMM-xB-o2j" id="rwk-qZ-7BX"/>
                             </connections>
@@ -93,7 +94,7 @@
         <scene sceneID="jt2-D6-KNl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gcd-5q-F1c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="新着" id="XbH-xj-5Hu"/>
+                    <tabBarItem key="tabBarItem" title="新着" image="newTab" id="XbH-xj-5Hu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tjl-UQ-oI2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -118,11 +119,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.96862745098039216" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.98431372549019602" green="0.83137254901960789" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="gcd-5q-F1c" kind="relationship" relationship="viewControllers" id="sXw-M6-UuT"/>
                         <segue destination="Y1w-dL-pxD" kind="relationship" relationship="viewControllers" id="ywa-lO-v31"/>
+                        <segue destination="gcd-5q-F1c" kind="relationship" relationship="viewControllers" id="sXw-M6-UuT"/>
                         <segue destination="t0L-2b-oI9" kind="relationship" relationship="viewControllers" id="mxZ-F6-UQ5"/>
                         <segue destination="LgD-YK-wJ6" kind="relationship" relationship="viewControllers" id="YCv-WI-WmS"/>
                         <segue destination="st0-fK-hbJ" kind="relationship" relationship="viewControllers" id="ap0-mX-17U"/>
@@ -136,7 +139,7 @@
         <scene sceneID="D3K-1X-RZY">
             <objects>
                 <navigationController storyboardIdentifier="NavigationToPosting" automaticallyAdjustsScrollViewInsets="NO" id="t0L-2b-oI9" customClass="NavigationToPostingViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="大喜利する" id="9wD-GW-GVS"/>
+                    <tabBarItem key="tabBarItem" title="大喜利する" image="chuckle" selectedImage="chuckle" id="9wD-GW-GVS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sgU-M4-mgL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -236,7 +239,7 @@
         <scene sceneID="Cjt-CU-DTP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y1w-dL-pxD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ランキング" id="Tg9-Pm-xTX"/>
+                    <tabBarItem key="tabBarItem" title="ランキング" image="rankingTab" id="Tg9-Pm-xTX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wOa-yw-0qN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -256,7 +259,7 @@
         <scene sceneID="JlU-UD-age">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LgD-YK-wJ6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="通知" id="xlJ-d5-qfC"/>
+                    <tabBarItem key="tabBarItem" title="通知" image="alermTab" id="xlJ-d5-qfC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GTz-fp-F3h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -276,7 +279,7 @@
         <scene sceneID="yYZ-aa-r3r">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="st0-fK-hbJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="マイページ" id="UYc-5H-HdD"/>
+                    <tabBarItem key="tabBarItem" title="マイページ" image="myPageTab" id="UYc-5H-HdD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y5i-6D-xsh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -293,4 +296,11 @@
             <point key="canvasLocation" x="-802" y="2248"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="alermTab" width="54" height="96"/>
+        <image name="chuckle" width="58" height="96"/>
+        <image name="myPageTab" width="34" height="34"/>
+        <image name="newTab" width="54" height="96"/>
+        <image name="rankingTab" width="61" height="96"/>
+    </resources>
 </document>

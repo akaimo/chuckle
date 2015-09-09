@@ -23,10 +23,14 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         notificationTableView.dataSource = self
         notificationTableView.delegate = self
         notificationTableView.allowsSelection = false
         self.automaticallyAdjustsScrollViewInsets = false;
+        
+        let titleImageView = UIImageView(image: UIImage(named: "alermNav"))
+        self.navigationItem.titleView = titleImageView
         
         notificationTableView.registerNib(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
         
