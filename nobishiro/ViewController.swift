@@ -75,7 +75,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func loadFavorites() {
-        Alamofire.request(.GET, "http://yuji.website:3001/api/favorite")
+        Alamofire.request(.GET, "http://yuji.website:3001/api/favorite?user_id=\(UserDefaults.getUserID())")
             .responseJSON { request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some(let json), .None):
@@ -87,7 +87,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 default:
                     println("both json and error are nil!")
                 }
-                self.refreshControl.endRefreshing()
         }
     }
 
