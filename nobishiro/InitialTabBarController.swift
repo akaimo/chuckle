@@ -14,16 +14,26 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        // Do any additional setup after loading the view.
+  
         let containers = createViewContainers()
         createCustomIcons(containers)
         
-        let normalAttributes: [NSObject: AnyObject] = [NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.65)]
-        UITabBarItem.appearance().setTitleTextAttributes(normalAttributes, forState: .Normal)
-        let selectedAttributes: [NSObject: AnyObject] = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        UITabBarItem.appearance().setTitleTextAttributes(selectedAttributes, forState: .Selected)
-        self.tabBar.tintColor = UIColor.whiteColor()
-    //    self.tabBar.selectedImageTintColor = UIColor(red: 251/255.0, green: 212/255.0, blue: 146/255.0, alpha: 1.0)
+        let items = tabBar.items as! [RAMAnimatedTabBarItem]
+        
+        for (index,item) in enumerate(items){
+            if index == 0 {
+                let animationItem : RAMAnimatedTabBarItem = items[index]
+                let icon = iconsView[index].icon
+                let textLabel = iconsView[index].textLabel
+                animationItem.playAnimation(icon, textLabel: textLabel)
+            }else{
+                let deselelectIcon = iconsView[index].icon
+                let deselelectTextLabel = iconsView[index].textLabel
+                let deselectItem = items[index]
+                deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
+            }
+            
+        }
         
     }
 
@@ -65,6 +75,7 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                     createConstraints(icon, container: container, size: itemImage.size, yOffset: -5)
                 }
                 
+                                
                 container.addSubview(textLabel)
                 
                 if let tabBarItem = tabBar.items {
@@ -81,6 +92,8 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                 
                 item.image = nil
                 item.title = ""
+                
+                
             }
         }
     }

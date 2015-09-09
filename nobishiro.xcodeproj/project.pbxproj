@@ -64,6 +64,8 @@
 		BA9C4D7B1BA096A300CA76BB /* RAMFumeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D741BA096A300CA76BB /* RAMFumeAnimation.swift */; };
 		BA9C4D7C1BA096A300CA76BB /* RAMRotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D761BA096A300CA76BB /* RAMRotationAnimation.swift */; };
 		BA9C4D7D1BA096A300CA76BB /* RAMTransitionItemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D781BA096A300CA76BB /* RAMTransitionItemAnimation.swift */; };
+		BA9C4D7F1BA0A2E500CA76BB /* RAMChuckleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D7E1BA0A2E500CA76BB /* RAMChuckleAnimation.swift */; };
+		BA9C4D811BA0AADB00CA76BB /* RAMChuckleCenterAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D801BA0AADB00CA76BB /* RAMChuckleCenterAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +153,8 @@
 		BA9C4D741BA096A300CA76BB /* RAMFumeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFumeAnimation.swift; sourceTree = "<group>"; };
 		BA9C4D761BA096A300CA76BB /* RAMRotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMRotationAnimation.swift; sourceTree = "<group>"; };
 		BA9C4D781BA096A300CA76BB /* RAMTransitionItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMTransitionItemAnimation.swift; sourceTree = "<group>"; };
+		BA9C4D7E1BA0A2E500CA76BB /* RAMChuckleAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMChuckleAnimation.swift; sourceTree = "<group>"; };
+		BA9C4D801BA0AADB00CA76BB /* RAMChuckleCenterAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMChuckleCenterAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +311,8 @@
 				BA9C4D771BA096A300CA76BB /* TransitionAniamtions */,
 				BA9C4D6A1BA0968800CA76BB /* RAMAnimatedTabBarController.swift */,
 				BA9C4D6B1BA0968800CA76BB /* RAMItemAnimationProtocol.swift */,
+				BA9C4D7E1BA0A2E500CA76BB /* RAMChuckleAnimation.swift */,
+				BA9C4D801BA0AADB00CA76BB /* RAMChuckleCenterAnimation.swift */,
 			);
 			name = RAMTabBar;
 			sourceTree = "<group>";
@@ -471,6 +477,7 @@
 				BA428AFD1B9F31C300CE73F0 /* Notification.swift in Sources */,
 				BA9C4D791BA096A300CA76BB /* RAMBounceAnimation.swift in Sources */,
 				B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */,
+				BA9C4D811BA0AADB00CA76BB /* RAMChuckleCenterAnimation.swift in Sources */,
 				992888331BA0377700D5DC09 /* PreviewViewController.swift in Sources */,
 				B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */,
 				B503C7501B9D8E7C008C139A /* NavigationToPostingViewController.swift in Sources */,
@@ -485,6 +492,7 @@
 				B5105AD91B994F2A00BD9ECD /* WorksData.swift in Sources */,
 				99593B491B983C82000C51C1 /* AppDelegate.swift in Sources */,
 				99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */,
+				BA9C4D7F1BA0A2E500CA76BB /* RAMChuckleAnimation.swift in Sources */,
 				B566B1CE1B9FBC3E002612A6 /* RankingViewController.swift in Sources */,
 				BA428AFF1B9F332A00CE73F0 /* NotificationsData.swift in Sources */,
 				B57B35011B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift in Sources */,
