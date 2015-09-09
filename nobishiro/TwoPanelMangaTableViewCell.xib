@@ -149,7 +149,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="1" green="0.85490196078431369" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="MsB-WP-ZKa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Riq-as-Nws"/>
                     <constraint firstItem="MsB-WP-ZKa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tjd-ow-4dN"/>
@@ -157,6 +157,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="MsB-WP-ZKa" secondAttribute="trailing" id="zYG-oj-8xc"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="favoriteCount" destination="hxv-wF-Sby" id="oVo-TY-bQD"/>
                 <outlet property="firstPanel" destination="XQL-eq-iwB" id="6MI-Cz-jda"/>
