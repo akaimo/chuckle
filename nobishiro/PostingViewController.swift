@@ -22,6 +22,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     private var focusNum: Int? = nil
     private var postTitle: String = ""
     private var animat = false
+    private var collectionOriginY: CGFloat = 0.0
     private var materials: [Material] = [] {
         didSet {
             postingCollectionView.postCollectionView.reloadData()
@@ -44,6 +45,8 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         self.view.addSubview(postingCollectionView)
         
         postBtn.enabled = false
+        
+        collectionOriginY = self.postingCollectionView.frame.origin.y - self.postingCollectionView.frame.height
         
         loadMaterials()
     }
@@ -154,7 +157,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     func openCollection() {
         self.postingTableViewHeight.constant = 230
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
+            self.postingCollectionView.frame.origin.y = self.collectionOriginY
             self.postingTableView.layoutIfNeeded()
         })
         animat = true
