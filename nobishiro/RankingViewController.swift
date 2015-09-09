@@ -229,7 +229,8 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         func postToFavorite(sender: UIButton) {
-            println(sender.tag)
+            sender.enabled = false
+            sender.setImage(UIImage(named: "starred"), forState: .Normal)
             Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some, .None):

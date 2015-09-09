@@ -230,6 +230,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func postToFavorite(sender: UIButton) {
+        sender.enabled = false
+        sender.setImage(UIImage(named: "starred"), forState: .Normal)
         //未ふぁぼなのでふぁぼする
         if !contains(myFavorites, sender.tag) {
             Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in

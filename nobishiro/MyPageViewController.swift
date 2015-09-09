@@ -123,19 +123,9 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
             cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
             cell.postToLine.tag = works[indexPath.row].workId
             cell.postToLine.addTarget(self, action: "shareWithLINE:", forControlEvents: .TouchUpInside)
-            cell.postToFavorite.tag = works[indexPath.row].workId
-            cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
-            if works[indexPath.row].userId == UserDefaults.getUserID() {
-                cell.postToFavorite.enabled = false
-                cell.postToFavorite.setImage(nil, forState: .Normal)
-            } else if contains(myFavorites, works[indexPath.row].workId) {
-                cell.postToFavorite.enabled = false
-                cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
-            } else {
-                cell.postToFavorite.enabled = true
-                cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
-            }
+            cell.postToFavorite.enabled = false
+            cell.postToFavorite.setImage(nil, forState: .Normal)
 
             if works[indexPath.row].favoriteCount > 1000 {
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
@@ -162,19 +152,9 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
             cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
             cell.postToLine.tag = works[indexPath.row].workId
             cell.postToLine.addTarget(self, action: "shareWithLINE:", forControlEvents: .TouchUpInside)
-            cell.postToFavorite.tag = works[indexPath.row].workId
-            cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
-            if works[indexPath.row].userId == UserDefaults.getUserID() {
-                cell.postToFavorite.enabled = false
-                cell.postToFavorite.setImage(nil, forState: .Normal)
-            } else if contains(myFavorites, works[indexPath.row].workId) {
-                cell.postToFavorite.enabled = false
-                cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
-            } else {
-                cell.postToFavorite.enabled = true
-                cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
-            }
+            cell.postToFavorite.enabled = false
+            cell.postToFavorite.setImage(nil, forState: .Normal)
 
             if works[indexPath.row].favoriteCount > 1000 {
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
@@ -202,19 +182,9 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
             cell.postToFacebook.addTarget(self, action: "shareWithFacebook:", forControlEvents: .TouchUpInside)
             cell.postToLine.tag = works[indexPath.row].workId
             cell.postToLine.addTarget(self, action: "shareWithLINE:", forControlEvents: .TouchUpInside)
-            cell.postToFavorite.tag = works[indexPath.row].workId
-            cell.postToFavorite.addTarget(self, action: "postToFavorite:", forControlEvents: .TouchUpInside)
 
-            if works[indexPath.row].userId == UserDefaults.getUserID() {
-                cell.postToFavorite.enabled = false
-                cell.postToFavorite.setImage(nil, forState: .Normal)
-            } else if contains(myFavorites, works[indexPath.row].workId) {
-                cell.postToFavorite.enabled = false
-                cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
-            } else {
-                cell.postToFavorite.enabled = true
-                cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
-            }
+            cell.postToFavorite.enabled = false
+            cell.postToFavorite.setImage(nil, forState: .Normal)
 
             if works[indexPath.row].favoriteCount > 1000 {
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
@@ -227,19 +197,6 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
 
         default:
             return UITableViewCell()
-        }
-    }
-
-    func postToFavorite(sender: UIButton) {
-        println(sender.tag)
-        Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
-            switch (JSON, error) {
-            case (.Some, .None):
-                self.loadWorks()
-                self.loadFavorites()
-            default:
-                println("error")
-            }
         }
     }
 
