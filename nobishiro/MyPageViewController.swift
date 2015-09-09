@@ -57,7 +57,6 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
             .responseJSON { request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some(let json), .None):
-                    println(json)
                     if let worksData: WorksData = decode(json) {
                         self.works = worksData.data
                     }

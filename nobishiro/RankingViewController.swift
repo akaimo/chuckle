@@ -55,10 +55,8 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                 .responseJSON { request, response, JSON, error in
                     switch (JSON, error) {
                     case (.Some(let json), .None):
-                        println(json)
                         if let rankingData: RankingData = decode(json) {
                             self.works = rankingData.data
-                            println(rankingData.status)
                         }
                     case (.None, .Some):
                         println(error)

@@ -59,11 +59,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     if let worksData: WorksData = decode(json) {
                         self.works = worksData.data
                         self.nextWorkAPI = worksData.next
-                        println("----------")
-                        for work in self.works {
-                            print("\(work.workId), ")
-                        }
-                        println("----------")
                     }
                 case (.None, .Some):
                     println(error)
@@ -278,11 +273,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                             if let worksData: WorksData = decode(json) {
                                 self.works += worksData.data
                                 self.nextWorkAPI = worksData.next
-                                println("----------")
-                                for work in self.works {
-                                    print("\(work.workId), ")
-                                }
-                                println("----------")
                             }
                         case (.None, .Some):
                             println(error)
