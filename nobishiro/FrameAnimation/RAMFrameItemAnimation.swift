@@ -37,7 +37,7 @@ class RAMFrameItemAnimation: RAMItemAnimation {
         let path = NSBundle.mainBundle().pathForResource(imagesPath, ofType:"plist")
 
         let dict : NSDictionary = NSDictionary(contentsOfFile: path!)!
-
+       
         let animationImagesName = dict["images"] as! Array<String>
         createImagesArray(animationImagesName)
 

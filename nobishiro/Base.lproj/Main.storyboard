@@ -147,7 +147,7 @@
         <scene sceneID="jt2-D6-KNl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gcd-5q-F1c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="新着" image="newTab" id="XbH-xj-5Hu"/>
+                    <tabBarItem key="tabBarItem" title="新着" image="newTab" id="XbH-xj-5Hu" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tjl-UQ-oI2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -160,6 +160,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ha-mE-UPX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="lb9-IC-JNb" customClass="RAMBounceAnimation" customModule="nobishiro" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="634" y="716"/>
         </scene>
@@ -192,7 +193,7 @@
         <scene sceneID="D3K-1X-RZY">
             <objects>
                 <navigationController storyboardIdentifier="NavigationToPosting" automaticallyAdjustsScrollViewInsets="NO" id="t0L-2b-oI9" customClass="NavigationToPostingViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="大喜利する" image="chuckle" selectedImage="chuckle" id="9wD-GW-GVS">
+                    <tabBarItem key="tabBarItem" title="大喜利する" image="chuckle" selectedImage="chuckle" id="9wD-GW-GVS" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -208,6 +209,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2F1-0P-szn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="jte-DK-KiE" customClass="RAMFlipTopTransitionItemAniamtions" customModule="nobishiro" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="634" y="1411"/>
         </scene>
@@ -308,7 +310,7 @@
         <scene sceneID="Cjt-CU-DTP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y1w-dL-pxD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ランキング" image="rankingTab" id="Tg9-Pm-xTX"/>
+                    <tabBarItem key="tabBarItem" title="ランキング" image="rankingTab" id="Tg9-Pm-xTX" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wOa-yw-0qN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -321,6 +323,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btZ-Ic-gX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="0zr-Xq-t35" customClass="RAMFlipLeftTransitionItemAniamtions" customModule="nobishiro" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="448" y="2248"/>
         </scene>
@@ -328,7 +331,7 @@
         <scene sceneID="JlU-UD-age">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LgD-YK-wJ6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="通知" image="alermTab" id="xlJ-d5-qfC"/>
+                    <tabBarItem key="tabBarItem" title="通知" image="alermTab" id="xlJ-d5-qfC" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GTz-fp-F3h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -341,6 +344,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qB7-BF-ZTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="hma-bs-3eK" customClass="RAMFumeAnimation" customModule="nobishiro" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-180" y="2248"/>
         </scene>
@@ -348,7 +352,7 @@
         <scene sceneID="yYZ-aa-r3r">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="st0-fK-hbJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="マイページ" image="myPageTab" id="UYc-5H-HdD"/>
+                    <tabBarItem key="tabBarItem" title="マイページ" image="myPageTab" id="UYc-5H-HdD" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y5i-6D-xsh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -361,6 +365,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yb4-8I-7cL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="OrO-bB-zm7" customClass="RAMFlipTopTransitionItemAniamtions" customModule="nobishiro" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-802" y="2248"/>
         </scene>
