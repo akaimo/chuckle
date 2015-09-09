@@ -29,6 +29,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     let identifiers = ["TwoPanelMangaTableViewCell", "ThreePanelMangaTableViewCell", "FourPanelMangaTableViewCell"]
 
+    private var nextWorkAPI: String? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
         timelineTableView.dataSource = self
@@ -53,6 +55,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 case (.Some(let json), .None):
                     if let worksData: WorksData = decode(json) {
                         self.works = worksData.data
+                        self.nextWorkAPI = worksData.next
+                        println("----------")
+                        for work in self.works {
+                            print("\(work.workId), ")
+                        }
+                        println("----------")
                     }
                 case (.None, .Some):
                     println(error)
@@ -239,21 +247,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if self.timelineTableView.contentOffset.y >= self.timelineTableView.contentSize.height - self.timelineTableView.bounds.size.height {
-            println(works.endIndex)/*
-            let lastWorkId = works[works.endIndex].workId
-            Alamofire.request(.GET, "http://yuji.website:3001/api/work?since_id=\(lastWorkId+1)")
-                .responseJSON { request, response, JSON, error in
-                    switch (JSON, error) {
-                    case (.Some(let json), .None):
-                        if let worksData: WorksData = decode(json) {
-                            self.works += worksData.data
+
+            if let nextWorkAPI = nextWorkAPI where count(nextWorkAPI) > 0 {
+                self.nextWorkAPI = nil
+                Alamofire.request(.GET, "http://yuji.website:3001/\(nextWorkAPI)")
+                    .responseJSON { request, response, JSON, error in
+                        switch (JSON, error) {
+                        case (.Some(let json), .None):
+                            if let worksData: WorksData = decode(json) {
+                                self.works += worksData.data
+                                self.nextWorkAPI = worksData.next
+                                println("----------")
+                                for work in self.works {
+                                    print("\(work.workId), ")
+                                }
+                                println("----------")
+                            }
+                        case (.None, .Some):
+                            println(error)
+                        default:
+                            println("both json and error are nil!")
                         }
-                    case (.None, .Some):
-                        println(error)
-                    default:
-                        println("both json and error are nil!")
-                    }
-            }*/
+                }
+            }
         }
     }
 }
