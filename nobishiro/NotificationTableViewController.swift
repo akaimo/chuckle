@@ -87,7 +87,7 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
             userID = ud.objectForKey("userID")
         }
         
-        Alamofire.request(.GET, "http://yuji.website:3001/api/favorite/\(userID)")
+        Alamofire.request(.GET, "http://yuji.website:3001/api/favorite?creator_id=\(userID)")
         .responseJSON { request, response, JSON, error in
             println(request)
             println(response)
