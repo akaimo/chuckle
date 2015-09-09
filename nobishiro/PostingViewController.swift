@@ -97,21 +97,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
                 cell.postingImageView.layer.borderWidth = 0
             }
             
-            // TODO: 削除ボタンを追加
-//            let btn = UIButton()
-//            let img = UIImage(named: "DeleteImage")
-//            btn.setImage(img, forState: .Normal)
-//            btn.frame = CGRectMake(120, 5, 25, 25)
-//            btn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
-//            btn.tag = indexPath.row - 1
-//            cell.postingImageView.addSubview(btn)
-//            
-//            if imgArray[indexPath.row - 1] == nil {
-//                btn.hidden = true
-//            } else {
-//                btn.hidden = false
-//            }
-            
             cell.postingImageView.tag = indexPath.row - 1
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             

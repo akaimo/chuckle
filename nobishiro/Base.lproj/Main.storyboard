@@ -74,6 +74,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="投稿する" id="Zda-TG-XmA">
+                            <color key="tintColor" red="0.96862745098039216" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="tapPostingBtn:" destination="oMM-xB-o2j" id="rwk-qZ-7BX"/>
                             </connections>
