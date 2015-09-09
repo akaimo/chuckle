@@ -244,7 +244,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     
-    // MARK: - UITextFieldDelegate
+//    // MARK: - UITextFieldDelegate
 //    func textFieldShouldReturn(textField: UITextField) -> Bool {
 //        self.postTitle = textField.text
 //        postCheck()
@@ -309,6 +309,8 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 //        self.dismissViewControllerAnimated(true, completion: nil)
         
         let previewVC: PreviewViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PreviewVC") as! PreviewViewController
+        previewVC.imgArray = postMaterial
+        previewVC.materials = self.materials
         self.navigationController?.pushViewController(previewVC, animated: true)
     }
 

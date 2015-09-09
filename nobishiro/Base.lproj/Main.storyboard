@@ -102,9 +102,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Cw-gK-dcp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Cw-gK-dcp">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fme-uy-2Em" id="hCZ-Ob-kHi"/>
+                                    <outlet property="delegate" destination="fme-uy-2Em" id="0eD-Eb-wBT"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -115,9 +119,17 @@
                             <constraint firstItem="2Cw-gK-dcp" firstAttribute="bottom" secondItem="Lxx-gs-KwF" secondAttribute="top" id="vS6-ed-T75"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="GqA-BI-IDY"/>
+                    <navigationItem key="navigationItem" id="GqA-BI-IDY">
+                        <barButtonItem key="rightBarButtonItem" title="投稿する" id="o10-nA-Q1Q">
+                            <color key="tintColor" red="0.96862745098039216" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="tapPostBtn:" destination="fme-uy-2Em" id="ND5-x5-jAb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="postBtn" destination="o10-nA-Q1Q" id="ne4-ch-ZLi"/>
                         <outlet property="postTableView" destination="2Cw-gK-dcp" id="vac-DL-qJB"/>
                     </connections>
                 </viewController>
