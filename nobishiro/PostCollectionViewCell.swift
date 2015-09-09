@@ -15,5 +15,9 @@ class PostCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func prepareForReuse() {
+        stampImageView.image = nil
+    }
 
 }

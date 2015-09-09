@@ -26,9 +26,4 @@ class PostingTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         postingImageView.image = nil
     }
-    
-//    @IBAction func tapDeleteBtn(sender: AnyObject) {
-//        println("delete")
-//        self.deleteBtn.hidden = true
-//    }
 }
