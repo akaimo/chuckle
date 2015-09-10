@@ -27,6 +27,7 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                 rankingTableView.reloadData()
             }
         }
+        private var tempFavorites: [Int] = []
 
         let identifiers = ["TwoPanelMangaTableViewCell", "ThreePanelMangaTableViewCell", "FourPanelMangaTableViewCell"]
 
@@ -56,6 +57,7 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                     switch (JSON, error) {
                     case (.Some(let json), .None):
                         if let rankingData: RankingData = decode(json) {
+                            self.tempFavorites = []
                             self.works = rankingData.data
                         }
                     case (.None, .Some):
@@ -127,9 +129,10 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                 if works[indexPath.row].userId == UserDefaults.getUserID() {
                     cell.postToFavorite.enabled = false
                     cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
-                } else if contains(myFavorites, works[indexPath.row].workId) {
-                    cell.postToFavorite.enabled = false
-                    cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
+                } else if contains(myFavorites, works[indexPath.row].workId)
+                    || contains(tempFavorites, works[indexPath.row].workId) {
+                        cell.postToFavorite.enabled = false
+                        cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
                 } else {
                     cell.postToFavorite.enabled = true
                     cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
@@ -139,7 +142,11 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                     let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                     cell.favoriteCount.text = String(format: "%.1fK", double)
                 } else {
-                    cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+                    var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                    if contains(tempFavorites, works[indexPath.row].workId) {
+                        numberOfFavorites++
+                    }
+                    cell.favoriteCount.text = String(numberOfFavorites)
                 }
 
                 return cell
@@ -166,9 +173,10 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                 if works[indexPath.row].userId == UserDefaults.getUserID() {
                     cell.postToFavorite.enabled = false
                     cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
-                } else if contains(myFavorites, works[indexPath.row].workId) {
-                    cell.postToFavorite.enabled = false
-                    cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
+                } else if contains(myFavorites, works[indexPath.row].workId)
+                    || contains(tempFavorites, works[indexPath.row].workId) {
+                        cell.postToFavorite.enabled = false
+                        cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
                 } else {
                     cell.postToFavorite.enabled = true
                     cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
@@ -178,7 +186,11 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                     let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                     cell.favoriteCount.text = String(format: "%.1fK", double)
                 } else {
-                    cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+                    var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                    if contains(tempFavorites, works[indexPath.row].workId) {
+                        numberOfFavorites++
+                    }
+                    cell.favoriteCount.text = String(numberOfFavorites)
                 }
 
                 return cell
@@ -206,9 +218,10 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                 if works[indexPath.row].userId == UserDefaults.getUserID() {
                     cell.postToFavorite.enabled = false
                     cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
-                } else if contains(myFavorites, works[indexPath.row].workId) {
-                    cell.postToFavorite.enabled = false
-                    cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
+                } else if contains(myFavorites, works[indexPath.row].workId)
+                    || contains(tempFavorites, works[indexPath.row].workId) {
+                        cell.postToFavorite.enabled = false
+                        cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
                 } else {
                     cell.postToFavorite.enabled = true
                     cell.postToFavorite.setImage(UIImage(named: "star"), forState: .Normal)
@@ -218,7 +231,11 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                     let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                     cell.favoriteCount.text = String(format: "%.1fK", double)
                 } else {
-                    cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+                    var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                    if contains(tempFavorites, works[indexPath.row].workId) {
+                        numberOfFavorites++
+                    }
+                    cell.favoriteCount.text = String(numberOfFavorites)
                 }
 
                 return cell
@@ -233,6 +250,8 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         sender.setImage(UIImage(named: "starred"), forState: .Normal)
         //未ふぁぼなのでふぁぼする
         if !contains(myFavorites, sender.tag) {
+            tempFavorites.append(sender.tag)
+            rankingTableView.reloadData()
             Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?user_id=\(UserDefaults.getUserID())&work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some(let json), .None):
