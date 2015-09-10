@@ -10,6 +10,7 @@ import UIKit
 
 class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
     var iconsView: [(icon: UIImageView, textLabel: UILabel)] = Array()
+    var currentIndexBefore = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -231,6 +232,10 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                     currentViewController.presentViewController(nextViewController, animated: true, completion: nil)
                 }
             }else{
+                currentIndexBefore = currentIndex
+                println("currentIndexBefore in tapGes")
+                println(currentIndexBefore)
+                
                 if items[currentIndex].tag == 4 {
                     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
                     appDel.resetBadgeValue()
@@ -253,23 +258,23 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-    func changeTab(showtabIndex:Int) {
-        let items = tabBar.items as! [RAMAnimatedTabBarItem]
-        
-        let deselelectIcon = iconsView[selectedIndex].icon
-        let deselelectTextLabel = iconsView[selectedIndex].textLabel
-        let deselectItem = items[selectedIndex]
-        deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
-        
-        
-        let animationItemNew : RAMAnimatedTabBarItem = items[selectedIndex]
-        let iconNew = iconsView[selectedIndex].icon
-        let textLabelNew = iconsView[selectedIndex].textLabel
-        animationItemNew.playAnimation(iconNew, textLabel: textLabelNew)
-
-        selectedIndex = showtabIndex
-
-    }
+//    func changeTab(showtabIndex:Int) {
+//        let items = tabBar.items as! [RAMAnimatedTabBarItem]
+//        
+//        let deselelectIcon = iconsView[selectedIndex].icon
+//        let deselelectTextLabel = iconsView[selectedIndex].textLabel
+//        let deselectItem = items[selectedIndex]
+//        deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
+//        
+//        
+//        let animationItemNew : RAMAnimatedTabBarItem = items[selectedIndex]
+//        let iconNew = iconsView[selectedIndex].icon
+//        let textLabelNew = iconsView[selectedIndex].textLabel
+//        animationItemNew.playAnimation(iconNew, textLabel: textLabelNew)
+//
+//        selectedIndex = showtabIndex
+//
+//    }
     
     func setSelectIndex(#from:Int,to:Int) {
         selectedIndex = to
@@ -279,9 +284,12 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     func showNew(center: NSNotificationCenter) {
-        selectedIndex = 1
 
+        println("currentIndexBefore")
+        println(currentIndexBefore)
+        setSelectIndex(from: currentIndexBefore,to: 1)
         let notification = NSNotification(name: "ReloadTimeline", object: nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)
+        
     }
 }
