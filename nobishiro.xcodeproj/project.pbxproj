@@ -53,6 +53,7 @@
 		B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888C91B9D2D7300D4972E /* Favorite.swift */; };
 		B58888CC1B9D2DAF00D4972E /* FavoritesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888CB1B9D2DAF00D4972E /* FavoritesData.swift */; };
 		B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888CD1B9D367300D4972E /* InitialTabBarController.swift */; };
+		B58C26891BA1826100A38296 /* AutoReloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C26881BA1826100A38296 /* AutoReloadDelegate.swift */; };
 		B5BB5E521B9FFC6500EB2680 /* WorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5E511B9FFC6500EB2680 /* WorkCell.swift */; };
 		B5D314E41BA06D9900108C89 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D314E31BA06D9900108C89 /* UserDefaults.swift */; };
 		BA428AFA1B9F2BF200CE73F0 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428AF81B9F2BF200CE73F0 /* NotificationTableViewController.swift */; };
@@ -146,6 +147,7 @@
 		B58888C91B9D2D7300D4972E /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		B58888CB1B9D2DAF00D4972E /* FavoritesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesData.swift; sourceTree = "<group>"; };
 		B58888CD1B9D367300D4972E /* InitialTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialTabBarController.swift; sourceTree = "<group>"; };
+		B58C26881BA1826100A38296 /* AutoReloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoReloadDelegate.swift; sourceTree = "<group>"; };
 		B5BB5E511B9FFC6500EB2680 /* WorkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkCell.swift; sourceTree = "<group>"; };
 		B5D314E31BA06D9900108C89 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		BA428AF81B9F2BF200CE73F0 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				B56E16A61B9FC40C00B18DCB /* MyPageViewController.swift */,
 				B5D314E31BA06D9900108C89 /* UserDefaults.swift */,
 				BA9C4D6E1BA0968E00CA76BB /* RAMTabBar */,
+				B58C26881BA1826100A38296 /* AutoReloadDelegate.swift */,
 			);
 			path = nobishiro;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				B5BB5E521B9FFC6500EB2680 /* WorkCell.swift in Sources */,
 				BA428AFA1B9F2BF200CE73F0 /* NotificationTableViewController.swift in Sources */,
 				99BFC7261BA14B7100C08DC4 /* BottomTableViewCell.swift in Sources */,
+				B58C26891BA1826100A38296 /* AutoReloadDelegate.swift in Sources */,
 				B56CA0A91B9D561800AFA16E /* RankingData.swift in Sources */,
 				BA9C4D7B1BA096A300CA76BB /* RAMFumeAnimation.swift in Sources */,
 				B56E16A71B9FC40C00B18DCB /* MyPageViewController.swift in Sources */,
