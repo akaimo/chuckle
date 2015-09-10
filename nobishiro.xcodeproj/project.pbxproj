@@ -23,6 +23,8 @@
 		99593C191B9DCA55000C51C1 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99593C171B9DCA55000C51C1 /* PostCollectionViewCell.swift */; };
 		99593C1A1B9DCA55000C51C1 /* PostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593C181B9DCA55000C51C1 /* PostCollectionViewCell.xib */; };
 		99593C1C1B9DCCE3000C51C1 /* PostCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593C1B1B9DCCE3000C51C1 /* PostCollectionView.xib */; };
+		99BFC7221BA137AF00C08DC4 /* TopPostingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BFC7201BA137AF00C08DC4 /* TopPostingTableViewCell.swift */; };
+		99BFC7231BA137AF00C08DC4 /* TopPostingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BFC7211BA137AF00C08DC4 /* TopPostingTableViewCell.xib */; };
 		B50304B41B9EE99D008D46C0 /* ShareImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50304B31B9EE99D008D46C0 /* ShareImageData.swift */; };
 		B50304B61B9EEA16008D46C0 /* SNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50304B51B9EEA16008D46C0 /* SNS.swift */; };
 		B503C7501B9D8E7C008C139A /* NavigationToPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C74F1B9D8E7C008C139A /* NavigationToPostingViewController.swift */; };
@@ -106,6 +108,8 @@
 		99593C171B9DCA55000C51C1 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		99593C181B9DCA55000C51C1 /* PostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCollectionViewCell.xib; sourceTree = "<group>"; };
 		99593C1B1B9DCCE3000C51C1 /* PostCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCollectionView.xib; sourceTree = "<group>"; };
+		99BFC7201BA137AF00C08DC4 /* TopPostingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopPostingTableViewCell.swift; sourceTree = "<group>"; };
+		99BFC7211BA137AF00C08DC4 /* TopPostingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopPostingTableViewCell.xib; sourceTree = "<group>"; };
 		B50304B31B9EE99D008D46C0 /* ShareImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareImageData.swift; sourceTree = "<group>"; };
 		B50304B51B9EEA16008D46C0 /* SNS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNS.swift; sourceTree = "<group>"; };
 		B503C74F1B9D8E7C008C139A /* NavigationToPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationToPostingViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 		99593BA41B997B76000C51C1 /* PostingCells */ = {
 			isa = PBXGroup;
 			children = (
+				99BFC7201BA137AF00C08DC4 /* TopPostingTableViewCell.swift */,
+				99BFC7211BA137AF00C08DC4 /* TopPostingTableViewCell.xib */,
 				99593B9A1B99474A000C51C1 /* PostingTableViewCell.swift */,
 				99593B9B1B99474A000C51C1 /* PostingTableViewCell.xib */,
 				99593BA01B997AA4000C51C1 /* PostingTitleCustomCell.swift */,
@@ -332,7 +338,7 @@
 				TargetAttributes = {
 					99593B421B983C82000C51C1 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = MK5V3GM3DD;
+						DevelopmentTeam = V234C4FQ67;
 					};
 					99593B571B983C82000C51C1 = {
 						CreatedOnToolsVersion = 6.4;
@@ -369,6 +375,7 @@
 				99593B4E1B983C82000C51C1 /* Main.storyboard in Resources */,
 				99593B531B983C82000C51C1 /* LaunchScreen.xib in Resources */,
 				99593C1A1B9DCA55000C51C1 /* PostCollectionViewCell.xib in Resources */,
+				99BFC7231BA137AF00C08DC4 /* TopPostingTableViewCell.xib in Resources */,
 				99593BA31B997AA4000C51C1 /* PostingTitleCustomCell.xib in Resources */,
 				BA428AFB1B9F2BF200CE73F0 /* NotificationTableViewController.xib in Resources */,
 				99593C1C1B9DCCE3000C51C1 /* PostCollectionView.xib in Resources */,
@@ -423,6 +430,7 @@
 				B5105AD71B9941A200BD9ECD /* Work.swift in Sources */,
 				B57B35051B985C9300C156A2 /* FourPanelMangaTableViewCell.swift in Sources */,
 				99593B9C1B99474A000C51C1 /* PostingTableViewCell.swift in Sources */,
+				99BFC7221BA137AF00C08DC4 /* TopPostingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

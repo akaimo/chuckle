@@ -14,6 +14,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAq-MY-NBU">
+                        <rect key="frame" x="15" y="0.0" width="290" height="159"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DO3-ZD-FvD">
                         <rect key="frame" x="85" y="5" width="150" height="150"/>
                         <constraints>
@@ -34,6 +38,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="MnY-D0-l09" firstAttribute="leading" secondItem="DO3-ZD-FvD" secondAttribute="trailing" constant="-35" id="EH3-Cs-ruQ"/>
+                    <constraint firstItem="jAq-MY-NBU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="V4N-xW-9UY"/>
+                    <constraint firstItem="jAq-MY-NBU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Vy3-Ji-UdH"/>
+                    <constraint firstAttribute="trailing" secondItem="jAq-MY-NBU" secondAttribute="trailing" constant="15" id="hrt-qa-E9o"/>
+                    <constraint firstAttribute="bottom" secondItem="jAq-MY-NBU" secondAttribute="bottom" id="jp2-fR-tS7"/>
                     <constraint firstItem="MnY-D0-l09" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="oM4-Tx-TmU"/>
                     <constraint firstAttribute="centerY" secondItem="DO3-ZD-FvD" secondAttribute="centerY" id="t6e-0D-ESK"/>
                     <constraint firstAttribute="centerX" secondItem="DO3-ZD-FvD" secondAttribute="centerX" id="ut6-tt-Aw6"/>
