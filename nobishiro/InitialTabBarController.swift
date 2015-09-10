@@ -58,6 +58,18 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                 let container : UIView = containers["container\(itemsCount-index)"] as! UIView
                 container.tag = index
                 
+                if index == 2{
+                    println("中央")
+                    let backgroundImage = UIImage(named: "Center")
+                    let iconBg = UIImageView(image: backgroundImage)
+                    iconBg.setTranslatesAutoresizingMaskIntoConstraints(false)
+                    container.addSubview(iconBg)
+                    createConstraints(iconBg, container: container, size: backgroundImage!.size, yOffset: -5)
+                    
+                }else{
+                    println("ほか")
+                }
+                
                 let icon = UIImageView(image: item.image)
                 icon.setTranslatesAutoresizingMaskIntoConstraints(false)
                 icon.tintColor = UIColor.clearColor()
