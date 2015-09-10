@@ -12,14 +12,20 @@ import Himotoki
 import Social
 import Alamofire
 
-class MyPageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class MyPageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AutoReloadDelegate  {
 
+    @IBOutlet weak var mesImageView: UIImageView!
     @IBOutlet weak var myWorksTableView: UITableView!
 
     private let refreshControl = UIRefreshControl()
     private var works: [Work] = [] {
         didSet {
             myWorksTableView.reloadData()
+            if works.count > 0{
+                mesImageView.hidden = true
+            }else{
+                mesImageView.hidden = false
+            }
         }
     }
     private var myFavorites: [Int] = [] {
@@ -219,6 +225,11 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     func reloadTimeline(center: NSNotificationCenter) {
+        loadWorks()
+    }
+
+    func autoReload() {
+        println("MyPageController: autoload")
         loadWorks()
     }
 }

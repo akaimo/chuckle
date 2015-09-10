@@ -12,7 +12,7 @@ import Himotoki
 import Social
 import Alamofire
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AutoReloadDelegate {
 
     @IBOutlet private weak var timelineTableView: UITableView!
     private let refreshControl = UIRefreshControl()
@@ -160,7 +160,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                 cell.favoriteCount.text = String(format: "%.1fK", double)
             } else {
-                var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                var numberOfFavorites = works[indexPath.row].favoriteCount
                 if contains(tempFavorites, works[indexPath.row].workId) {
                     numberOfFavorites++
                 }
@@ -204,7 +204,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                 cell.favoriteCount.text = String(format: "%.1fK", double)
             } else {
-                var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                var numberOfFavorites = works[indexPath.row].favoriteCount
                 if contains(tempFavorites, works[indexPath.row].workId) {
                     numberOfFavorites++
                 }
@@ -249,7 +249,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                 cell.favoriteCount.text = String(format: "%.1fK", double)
             } else {
-                var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                var numberOfFavorites = works[indexPath.row].favoriteCount
                 if contains(tempFavorites, works[indexPath.row].workId) {
                     numberOfFavorites++
                 }
@@ -324,6 +324,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func reloadTimeline(center: NSNotificationCenter) {
+        loadWorks()
+        let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        timelineTableView.scrollToRowAtIndexPath(topIndexPath, atScrollPosition: .Top, animated: false)
+    }
+
+    func autoReload() {
         loadWorks()
     }
 }

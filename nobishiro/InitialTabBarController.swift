@@ -250,6 +250,13 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                 deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
                 
                 selectedIndex = gesture.view!.tag
+
+                let tabViewControllers = self.viewControllers!
+                let nextNavigationController = tabViewControllers[selectedIndex] as! UINavigationController
+                if let viewControllers = nextNavigationController.viewControllers,
+                nextViewController = viewControllers[0] as? AutoReloadDelegate {
+                    nextViewController.autoReload()
+                }
             }
 
         }

@@ -10,13 +10,19 @@ import UIKit
 import Himotoki
 import Alamofire
 
-class NotificationTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class NotificationTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AutoReloadDelegate {
 
+    @IBOutlet weak var mesImageView: UIImageView!
     @IBOutlet private weak var notificationTableView: UITableView!
     private let refreshControl = UIRefreshControl()
     private var notifications: [Notification] = [] {
       didSet {
         notificationTableView.reloadData()
+        if notifications.count > 0{
+            mesImageView.hidden = true
+        }else{
+            mesImageView.hidden = false
+        }
       }
     }
 
@@ -118,5 +124,8 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
         return platformName! as String
     }
 
-
+    func autoReload() {
+        println("NotificationController: autoload")
+        loadNotifications()
+    }
 }
