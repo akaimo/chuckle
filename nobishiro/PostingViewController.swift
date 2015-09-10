@@ -32,6 +32,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "コマ画像"
         self.navigationController?.navigationBarHidden = false
 
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")

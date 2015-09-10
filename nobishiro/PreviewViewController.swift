@@ -21,6 +21,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "タイトル"
         self.postTableView.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
         
         postTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
@@ -83,16 +84,6 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
             return cell
             
         } else if indexPath.section == 1 {
-//            let cell = postTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
-//            let material = materials[imgArray[indexPath.row] - 1]
-//            cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
-//            
-//            cell.deleteBtn.hidden = true
-//            cell.postingImageView.tag = indexPath.row
-//            cell.selectionStyle = UITableViewCellSelectionStyle.None
-//            
-//            return cell
-            
             if indexPath.row == 0 {
                 let cell = postTableView.dequeueReusableCellWithIdentifier("TopPosting") as! TopPostingTableViewCell
                 let material = materials[imgArray[indexPath.row] - 1]
