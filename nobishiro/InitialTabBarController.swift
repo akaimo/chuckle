@@ -271,6 +271,21 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                 }
             }
 
+        }else{            //現在選択中のタブと同じタブを選んだとき
+            let animationItem : RAMAnimatedTabBarItem = items[currentIndex]
+            let icon = iconsView[currentIndex].icon
+            let textLabel = iconsView[currentIndex].textLabel
+            animationItem.playAnimation(icon, textLabel: textLabel)
+            
+            println(currentIndex)
+            if currentIndex == 0 { //つまり、ランキングを２連続押したとき
+                let notification = NSNotification(name: "ReloadTimelineRanking", object: nil)
+                NSNotificationCenter.defaultCenter().postNotification(notification)
+            }
+            if currentIndex == 1 { //つまり、新着タブを２連続押したとき
+                let notification = NSNotification(name: "ReloadTimeline", object: nil)
+                NSNotificationCenter.defaultCenter().postNotification(notification)
+            }
         }
     }
     
