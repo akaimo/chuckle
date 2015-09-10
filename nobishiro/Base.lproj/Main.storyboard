@@ -358,7 +358,7 @@
         <scene sceneID="JlU-UD-age">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LgD-YK-wJ6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="通知" image="alermTab" selectedImage="alermTab" id="xlJ-d5-qfC" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" tag="4" title="通知" image="alermTab" selectedImage="alermTab" id="xlJ-d5-qfC" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                 <color key="value" red="0.98823529409999999" green="0.83137254900000002" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
