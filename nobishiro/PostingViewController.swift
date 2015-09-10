@@ -11,7 +11,7 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIApplicationDelegate {
+class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIApplicationDelegate {
     @IBOutlet weak var postBtn: UIBarButtonItem!
     @IBOutlet weak var postingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var postingTableView: UITableView!
@@ -305,6 +305,10 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         postCheck()
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake((self.view.frame.size.width - 4*5) / 4, (self.view.frame.size.width - 4*3) / 4)
     }
     
     
