@@ -47,17 +47,17 @@
         <!--Posting View Controller-->
         <scene sceneID="kek-Be-YDV">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="oMM-xB-o2j" customClass="PostingViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="oMM-xB-o2j" customClass="PostingViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5wp-kO-ewB"/>
                         <viewControllerLayoutGuide type="bottom" id="RSv-4i-C7T"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TiW-cL-0fq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rY7-aU-mtF">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="oMM-xB-o2j" id="PM0-Ug-oQT"/>
@@ -65,12 +65,12 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rY7-aU-mtF" firstAttribute="leading" secondItem="TiW-cL-0fq" secondAttribute="leading" id="5Mq-hl-6fp"/>
-                            <constraint firstAttribute="trailing" secondItem="rY7-aU-mtF" secondAttribute="trailing" id="7Jj-0i-trB"/>
-                            <constraint firstItem="RSv-4i-C7T" firstAttribute="top" secondItem="rY7-aU-mtF" secondAttribute="bottom" id="7ZI-t6-aFD"/>
-                            <constraint firstItem="rY7-aU-mtF" firstAttribute="top" secondItem="TiW-cL-0fq" secondAttribute="top" id="OOH-H2-udV"/>
+                            <constraint firstItem="rY7-aU-mtF" firstAttribute="leading" secondItem="TiW-cL-0fq" secondAttribute="leading" id="DyH-z2-2um"/>
+                            <constraint firstAttribute="trailing" secondItem="rY7-aU-mtF" secondAttribute="trailing" id="E2H-K2-FLV"/>
+                            <constraint firstItem="rY7-aU-mtF" firstAttribute="top" secondItem="5wp-kO-ewB" secondAttribute="bottom" id="fcf-2P-WzU"/>
+                            <constraint firstItem="RSv-4i-C7T" firstAttribute="top" secondItem="rY7-aU-mtF" secondAttribute="bottom" id="gqh-CK-AUr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y9H-TS-UZU">
@@ -86,10 +86,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="postBtn" destination="Zda-TG-XmA" id="iFS-JO-6CU"/>
                         <outlet property="postingTableView" destination="rY7-aU-mtF" id="XeZ-ZJ-vaL"/>
-                        <outlet property="postingTableViewHeight" destination="7ZI-t6-aFD" id="LUf-4j-1Lv"/>
+                        <outlet property="postingTableViewHeight" destination="gqh-CK-AUr" id="a7l-Mv-Vhm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBM-cN-5ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -226,7 +227,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2F1-0P-szn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="jte-DK-KiE" customClass="RAMChuckleCenterAnimation" customModule="nobishiro" customModuleProvider="target"/>
+                <customObject id="jte-DK-KiE" customClass="RAMChuckleAnimation" customModule="nobishiro" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="634" y="1411"/>
         </scene>
@@ -416,11 +417,11 @@
     </scenes>
     <resources>
         <image name="PostCancel" width="17" height="16"/>
-        <image name="alermTab" width="54" height="96"/>
+        <image name="alermTab" width="60" height="60"/>
         <image name="background" width="640" height="1132"/>
-        <image name="chuckle" width="125" height="98"/>
-        <image name="myPageTab" width="54" height="96"/>
+        <image name="chuckle" width="60" height="60"/>
+        <image name="myPageTab" width="60" height="60"/>
         <image name="newTab" width="54" height="96"/>
-        <image name="rankingTab" width="61" height="96"/>
+        <image name="rankingTab" width="60" height="60"/>
     </resources>
 </document>

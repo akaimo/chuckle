@@ -13,6 +13,7 @@ import Alamofire
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var notificationsBadgeValue = 0
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -58,37 +59,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
       let deviceTokenString = "\(deviceToken)".stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>")).stringByReplacingOccurrencesOfString(" ", withString: "")
       println("deviceToken = \(deviceTokenString)")
-      
-      let userDefaults = NSUserDefaults.standardUserDefaults()
-
-      if let savedUserID: AnyObject = userDefaults.objectForKey("userID") { // IDを端末内に保存済みなら
-        println("userID = \(savedUserID)")
-        if let savedDeviceToken: AnyObject = userDefaults.objectForKey("deviceToken") {
-          if savedDeviceToken as! String != deviceTokenString {
-            //デバイストークンが変化していたら、idそのままでトークンだけ再登録
-            Alamofire.request(.PUT, "http://yuji.website:3001/api/register/\(savedUserID as! NSNumber)?device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
-              if let responseJson = JSON as? NSDictionary {
-                println("deviceToken updated")
-                userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
-                userDefaults.synchronize()
-              }
-            }
-          }
-        }
-      }else{
-        //デバイストークンをサーバーに登録して、idを受け取る
-        Alamofire.request(.GET, "http://yuji.website:3001/api/register?screen_name=testuser&device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
-          if let responseJson = JSON as? NSDictionary {
-            userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
-            userDefaults.setObject(responseJson.objectForKey("status")!, forKey: "userID")
-            userDefaults.synchronize()
-          }
-        }
-      }
+      registUser(deviceTokenString)
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
       println("Failed to get token, error: \(error)")
+      registUser("failedToGetDeviceToken")
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+       // println("application:didReceiveRemoteNotification: " + userInfo.description)
+        notificationsBadgeValue += 1
+        setBadgeValue(String(notificationsBadgeValue))
+    }
+    
+    func resetBadgeValue(){
+        notificationsBadgeValue = 0
+        setBadgeValue(nil)
+    }
+    
+    func setBadgeValue(badgeValue: String?){
+        let rootViewController = self.window?.rootViewController as! UITabBarController!
+        let tabArray = rootViewController?.tabBar.items as NSArray!
+        let tabItem = tabArray.objectAtIndex(3) as! UITabBarItem
+        if let badgeValueString = badgeValue {
+            tabItem.badgeValue = badgeValueString
+        }else{
+            tabItem.badgeValue = nil
+        }
+    }
+    
+    func registUser(deviceTokenString: String){
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if let savedUserID: AnyObject = userDefaults.objectForKey("userID") { // IDを端末内に保存済みなら
+            println("userID = \(savedUserID)")
+            if let savedDeviceToken: AnyObject = userDefaults.objectForKey("deviceToken") {
+                if savedDeviceToken as! String != deviceTokenString {
+                    //デバイストークンが変化していたら、idそのままでトークンだけ再登録
+                    Alamofire.request(.PUT, "http://yuji.website:3001/api/register/\(savedUserID as! NSNumber)?device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+                        if let responseJson = JSON as? NSDictionary {
+                            println("deviceToken updated")
+                            userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
+                            userDefaults.synchronize()
+                        }
+                    }
+                }
+            }
+        }else{
+            println("ユーザー新規登録")
+            //デバイストークンをサーバーに登録して、idを受け取る
+            Alamofire.request(.GET, "http://yuji.website:3001/api/register?screen_name=testuser&device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+                if let responseJson = JSON as? NSDictionary {
+                    userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
+                    userDefaults.setObject(responseJson.objectForKey("status")!, forKey: "userID")
+                    userDefaults.synchronize()
+                    print("ユーザー登録:成功 userID = ")
+                    println(userDefaults.objectForKey("userID"))
+                }else{
+                    println("ユーザー登録:失敗")
+                    println(error)
+                }
+            }
+        }
+
     }
 
 }
