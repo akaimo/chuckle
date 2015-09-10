@@ -58,6 +58,15 @@
 		BA428AFF1B9F332A00CE73F0 /* NotificationsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428AFE1B9F332A00CE73F0 /* NotificationsData.swift */; };
 		BA428B021B9F3B1F00CE73F0 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428B001B9F3B1F00CE73F0 /* NotificationTableViewCell.swift */; };
 		BA428B031B9F3B1F00CE73F0 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA428B011B9F3B1F00CE73F0 /* NotificationTableViewCell.xib */; };
+		BA9C4D6C1BA0968800CA76BB /* RAMAnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D6A1BA0968800CA76BB /* RAMAnimatedTabBarController.swift */; };
+		BA9C4D6D1BA0968800CA76BB /* RAMItemAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D6B1BA0968800CA76BB /* RAMItemAnimationProtocol.swift */; };
+		BA9C4D791BA096A300CA76BB /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D701BA096A300CA76BB /* RAMBounceAnimation.swift */; };
+		BA9C4D7A1BA096A300CA76BB /* RAMFrameItemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D721BA096A300CA76BB /* RAMFrameItemAnimation.swift */; };
+		BA9C4D7B1BA096A300CA76BB /* RAMFumeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D741BA096A300CA76BB /* RAMFumeAnimation.swift */; };
+		BA9C4D7C1BA096A300CA76BB /* RAMRotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D761BA096A300CA76BB /* RAMRotationAnimation.swift */; };
+		BA9C4D7D1BA096A300CA76BB /* RAMTransitionItemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D781BA096A300CA76BB /* RAMTransitionItemAnimation.swift */; };
+		BA9C4D7F1BA0A2E500CA76BB /* RAMChuckleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D7E1BA0A2E500CA76BB /* RAMChuckleAnimation.swift */; };
+		BA9C4D811BA0AADB00CA76BB /* RAMChuckleCenterAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C4D801BA0AADB00CA76BB /* RAMChuckleCenterAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +148,15 @@
 		BA428AFE1B9F332A00CE73F0 /* NotificationsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsData.swift; sourceTree = "<group>"; };
 		BA428B001B9F3B1F00CE73F0 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		BA428B011B9F3B1F00CE73F0 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		BA9C4D6A1BA0968800CA76BB /* RAMAnimatedTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimatedTabBarController.swift; sourceTree = "<group>"; };
+		BA9C4D6B1BA0968800CA76BB /* RAMItemAnimationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMItemAnimationProtocol.swift; sourceTree = "<group>"; };
+		BA9C4D701BA096A300CA76BB /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
+		BA9C4D721BA096A300CA76BB /* RAMFrameItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFrameItemAnimation.swift; sourceTree = "<group>"; };
+		BA9C4D741BA096A300CA76BB /* RAMFumeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFumeAnimation.swift; sourceTree = "<group>"; };
+		BA9C4D761BA096A300CA76BB /* RAMRotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMRotationAnimation.swift; sourceTree = "<group>"; };
+		BA9C4D781BA096A300CA76BB /* RAMTransitionItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMTransitionItemAnimation.swift; sourceTree = "<group>"; };
+		BA9C4D7E1BA0A2E500CA76BB /* RAMChuckleAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMChuckleAnimation.swift; sourceTree = "<group>"; };
+		BA9C4D801BA0AADB00CA76BB /* RAMChuckleCenterAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMChuckleCenterAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +228,7 @@
 				B566B1CD1B9FBC3E002612A6 /* RankingViewController.swift */,
 				B56E16A61B9FC40C00B18DCB /* MyPageViewController.swift */,
 				B5D314E31BA06D9900108C89 /* UserDefaults.swift */,
+				BA9C4D6E1BA0968E00CA76BB /* RAMTabBar */,
 			);
 			path = nobishiro;
 			sourceTree = "<group>";
@@ -291,6 +310,62 @@
 				B5F864801BA12649006E57A5 /* DidSelectTabBarDelegate.swift */,
 			);
 			name = Delegates;
+            sourceTree = "<group>";
+        };
+		BA9C4D6E1BA0968E00CA76BB /* RAMTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				BA9C4D6F1BA096A300CA76BB /* BounceAnimation */,
+				BA9C4D711BA096A300CA76BB /* FrameAnimation */,
+				BA9C4D731BA096A300CA76BB /* FumeAnimation */,
+				BA9C4D751BA096A300CA76BB /* RotationAnimation */,
+				BA9C4D771BA096A300CA76BB /* TransitionAniamtions */,
+				BA9C4D6A1BA0968800CA76BB /* RAMAnimatedTabBarController.swift */,
+				BA9C4D6B1BA0968800CA76BB /* RAMItemAnimationProtocol.swift */,
+				BA9C4D7E1BA0A2E500CA76BB /* RAMChuckleAnimation.swift */,
+				BA9C4D801BA0AADB00CA76BB /* RAMChuckleCenterAnimation.swift */,
+			);
+			name = RAMTabBar;
+			sourceTree = "<group>";
+		};
+		BA9C4D6F1BA096A300CA76BB /* BounceAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				BA9C4D701BA096A300CA76BB /* RAMBounceAnimation.swift */,
+			);
+			path = BounceAnimation;
+			sourceTree = "<group>";
+		};
+		BA9C4D711BA096A300CA76BB /* FrameAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				BA9C4D721BA096A300CA76BB /* RAMFrameItemAnimation.swift */,
+			);
+			path = FrameAnimation;
+			sourceTree = "<group>";
+		};
+		BA9C4D731BA096A300CA76BB /* FumeAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				BA9C4D741BA096A300CA76BB /* RAMFumeAnimation.swift */,
+			);
+			path = FumeAnimation;
+			sourceTree = "<group>";
+		};
+		BA9C4D751BA096A300CA76BB /* RotationAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				BA9C4D761BA096A300CA76BB /* RAMRotationAnimation.swift */,
+			);
+			path = RotationAnimation;
+			sourceTree = "<group>";
+		};
+		BA9C4D771BA096A300CA76BB /* TransitionAniamtions */ = {
+			isa = PBXGroup;
+			children = (
+				BA9C4D781BA096A300CA76BB /* RAMTransitionItemAnimation.swift */,
+			);
+			path = TransitionAniamtions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,25 +479,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA9C4D7A1BA096A300CA76BB /* RAMFrameItemAnimation.swift in Sources */,
 				B5D314E41BA06D9900108C89 /* UserDefaults.swift in Sources */,
 				B50304B61B9EEA16008D46C0 /* SNS.swift in Sources */,
 				BA428B021B9F3B1F00CE73F0 /* NotificationTableViewCell.swift in Sources */,
 				B53B08041B99600D005F5F30 /* MaterialsData.swift in Sources */,
 				B58888CA1B9D2D7300D4972E /* Favorite.swift in Sources */,
 				BA428AFD1B9F31C300CE73F0 /* Notification.swift in Sources */,
+				BA9C4D791BA096A300CA76BB /* RAMBounceAnimation.swift in Sources */,
 				B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */,
+				BA9C4D811BA0AADB00CA76BB /* RAMChuckleCenterAnimation.swift in Sources */,
 				992888331BA0377700D5DC09 /* PreviewViewController.swift in Sources */,
 				B57B34FD1B98470A00C156A2 /* TwoPanelMangaTableViewCell.swift in Sources */,
 				B503C7501B9D8E7C008C139A /* NavigationToPostingViewController.swift in Sources */,
 				B5BB5E521B9FFC6500EB2680 /* WorkCell.swift in Sources */,
 				BA428AFA1B9F2BF200CE73F0 /* NotificationTableViewController.swift in Sources */,
 				B56CA0A91B9D561800AFA16E /* RankingData.swift in Sources */,
+				BA9C4D7B1BA096A300CA76BB /* RAMFumeAnimation.swift in Sources */,
 				B56E16A71B9FC40C00B18DCB /* MyPageViewController.swift in Sources */,
+				BA9C4D7C1BA096A300CA76BB /* RAMRotationAnimation.swift in Sources */,
 				B5105ADB1B9950E800BD9ECD /* Material.swift in Sources */,
 				99593B4B1B983C82000C51C1 /* ViewController.swift in Sources */,
 				B5105AD91B994F2A00BD9ECD /* WorksData.swift in Sources */,
 				99593B491B983C82000C51C1 /* AppDelegate.swift in Sources */,
 				99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */,
+				BA9C4D7F1BA0A2E500CA76BB /* RAMChuckleAnimation.swift in Sources */,
 				B566B1CE1B9FBC3E002612A6 /* RankingViewController.swift in Sources */,
 				BA428AFF1B9F332A00CE73F0 /* NotificationsData.swift in Sources */,
 				B5F864811BA12649006E57A5 /* DidSelectTabBarDelegate.swift in Sources */,
@@ -431,9 +512,12 @@
 				99593C141B9DC91D000C51C1 /* PostCollectionView.swift in Sources */,
 				99593C191B9DCA55000C51C1 /* PostCollectionViewCell.swift in Sources */,
 				B50304B41B9EE99D008D46C0 /* ShareImageData.swift in Sources */,
+				BA9C4D6D1BA0968800CA76BB /* RAMItemAnimationProtocol.swift in Sources */,
+				BA9C4D6C1BA0968800CA76BB /* RAMAnimatedTabBarController.swift in Sources */,
 				B58888CC1B9D2DAF00D4972E /* FavoritesData.swift in Sources */,
 				B5105AD71B9941A200BD9ECD /* Work.swift in Sources */,
 				B57B35051B985C9300C156A2 /* FourPanelMangaTableViewCell.swift in Sources */,
+				BA9C4D7D1BA096A300CA76BB /* RAMTransitionItemAnimation.swift in Sources */,
 				99593B9C1B99474A000C51C1 /* PostingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,6 +652,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = nobishiro/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -585,6 +670,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = nobishiro/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -91,6 +91,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       println("Failed to get token, error: \(error)")
     }
 
-
 }
 

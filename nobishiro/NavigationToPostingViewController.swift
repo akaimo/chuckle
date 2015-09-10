@@ -14,6 +14,7 @@ class NavigationToPostingViewController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        println("NavigationToPostingViewController")
     }
 
     override func didReceiveMemoryWarning() {
