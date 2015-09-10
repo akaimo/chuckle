@@ -228,8 +228,12 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                     nextViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
                     currentViewController.presentViewController(nextViewController, animated: true, completion: nil)
                 }
-                
             }else{
+                if items[currentIndex].tag == 4 {
+                    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+                    appDel.resetBadgeValue()
+                }
+                
                 let animationItem : RAMAnimatedTabBarItem = items[currentIndex]
                 let icon = iconsView[currentIndex].icon
                 let textLabel = iconsView[currentIndex].textLabel

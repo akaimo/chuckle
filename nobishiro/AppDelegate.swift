@@ -13,6 +13,7 @@ import Alamofire
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var notificationsBadgeValue = 0
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -65,6 +66,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       println("Failed to get token, error: \(error)")
       registUser("failedToGetDeviceToken")
     }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+       // println("application:didReceiveRemoteNotification: " + userInfo.description)
+        notificationsBadgeValue += 1
+        setBadgeValue(String(notificationsBadgeValue))
+    }
+    
+    func resetBadgeValue(){
+        notificationsBadgeValue = 0
+        setBadgeValue(nil)
+    }
+    
+    func setBadgeValue(badgeValue: String?){
+        let rootViewController = self.window?.rootViewController as! UITabBarController!
+        let tabArray = rootViewController?.tabBar.items as NSArray!
+        let tabItem = tabArray.objectAtIndex(3) as! UITabBarItem
+        if let badgeValueString = badgeValue {
+            tabItem.badgeValue = badgeValueString
+        }else{
+            tabItem.badgeValue = nil
+        }
+    }
+    
     func registUser(deviceTokenString: String){
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
