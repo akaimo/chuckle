@@ -57,6 +57,8 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
 
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "reloadTimeline:", name: "ReloadTimeline", object: nil)
+        notificationCenter.addObserver(self, selector: "reloadTimelineMyPage:", name: "ReloadTimelineMyPage", object: nil)
+
     }
 
     func loadWorks() {
@@ -232,4 +234,13 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
         println("MyPageController: autoload")
         loadWorks()
     }
+    
+    func reloadTimelineMyPage(center: NSNotificationCenter) {
+        loadWorks()
+        let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        if works.count > 0 {
+            myWorksTableView.scrollToRowAtIndexPath(topIndexPath, atScrollPosition: .Top, animated: false)
+        }
+    }
+
 }

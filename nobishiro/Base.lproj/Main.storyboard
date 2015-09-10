@@ -148,7 +148,7 @@
         <scene sceneID="jt2-D6-KNl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gcd-5q-F1c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="新着" image="newTab" selectedImage="newTab" id="XbH-xj-5Hu" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" tag="2" title="新着" image="newTab" selectedImage="newTab" id="XbH-xj-5Hu" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                 <color key="value" red="0.98823529409999999" green="0.83137254900000002" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -338,7 +338,7 @@
         <scene sceneID="Cjt-CU-DTP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y1w-dL-pxD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ランキング" image="rankingTab" selectedImage="rankingTab" id="Tg9-Pm-xTX" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" tag="1" title="ランキング" image="rankingTab" selectedImage="rankingTab" id="Tg9-Pm-xTX" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                 <color key="value" red="0.98823529409999999" green="0.83137254900000002" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>

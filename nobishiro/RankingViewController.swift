@@ -49,6 +49,10 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
 
             refreshControl.addTarget(self, action: "loadWorks", forControlEvents: .ValueChanged)
             rankingTableView.addSubview(refreshControl)
+
+            let notificationCenter = NSNotificationCenter.defaultCenter()
+            notificationCenter.addObserver(self, selector: "reloadTimelineRanking:", name: "ReloadTimelineRanking", object: nil)
+
         }
 
         func loadWorks() {
@@ -283,5 +287,14 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
     func autoReload() {
         println("RankingController: autoload")
         loadWorks()
+    }
+    
+    func reloadTimelineRanking(center: NSNotificationCenter) {
+        println("reloadTimeline in Ranking")
+        loadWorks()
+        let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        if works.count > 0 {
+            rankingTableView.scrollToRowAtIndexPath(topIndexPath, atScrollPosition: .Top, animated: false)
+        }
     }
 }
