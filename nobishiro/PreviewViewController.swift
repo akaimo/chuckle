@@ -29,6 +29,9 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
         postTableView.registerNib(UINib(nibName: "BottomTableViewCell", bundle: nil), forCellReuseIdentifier: "BottomPosting")
         postTableView.registerNib(UINib(nibName: "PostingTitleCustomCell", bundle: nil), forCellReuseIdentifier: "Title")
         
+        let backgroundImg = UIImage(named: "background")
+        postTableView.backgroundView = UIImageView(image: backgroundImg)
+        
         postBtn.enabled = false
 
         println(materials)
@@ -81,6 +84,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.titleTextView.becomeFirstResponder()
             cell.titleBackgroundView.layer.borderColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1).CGColor
             cell.titleBackgroundView.layer.borderWidth = 1
+            cell.backgroundColor = UIColor.clearColor()
             
             return cell
             
@@ -93,6 +97,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.deleteBtn.hidden = true
                 cell.postingImageView.tag = indexPath.row
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
+                cell.backgroundColor = UIColor.clearColor()
                 
                 println("0")
                 
@@ -105,6 +110,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.deleteBtn.hidden = true
                 cell.postingImageView.tag = indexPath.row
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
+                cell.backgroundColor = UIColor.clearColor()
                 
                 println("00")
                 
@@ -117,6 +123,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.deleteBtn.hidden = true
                 cell.postingImageView.tag = indexPath.row
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
+                cell.backgroundColor = UIColor.clearColor()
                 
                 println("000")
                 
