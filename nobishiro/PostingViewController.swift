@@ -23,6 +23,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     private var postTitle: String = ""
     private var animat = false
     private var collectionOriginY: CGFloat = 0.0
+    private var animationHeight: CGFloat = 0.0
     private var materials: [Material] = [] {
         didSet {
             postingCollectionView.postCollectionView.reloadData()
@@ -34,22 +35,30 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 
         self.title = "コマ画像"
         self.navigationController?.navigationBarHidden = false
+        
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController!.navigationBar.titleTextAttributes = titleDict as [NSObject : AnyObject]
+        self.navigationController!.navigationBar.barTintColor = UIColor(red: 209/255, green: 129/255, blue: 2/255, alpha: 1)
         
         var barBtn: UIBarButtonItem = UIBarButtonItem()
         barBtn.title = ""
         self.navigationItem.backBarButtonItem = barBtn
+        
+        let backgroundImg = UIImage(named: "background")
+        postingTableView.backgroundView = UIImageView(image: backgroundImg)
 
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
         postingTableView.registerNib(UINib(nibName: "TopPostingTableViewCell", bundle: nil), forCellReuseIdentifier: "TopPosting")
         postingTableView.registerNib(UINib(nibName: "BottomTableViewCell", bundle: nil), forCellReuseIdentifier: "BottomPosting")
         
+        animationHeight = self.view.frame.height / 2
+        println(animationHeight)
+        
         postingCollectionView = PostCollectionView.instance()
         postingCollectionView.postCollectionView.dataSource = self
         postingCollectionView.postCollectionView.delegate = self
         postingCollectionView.postCollectionView.registerNib(UINib(nibName: "PostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Stamp")
-        postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 230)
+        postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: animationHeight)
         self.view.addSubview(postingCollectionView)
         
         postBtn.enabled = false
@@ -103,6 +112,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             
             cell.postingImageView.tag = indexPath.row
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.backgroundColor = UIColor.clearColor()
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
             cell.postingImageView.addGestureRecognizer(gesture)
@@ -131,6 +141,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             
             cell.postingImageView.tag = indexPath.row
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.backgroundColor = UIColor.clearColor()
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
             cell.postingImageView.addGestureRecognizer(gesture)
@@ -166,6 +177,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             
             cell.postingImageView.tag = indexPath.row
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.backgroundColor = UIColor.clearColor()
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
             cell.postingImageView.addGestureRecognizer(gesture)
@@ -219,7 +231,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 
     // collectionViewを出す
     func openCollection() {
-        self.postingTableViewHeight.constant = 230
+        self.postingTableViewHeight.constant = animationHeight
         self.postingCollectionView.frame.origin.y = self.collectionOriginY
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height

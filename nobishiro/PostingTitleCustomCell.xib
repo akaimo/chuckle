@@ -33,7 +33,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="deviceRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="UPr-p4-l6F" secondAttribute="bottom" id="Jo5-ox-cu4"/>
                     <constraint firstItem="UPr-p4-l6F" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="SEh-a9-Kvi"/>
