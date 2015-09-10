@@ -34,7 +34,9 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
             }
             
         }
-        
+
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "showNew:", name: "ShowNew", object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -275,5 +277,11 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
         items[from].deselectAnimation(iconsView[from].icon, textLabel: iconsView[from].textLabel)
         items[to].playAnimation(iconsView[to].icon, textLabel: iconsView[to].textLabel)
     }
-    
+
+    func showNew(center: NSNotificationCenter) {
+        selectedIndex = 1
+
+        let notification = NSNotification(name: "ReloadTimeline", object: nil)
+        NSNotificationCenter.defaultCenter().postNotification(notification)
+    }
 }

@@ -50,6 +50,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         refreshControl.addTarget(self, action: "loadWorks", forControlEvents: .ValueChanged)
         timelineTableView.addSubview(refreshControl)
+
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "reloadTimeline:", name: "ReloadTimeline", object: nil)
     }
 
     func loadWorks() {
@@ -298,5 +301,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             }
         }
+    }
+
+    func reloadTimeline(center: NSNotificationCenter) {
+        loadWorks()
     }
 }
