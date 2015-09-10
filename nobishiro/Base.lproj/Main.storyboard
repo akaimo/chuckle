@@ -417,7 +417,7 @@
     </scenes>
     <resources>
         <image name="PostCancel" width="17" height="16"/>
-        <image name="alermTab" width="54" height="96"/>
+        <image name="alermTab" width="60" height="60"/>
         <image name="background" width="640" height="1132"/>
         <image name="chuckle" width="125" height="98"/>
         <image name="myPageTab" width="54" height="96"/>

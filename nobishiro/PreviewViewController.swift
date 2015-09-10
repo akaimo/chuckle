@@ -11,7 +11,7 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PreviewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class PreviewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     @IBOutlet weak var postBtn: UIBarButtonItem!
     @IBOutlet weak var postTableView: UITableView!
     internal var imgArray: [Int]!
@@ -21,7 +21,11 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.postTableView.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+        
         postTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
+        postTableView.registerNib(UINib(nibName: "TopPostingTableViewCell", bundle: nil), forCellReuseIdentifier: "TopPosting")
+        postTableView.registerNib(UINib(nibName: "BottomTableViewCell", bundle: nil), forCellReuseIdentifier: "BottomPosting")
         postTableView.registerNib(UINib(nibName: "PostingTitleCustomCell", bundle: nil), forCellReuseIdentifier: "Title")
         
         postBtn.enabled = false
@@ -54,9 +58,15 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 70
+            return 75
         } else if indexPath.section == 1 {
-            return 160
+            if indexPath.row == 0 {
+                return 177
+            } else if indexPath.row == imgArray.count - 1 {
+                return 177
+            } else {
+                return 152
+            }
         } else {
             return 0
         }
@@ -66,20 +76,60 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
         if indexPath.section == 0 {
             let cell = postTableView.dequeueReusableCellWithIdentifier("Title") as! PostingTitleCustomCell
             cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.titleTextField.delegate = self
+            cell.titleTextView.delegate = self
+            cell.titleBackgroundView.layer.borderColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1).CGColor
+            cell.titleBackgroundView.layer.borderWidth = 1
             
             return cell
             
         } else if indexPath.section == 1 {
-            let cell = postTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
-            let material = materials[imgArray[indexPath.row] - 1]
-            cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+//            let cell = postTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
+//            let material = materials[imgArray[indexPath.row] - 1]
+//            cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+//            
+//            cell.deleteBtn.hidden = true
+//            cell.postingImageView.tag = indexPath.row
+//            cell.selectionStyle = UITableViewCellSelectionStyle.None
+//            
+//            return cell
             
-            cell.deleteBtn.hidden = true
-            cell.postingImageView.tag = indexPath.row
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            
-            return cell
+            if indexPath.row == 0 {
+                let cell = postTableView.dequeueReusableCellWithIdentifier("TopPosting") as! TopPostingTableViewCell
+                let material = materials[imgArray[indexPath.row] - 1]
+                cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+                
+                cell.deleteBtn.hidden = true
+                cell.postingImageView.tag = indexPath.row
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+                
+                println("0")
+                
+                return cell
+            } else if indexPath.row == imgArray.count - 1 {
+                let cell = postTableView.dequeueReusableCellWithIdentifier("BottomPosting") as! BottomTableViewCell
+                let material = materials[imgArray[indexPath.row] - 1]
+                cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+                
+                cell.deleteBtn.hidden = true
+                cell.postingImageView.tag = indexPath.row
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+                
+                println("00")
+                
+                return cell
+            } else {
+                let cell = postTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
+                let material = materials[imgArray[indexPath.row] - 1]
+                cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+                
+                cell.deleteBtn.hidden = true
+                cell.postingImageView.tag = indexPath.row
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+                
+                println("000")
+                
+                return cell
+            }
             
         } else {
             return UITableViewCell()
@@ -94,17 +144,27 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     // MARK: - UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.postTitle = textField.text
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.text == "タイトルを入力してね！" {
+            textView.text = ""
+            textView.textColor = UIColor.blackColor()
+        }
+        self.postTitle = textView.text
         titleCheck()
-        textField.resignFirstResponder()
-        return true
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        self.postTitle = textField.text
+    func textViewDidEndEditing(textView: UITextView) {
+        self.postTitle = textView.text
+        if textView.text == "" {
+            textView.text = "タイトルを入力してね！"
+            textView.textColor = UIColor.lightGrayColor()
+        }
         titleCheck()
-        return true
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        self.postTitle = textView.text
+        titleCheck()
     }
     
     
