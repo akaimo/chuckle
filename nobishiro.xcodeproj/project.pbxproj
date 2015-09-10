@@ -25,6 +25,8 @@
 		99593C1C1B9DCCE3000C51C1 /* PostCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99593C1B1B9DCCE3000C51C1 /* PostCollectionView.xib */; };
 		99BFC7221BA137AF00C08DC4 /* TopPostingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BFC7201BA137AF00C08DC4 /* TopPostingTableViewCell.swift */; };
 		99BFC7231BA137AF00C08DC4 /* TopPostingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BFC7211BA137AF00C08DC4 /* TopPostingTableViewCell.xib */; };
+		99BFC7261BA14B7100C08DC4 /* BottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BFC7241BA14B7100C08DC4 /* BottomTableViewCell.swift */; };
+		99BFC7271BA14B7100C08DC4 /* BottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BFC7251BA14B7100C08DC4 /* BottomTableViewCell.xib */; };
 		B50304B41B9EE99D008D46C0 /* ShareImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50304B31B9EE99D008D46C0 /* ShareImageData.swift */; };
 		B50304B61B9EEA16008D46C0 /* SNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50304B51B9EEA16008D46C0 /* SNS.swift */; };
 		B503C7501B9D8E7C008C139A /* NavigationToPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C74F1B9D8E7C008C139A /* NavigationToPostingViewController.swift */; };
@@ -110,6 +112,8 @@
 		99593C1B1B9DCCE3000C51C1 /* PostCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCollectionView.xib; sourceTree = "<group>"; };
 		99BFC7201BA137AF00C08DC4 /* TopPostingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopPostingTableViewCell.swift; sourceTree = "<group>"; };
 		99BFC7211BA137AF00C08DC4 /* TopPostingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopPostingTableViewCell.xib; sourceTree = "<group>"; };
+		99BFC7241BA14B7100C08DC4 /* BottomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomTableViewCell.swift; sourceTree = "<group>"; };
+		99BFC7251BA14B7100C08DC4 /* BottomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomTableViewCell.xib; sourceTree = "<group>"; };
 		B50304B31B9EE99D008D46C0 /* ShareImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareImageData.swift; sourceTree = "<group>"; };
 		B50304B51B9EEA16008D46C0 /* SNS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNS.swift; sourceTree = "<group>"; };
 		B503C74F1B9D8E7C008C139A /* NavigationToPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationToPostingViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 				99BFC7211BA137AF00C08DC4 /* TopPostingTableViewCell.xib */,
 				99593B9A1B99474A000C51C1 /* PostingTableViewCell.swift */,
 				99593B9B1B99474A000C51C1 /* PostingTableViewCell.xib */,
+				99BFC7241BA14B7100C08DC4 /* BottomTableViewCell.swift */,
+				99BFC7251BA14B7100C08DC4 /* BottomTableViewCell.xib */,
 				99593BA01B997AA4000C51C1 /* PostingTitleCustomCell.swift */,
 				99593BA11B997AA4000C51C1 /* PostingTitleCustomCell.xib */,
 				99593C171B9DCA55000C51C1 /* PostCollectionViewCell.swift */,
@@ -378,6 +384,7 @@
 				99BFC7231BA137AF00C08DC4 /* TopPostingTableViewCell.xib in Resources */,
 				99593BA31B997AA4000C51C1 /* PostingTitleCustomCell.xib in Resources */,
 				BA428AFB1B9F2BF200CE73F0 /* NotificationTableViewController.xib in Resources */,
+				99BFC7271BA14B7100C08DC4 /* BottomTableViewCell.xib in Resources */,
 				99593C1C1B9DCCE3000C51C1 /* PostCollectionView.xib in Resources */,
 				BA428B031B9F3B1F00CE73F0 /* NotificationTableViewCell.xib in Resources */,
 				B57B35021B984F0400C156A2 /* ThreePanelMangaTableViewCell.xib in Resources */,
@@ -412,6 +419,7 @@
 				B503C7501B9D8E7C008C139A /* NavigationToPostingViewController.swift in Sources */,
 				B5BB5E521B9FFC6500EB2680 /* WorkCell.swift in Sources */,
 				BA428AFA1B9F2BF200CE73F0 /* NotificationTableViewController.swift in Sources */,
+				99BFC7261BA14B7100C08DC4 /* BottomTableViewCell.swift in Sources */,
 				B56CA0A91B9D561800AFA16E /* RankingData.swift in Sources */,
 				B56E16A71B9FC40C00B18DCB /* MyPageViewController.swift in Sources */,
 				B5105ADB1B9950E800BD9ECD /* Material.swift in Sources */,

@@ -67,10 +67,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rY7-aU-mtF" firstAttribute="bottom" secondItem="RSv-4i-C7T" secondAttribute="top" id="2L7-Qm-0cn"/>
-                            <constraint firstAttribute="trailing" secondItem="rY7-aU-mtF" secondAttribute="trailing" id="Li4-5V-2Hd"/>
-                            <constraint firstItem="rY7-aU-mtF" firstAttribute="leading" secondItem="TiW-cL-0fq" secondAttribute="leading" id="c8w-dc-nrS"/>
-                            <constraint firstItem="rY7-aU-mtF" firstAttribute="top" secondItem="5wp-kO-ewB" secondAttribute="bottom" id="fNb-03-3w7"/>
+                            <constraint firstItem="rY7-aU-mtF" firstAttribute="leading" secondItem="TiW-cL-0fq" secondAttribute="leading" id="DyH-z2-2um"/>
+                            <constraint firstAttribute="trailing" secondItem="rY7-aU-mtF" secondAttribute="trailing" id="E2H-K2-FLV"/>
+                            <constraint firstItem="rY7-aU-mtF" firstAttribute="top" secondItem="5wp-kO-ewB" secondAttribute="bottom" id="fcf-2P-WzU"/>
+                            <constraint firstItem="RSv-4i-C7T" firstAttribute="top" secondItem="rY7-aU-mtF" secondAttribute="bottom" id="gqh-CK-AUr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y9H-TS-UZU">
@@ -90,7 +90,7 @@
                     <connections>
                         <outlet property="postBtn" destination="Zda-TG-XmA" id="iFS-JO-6CU"/>
                         <outlet property="postingTableView" destination="rY7-aU-mtF" id="XeZ-ZJ-vaL"/>
-                        <outlet property="postingTableViewHeight" destination="2L7-Qm-0cn" id="bFk-Wu-u3x"/>
+                        <outlet property="postingTableViewHeight" destination="gqh-CK-AUr" id="a7l-Mv-Vhm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBM-cN-5ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
