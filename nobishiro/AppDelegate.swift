@@ -71,6 +71,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // println("application:didReceiveRemoteNotification: " + userInfo.description)
         notificationsBadgeValue += 1
         setBadgeValue(String(notificationsBadgeValue))
+        
+        if(application.applicationState == UIApplicationState.Inactive){
+            //Push通知をタップして、バックグラウンドから戻ってきたとき
+            let notification = NSNotification(name: "ShowNotifications", object: nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+
+        }
+        
     }
     
     func resetBadgeValue(){
