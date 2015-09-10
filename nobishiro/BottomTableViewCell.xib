@@ -15,7 +15,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nuc-vq-OdG">
                         <rect key="frame" x="15" y="0.0" width="290" height="161"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="emH-nb-1fJ">
                         <rect key="frame" x="85" y="1" width="150" height="150"/>
@@ -35,6 +35,7 @@
                         </state>
                     </button>
                 </subviews>
+                <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="centerX" secondItem="emH-nb-1fJ" secondAttribute="centerX" id="87z-VY-ekh"/>
                     <constraint firstAttribute="bottom" secondItem="Nuc-vq-OdG" secondAttribute="bottom" constant="15" id="AhE-M4-MDQ"/>
