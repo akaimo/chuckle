@@ -78,6 +78,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
             let cell = postTableView.dequeueReusableCellWithIdentifier("Title") as! PostingTitleCustomCell
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.titleTextView.delegate = self
+            cell.titleTextView.becomeFirstResponder()
             cell.titleBackgroundView.layer.borderColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1).CGColor
             cell.titleBackgroundView.layer.borderWidth = 1
             
