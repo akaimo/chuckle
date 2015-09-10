@@ -144,7 +144,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
             if works[indexPath.row].userId == UserDefaults.getUserID() {
                 cell.postToFavorite.enabled = false
-                cell.postToFavorite.setImage(nil, forState: .Normal)
+                cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
             } else if contains(myFavorites, works[indexPath.row].workId) {
                 cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
@@ -183,7 +183,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
             if works[indexPath.row].userId == UserDefaults.getUserID() {
                 cell.postToFavorite.enabled = false
-                cell.postToFavorite.setImage(nil, forState: .Normal)
+                cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
             } else if contains(myFavorites, works[indexPath.row].workId) {
                 cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
@@ -223,7 +223,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
             if works[indexPath.row].userId == UserDefaults.getUserID() {
                 cell.postToFavorite.enabled = false
-                cell.postToFavorite.setImage(nil, forState: .Normal)
+                cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
             } else if contains(myFavorites, works[indexPath.row].workId) {
                 cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
