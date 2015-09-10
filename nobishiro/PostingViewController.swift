@@ -34,6 +34,12 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 
         self.title = "コマ画像"
         self.navigationController?.navigationBarHidden = false
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes = titleDict as [NSObject : AnyObject]
+        
+        var barBtn: UIBarButtonItem = UIBarButtonItem()
+        barBtn.title = ""
+        self.navigationItem.backBarButtonItem = barBtn
 
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
         postingTableView.registerNib(UINib(nibName: "TopPostingTableViewCell", bundle: nil), forCellReuseIdentifier: "TopPosting")
