@@ -35,8 +35,10 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 
         self.title = "コマ画像"
         self.navigationController?.navigationBarHidden = false
+        
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController!.navigationBar.titleTextAttributes = titleDict as [NSObject : AnyObject]
+        self.navigationController!.navigationBar.barTintColor = UIColor(red: 209/255, green: 129/255, blue: 2/255, alpha: 1)
         
         var barBtn: UIBarButtonItem = UIBarButtonItem()
         barBtn.title = ""
