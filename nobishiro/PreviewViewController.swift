@@ -99,8 +99,6 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
                 cell.backgroundColor = UIColor.clearColor()
                 
-                println("0")
-                
                 return cell
             } else if indexPath.row == imgArray.count - 1 {
                 let cell = postTableView.dequeueReusableCellWithIdentifier("BottomPosting") as! BottomTableViewCell
@@ -112,8 +110,6 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
                 cell.backgroundColor = UIColor.clearColor()
                 
-                println("00")
-                
                 return cell
             } else {
                 let cell = postTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
@@ -124,8 +120,6 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.postingImageView.tag = indexPath.row
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
                 cell.backgroundColor = UIColor.clearColor()
-                
-                println("000")
                 
                 return cell
             }
@@ -171,7 +165,6 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
     func titleCheck() {
         let str = postTitle.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         let sstr = str.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
-        println("title:\(sstr)")
         if postTitle.isEmpty || sstr.isEmpty {
             postBtn.enabled = false
         } else {
