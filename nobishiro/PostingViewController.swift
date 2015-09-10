@@ -72,42 +72,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
-//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 15
-//    }
-    
-//    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        view.tintColor = UIColor.whiteColor()
-//    }
-    
-//    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 15
-//    }
-    
-//    func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-//        view.tintColor = UIColor.whiteColor()
-//    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = postingTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
-//        if let count = imgArray[indexPath.row] {
-//            let material = materials[imgArray[indexPath.row]!]
-//            cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
-//            cell.deleteBtn.tag = indexPath.row
-//            cell.deleteBtn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
-//            cell.deleteBtn.hidden = false
-//        } else {
-//            switch indexPath.row {
-//            case 0, 1:
-//                cell.postingImageView.image = UIImage(named: "Image")
-//            case 2, 3:
-//                cell.postingImageView.image = UIImage(named: "Image2")
-//            default:
-//                cell.postingImageView.image = UIImage(named: "Image2")
-//            }
-//            cell.deleteBtn.hidden = true
-//        }
-        
         switch indexPath.row {
         case 0:
             let cell = postingTableView.dequeueReusableCellWithIdentifier("TopPosting") as! TopPostingTableViewCell
