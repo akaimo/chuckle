@@ -35,6 +35,8 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         self.navigationController?.navigationBarHidden = false
 
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
+        postingTableView.registerNib(UINib(nibName: "TopPostingTableViewCell", bundle: nil), forCellReuseIdentifier: "TopPosting")
+        postingTableView.registerNib(UINib(nibName: "BottomTableViewCell", bundle: nil), forCellReuseIdentifier: "BottomPosting")
         
         postingCollectionView = PostCollectionView.instance()
         postingCollectionView.postCollectionView.dataSource = self
@@ -62,43 +64,107 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 160
+        switch indexPath.row {
+        case 0, 3:
+            return 177
+        default:
+            return 152
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = postingTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
-        if let count = imgArray[indexPath.row] {
-            let material = materials[imgArray[indexPath.row]!]
-            cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
-            cell.deleteBtn.tag = indexPath.row
-            cell.deleteBtn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
-            cell.deleteBtn.hidden = false
-        } else {
-            switch indexPath.row {
-            case 0, 1:
+        switch indexPath.row {
+        case 0:
+            let cell = postingTableView.dequeueReusableCellWithIdentifier("TopPosting") as! TopPostingTableViewCell
+            if let count = imgArray[indexPath.row] {
+                let material = materials[imgArray[indexPath.row]!]
+                cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+                cell.deleteBtn.tag = indexPath.row
+                cell.deleteBtn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
+                cell.deleteBtn.hidden = false
+            } else {
                 cell.postingImageView.image = UIImage(named: "Image")
-            case 2, 3:
-                cell.postingImageView.image = UIImage(named: "Image2")
-            default:
-                cell.postingImageView.image = UIImage(named: "Image2")
+                cell.deleteBtn.hidden = true
             }
-            cell.deleteBtn.hidden = true
+            
+            if focusNum != nil && focusNum! == indexPath.row {
+                cell.postingImageView.layer.borderColor = UIColor(red: 247/255, green: 152/255, blue: 0/255, alpha: 1).CGColor
+                cell.postingImageView.layer.borderWidth = 2
+            } else {
+                cell.postingImageView.layer.borderWidth = 0
+            }
+            
+            cell.postingImageView.tag = indexPath.row
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            
+            let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
+            cell.postingImageView.addGestureRecognizer(gesture)
+            
+            return cell
+            
+        case 3:
+            let cell = postingTableView.dequeueReusableCellWithIdentifier("BottomPosting") as! BottomTableViewCell
+            if let count = imgArray[indexPath.row] {
+                let material = materials[imgArray[indexPath.row]!]
+                cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+                cell.deleteBtn.tag = indexPath.row
+                cell.deleteBtn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
+                cell.deleteBtn.hidden = false
+            } else {
+                cell.postingImageView.image = UIImage(named: "Image2")
+                cell.deleteBtn.hidden = true
+            }
+            
+            if focusNum != nil && focusNum! == indexPath.row {
+                cell.postingImageView.layer.borderColor = UIColor(red: 247/255, green: 152/255, blue: 0/255, alpha: 1).CGColor
+                cell.postingImageView.layer.borderWidth = 2
+            } else {
+                cell.postingImageView.layer.borderWidth = 0
+            }
+            
+            cell.postingImageView.tag = indexPath.row
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            
+            let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
+            cell.postingImageView.addGestureRecognizer(gesture)
+            
+            return cell
+            
+        default:
+            let cell = postingTableView.dequeueReusableCellWithIdentifier("Posting") as! PostingTableViewCell
+            if let count = imgArray[indexPath.row] {
+                let material = materials[imgArray[indexPath.row]!]
+                cell.postingImageView.hnk_setImageFromURL(NSURL(string: material.url)!)
+                cell.deleteBtn.tag = indexPath.row
+                cell.deleteBtn.addTarget(self, action: "tapDelete:", forControlEvents:.TouchUpInside)
+                cell.deleteBtn.hidden = false
+            } else {
+                switch indexPath.row {
+                case 0, 1:
+                    cell.postingImageView.image = UIImage(named: "Image")
+                case 2, 3:
+                    cell.postingImageView.image = UIImage(named: "Image2")
+                default:
+                    cell.postingImageView.image = UIImage(named: "Image2")
+                }
+                cell.deleteBtn.hidden = true
+            }
+            
+            if focusNum != nil && focusNum! == indexPath.row {
+                cell.postingImageView.layer.borderColor = UIColor(red: 247/255, green: 152/255, blue: 0/255, alpha: 1).CGColor
+                cell.postingImageView.layer.borderWidth = 2
+            } else {
+                cell.postingImageView.layer.borderWidth = 0
+            }
+            
+            cell.postingImageView.tag = indexPath.row
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            
+            let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
+            cell.postingImageView.addGestureRecognizer(gesture)
+            
+            return cell
         }
-        
-        if focusNum != nil && focusNum! == indexPath.row {
-            cell.postingImageView.layer.borderColor = UIColor(red: 247/255, green: 152/255, blue: 0/255, alpha: 1).CGColor
-            cell.postingImageView.layer.borderWidth = 2
-        } else {
-            cell.postingImageView.layer.borderWidth = 0
-        }
-        
-        cell.postingImageView.tag = indexPath.row
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        
-        let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
-        cell.postingImageView.addGestureRecognizer(gesture)
-        
-        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
