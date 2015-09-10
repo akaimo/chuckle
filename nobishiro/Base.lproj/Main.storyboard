@@ -384,11 +384,11 @@
             </objects>
             <point key="canvasLocation" x="-180" y="2248"/>
         </scene>
-        <!--マイページ-->
+        <!--自分の投稿-->
         <scene sceneID="yYZ-aa-r3r">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="st0-fK-hbJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="マイページ" image="myPageTab" selectedImage="myPageTab" id="UYc-5H-HdD" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="自分の投稿" image="myPageTab" selectedImage="myPageTab" id="UYc-5H-HdD" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                 <color key="value" red="0.9882352941176471" green="0.83137254901960778" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
