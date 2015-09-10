@@ -10,7 +10,7 @@ import UIKit
 import Himotoki
 import Alamofire
 
-class NotificationTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class NotificationTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AutoReloadDelegate {
 
     @IBOutlet weak var mesImageView: UIImageView!
     @IBOutlet private weak var notificationTableView: UITableView!
@@ -124,5 +124,8 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
         return platformName! as String
     }
 
-
+    func autoReload() {
+        println("NotificationController: autoload")
+        loadNotifications()
+    }
 }

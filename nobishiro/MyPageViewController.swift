@@ -12,7 +12,7 @@ import Himotoki
 import Social
 import Alamofire
 
-class MyPageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class MyPageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AutoReloadDelegate  {
 
     @IBOutlet weak var mesImageView: UIImageView!
     @IBOutlet weak var myWorksTableView: UITableView!
@@ -225,6 +225,11 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     func reloadTimeline(center: NSNotificationCenter) {
+        loadWorks()
+    }
+
+    func autoReload() {
+        println("MyPageController: autoload")
         loadWorks()
     }
 }

@@ -12,7 +12,7 @@ import Himotoki
 import Social
 import Alamofire
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AutoReloadDelegate {
 
     @IBOutlet private weak var timelineTableView: UITableView!
     private let refreshControl = UIRefreshControl()
@@ -327,5 +327,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         loadWorks()
         let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
         timelineTableView.scrollToRowAtIndexPath(topIndexPath, atScrollPosition: .Top, animated: false)
+    }
+
+    func autoReload() {
+        loadWorks()
     }
 }
