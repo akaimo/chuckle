@@ -27,6 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             timelineTableView.reloadData()
         }
     }
+    private var tempFavorites: [Int] = []
 
     let identifiers = ["TwoPanelMangaTableViewCell", "ThreePanelMangaTableViewCell", "FourPanelMangaTableViewCell"]
 
@@ -67,6 +68,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                                 switch (JSON, error) {
                                 case (.Some(let json), .None):
                                     if let worksData: WorksData = decode(json) {
+                                        self.tempFavorites = []
                                         self.works = worksData.data
                                         self.nextWorkAPI = worksData.next
                                     }
@@ -145,7 +147,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if works[indexPath.row].userId == UserDefaults.getUserID() {
                 cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
-            } else if contains(myFavorites, works[indexPath.row].workId) {
+            } else if contains(myFavorites, works[indexPath.row].workId)
+                || contains(tempFavorites, works[indexPath.row].workId) {
                 cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
@@ -157,7 +160,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                 cell.favoriteCount.text = String(format: "%.1fK", double)
             } else {
-                cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+                var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                if contains(tempFavorites, works[indexPath.row].workId) {
+                    numberOfFavorites++
+                }
+                cell.favoriteCount.text = String(numberOfFavorites)
             }
 
             return cell
@@ -184,7 +191,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if works[indexPath.row].userId == UserDefaults.getUserID() {
                 cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
-            } else if contains(myFavorites, works[indexPath.row].workId) {
+            } else if contains(myFavorites, works[indexPath.row].workId)
+            || contains(tempFavorites, works[indexPath.row].workId){
                 cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
@@ -196,7 +204,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                 cell.favoriteCount.text = String(format: "%.1fK", double)
             } else {
-                cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+                var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                if contains(tempFavorites, works[indexPath.row].workId) {
+                    numberOfFavorites++
+                }
+                cell.favoriteCount.text = String(numberOfFavorites)
             }
 
             return cell
@@ -224,7 +236,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if works[indexPath.row].userId == UserDefaults.getUserID() {
                 cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
-            } else if contains(myFavorites, works[indexPath.row].workId) {
+            } else if contains(myFavorites, works[indexPath.row].workId)
+            || contains(tempFavorites, works[indexPath.row].workId){
                 cell.postToFavorite.enabled = false
                 cell.postToFavorite.setImage(UIImage(named: "starred"), forState: .Normal)
             } else {
@@ -236,7 +249,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                 cell.favoriteCount.text = String(format: "%.1fK", double)
             } else {
-                cell.favoriteCount.text = String(works[indexPath.row].favoriteCount)
+                var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                if contains(tempFavorites, works[indexPath.row].workId) {
+                    numberOfFavorites++
+                }
+                cell.favoriteCount.text = String(numberOfFavorites)
             }
 
             return cell
@@ -251,6 +268,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         sender.setImage(UIImage(named: "starred"), forState: .Normal)
         //未ふぁぼなのでふぁぼする
         if !contains(myFavorites, sender.tag) {
+            println("temp: \(sender.tag)")
+            tempFavorites.append(sender.tag)
+            timelineTableView.reloadData()
             Alamofire.request(.POST, "http://yuji.website:3001/api/favorite?user_id=\(UserDefaults.getUserID())&work_id=\(sender.tag)", parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
                 switch (JSON, error) {
                 case (.Some(let json), .None):
