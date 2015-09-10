@@ -58,38 +58,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
       let deviceTokenString = "\(deviceToken)".stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>")).stringByReplacingOccurrencesOfString(" ", withString: "")
       println("deviceToken = \(deviceTokenString)")
-      
-      let userDefaults = NSUserDefaults.standardUserDefaults()
-
-      if let savedUserID: AnyObject = userDefaults.objectForKey("userID") { // IDを端末内に保存済みなら
-        println("userID = \(savedUserID)")
-        if let savedDeviceToken: AnyObject = userDefaults.objectForKey("deviceToken") {
-          if savedDeviceToken as! String != deviceTokenString {
-            //デバイストークンが変化していたら、idそのままでトークンだけ再登録
-            Alamofire.request(.PUT, "http://yuji.website:3001/api/register/\(savedUserID as! NSNumber)?device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
-              if let responseJson = JSON as? NSDictionary {
-                println("deviceToken updated")
-                userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
-                userDefaults.synchronize()
-              }
-            }
-          }
-        }
-      }else{
-        println("登録したい")
-        //デバイストークンをサーバーに登録して、idを受け取る
-        Alamofire.request(.GET, "http://yuji.website:3001/api/register?screen_name=testuser&device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
-          if let responseJson = JSON as? NSDictionary {
-            userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
-            userDefaults.setObject(responseJson.objectForKey("status")!, forKey: "userID")
-            userDefaults.synchronize()
-          }
-        }
-      }
+      registUser(deviceTokenString)
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
       println("Failed to get token, error: \(error)")
+      registUser("failedToGetDeviceToken")
+    }
+    func registUser(deviceTokenString: String){
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if let savedUserID: AnyObject = userDefaults.objectForKey("userID") { // IDを端末内に保存済みなら
+            println("userID = \(savedUserID)")
+            if let savedDeviceToken: AnyObject = userDefaults.objectForKey("deviceToken") {
+                if savedDeviceToken as! String != deviceTokenString {
+                    //デバイストークンが変化していたら、idそのままでトークンだけ再登録
+                    Alamofire.request(.PUT, "http://yuji.website:3001/api/register/\(savedUserID as! NSNumber)?device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+                        if let responseJson = JSON as? NSDictionary {
+                            println("deviceToken updated")
+                            userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
+                            userDefaults.synchronize()
+                        }
+                    }
+                }
+            }
+        }else{
+            println("ユーザー新規登録")
+            //デバイストークンをサーバーに登録して、idを受け取る
+            Alamofire.request(.GET, "http://yuji.website:3001/api/register?screen_name=testuser&device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
+                if let responseJson = JSON as? NSDictionary {
+                    userDefaults.setObject(deviceTokenString, forKey: "deviceToken")
+                    userDefaults.setObject(responseJson.objectForKey("status")!, forKey: "userID")
+                    userDefaults.synchronize()
+                    print("ユーザー登録:成功 userID = ")
+                    println(userDefaults.objectForKey("userID"))
+                }else{
+                    println("ユーザー登録:失敗")
+                    println(error)
+                }
+            }
+        }
+
     }
 
 }

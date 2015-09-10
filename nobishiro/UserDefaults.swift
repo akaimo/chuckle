@@ -21,16 +21,12 @@ struct UserDefaults {
     }
 
     static func getUserID() -> Int {
-        var platform = platformName()
-        if platform == "x86_64" {
+        let ud = NSUserDefaults.standardUserDefaults()
+        if let uid:AnyObject = ud.objectForKey("userID") {
+            return uid as! Int
+        }else{
             return 1
-        } else {
-            let ud = NSUserDefaults.standardUserDefaults()
-            if let uid:AnyObject = ud.objectForKey("userID") {
-                return uid as! Int
-            }else{
-                return 1
-            }
         }
+        
     }
 }
