@@ -13,10 +13,10 @@ struct WorkCell {
         let calculationLabel = UILabel()
         calculationLabel.text = title
         calculationLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        calculationLabel.numberOfLines = 0
         calculationLabel.adjustsFontSizeToFitWidth = false
-        var title = calculationLabel.sizeThatFits(CGSizeMake(284, CGFloat.max)).height
-        //println("titleHeight: \(title)")
-        title = 70
+        var titleHeight = calculationLabel.sizeThatFits(CGSizeMake(284, CGFloat.max)).height
+        titleHeight += 40
 
         let cellMargin = 8
         let titleLabelMargin = 10
@@ -29,7 +29,7 @@ struct WorkCell {
 
         let margin = CGFloat(cellMargin + titleLabelMargin + shareButtonMargin) * 2
         let panels = CGFloat(panel * numberOfPanels + spaceBetweenPanels * (numberOfPanels - 1))
-        let heights = CGFloat(spaceBetweenPanelAndLine + spaceBetweenTitleAndPanel + line) + title
+        let heights = CGFloat(spaceBetweenPanelAndLine + spaceBetweenTitleAndPanel + line) + titleHeight
         return CGFloat(margin + panels + heights)
     }
 }
