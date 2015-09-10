@@ -80,7 +80,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="次へ" id="Zda-TG-XmA">
-                            <color key="tintColor" red="0.96862745098039216" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="tapPostingBtn:" destination="oMM-xB-o2j" id="rwk-qZ-7BX"/>
                             </connections>
@@ -128,7 +128,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="GqA-BI-IDY">
                         <barButtonItem key="rightBarButtonItem" title="投稿する" id="o10-nA-Q1Q">
-                            <color key="tintColor" red="0.96862745098039216" green="0.59607843137254901" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="tapPostBtn:" destination="fme-uy-2Em" id="ND5-x5-jAb"/>
                             </connections>
