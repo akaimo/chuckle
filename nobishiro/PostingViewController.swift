@@ -23,6 +23,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     private var postTitle: String = ""
     private var animat = false
     private var collectionOriginY: CGFloat = 0.0
+    private var animationHeight: CGFloat = 0.0
     private var materials: [Material] = [] {
         didSet {
             postingCollectionView.postCollectionView.reloadData()
@@ -45,11 +46,14 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         postingTableView.registerNib(UINib(nibName: "TopPostingTableViewCell", bundle: nil), forCellReuseIdentifier: "TopPosting")
         postingTableView.registerNib(UINib(nibName: "BottomTableViewCell", bundle: nil), forCellReuseIdentifier: "BottomPosting")
         
+        animationHeight = self.view.frame.height / 2
+        println(animationHeight)
+        
         postingCollectionView = PostCollectionView.instance()
         postingCollectionView.postCollectionView.dataSource = self
         postingCollectionView.postCollectionView.delegate = self
         postingCollectionView.postCollectionView.registerNib(UINib(nibName: "PostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Stamp")
-        postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 230)
+        postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: animationHeight)
         self.view.addSubview(postingCollectionView)
         
         postBtn.enabled = false
@@ -219,7 +223,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 
     // collectionViewを出す
     func openCollection() {
-        self.postingTableViewHeight.constant = 230
+        self.postingTableViewHeight.constant = animationHeight
         self.postingCollectionView.frame.origin.y = self.collectionOriginY
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
