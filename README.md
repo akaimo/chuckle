@@ -6,11 +6,19 @@
 
 * しゅー
 * しもとり
+* （ゆーじ）
 
 ## つかいかた
 
 ```Carthage/``` が丸ごとないので、最初に ```carthage update``` してください  
 [Carthage](https://github.com/Carthage/Carthage)
+
+プッシュ通知を使っている関係で、こちらの用意したプロビジョニングファイルがビルド時に登録されている必要があります
+
+[nobishirochuckleprofile.mobileprovision](https://www.dropbox.com/s/mv0uzzjogiuxm4a/nobishirochuckleprofile.mobileprovision?dl=0)
+
+このファイルをDL後、開いて登録してからビルドを行ってください！	
+
 
 ## jsonのパースについて
 
