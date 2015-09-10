@@ -26,7 +26,11 @@ struct UserDefaults {
             return 1
         } else {
             let ud = NSUserDefaults.standardUserDefaults()
-            return ud.objectForKey("userID") as! Int
+            if let uid:AnyObject = ud.objectForKey("userID") {
+                return uid as! Int
+            }else{
+                return 1
+            }
         }
     }
 }

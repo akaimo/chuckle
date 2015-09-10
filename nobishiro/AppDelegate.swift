@@ -76,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           }
         }
       }else{
+        println("登録したい")
         //デバイストークンをサーバーに登録して、idを受け取る
         Alamofire.request(.GET, "http://yuji.website:3001/api/register?screen_name=testuser&device_token="+deviceTokenString, parameters: nil, encoding: .JSON).responseJSON{ request, response, JSON, error in
           if let responseJson = JSON as? NSDictionary {
