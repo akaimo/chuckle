@@ -12,7 +12,7 @@ import Himotoki
 import Social
 import Alamofire
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DidSelectTabBarDelegate {
 
     @IBOutlet private weak var timelineTableView: UITableView!
     private let refreshControl = UIRefreshControl()
@@ -298,5 +298,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             }
         }
+    }
+
+    func didSelect(tabBarController: InitialTabBarController) {
+        loadWorks()
     }
 }

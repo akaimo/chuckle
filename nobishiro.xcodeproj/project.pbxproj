@@ -51,6 +51,7 @@
 		B58888CE1B9D367300D4972E /* InitialTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58888CD1B9D367300D4972E /* InitialTabBarController.swift */; };
 		B5BB5E521B9FFC6500EB2680 /* WorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB5E511B9FFC6500EB2680 /* WorkCell.swift */; };
 		B5D314E41BA06D9900108C89 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D314E31BA06D9900108C89 /* UserDefaults.swift */; };
+		B5F864811BA12649006E57A5 /* DidSelectTabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F864801BA12649006E57A5 /* DidSelectTabBarDelegate.swift */; };
 		BA428AFA1B9F2BF200CE73F0 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428AF81B9F2BF200CE73F0 /* NotificationTableViewController.swift */; };
 		BA428AFB1B9F2BF200CE73F0 /* NotificationTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA428AF91B9F2BF200CE73F0 /* NotificationTableViewController.xib */; };
 		BA428AFD1B9F31C300CE73F0 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA428AFC1B9F31C300CE73F0 /* Notification.swift */; };
@@ -131,6 +132,7 @@
 		B58888CD1B9D367300D4972E /* InitialTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialTabBarController.swift; sourceTree = "<group>"; };
 		B5BB5E511B9FFC6500EB2680 /* WorkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkCell.swift; sourceTree = "<group>"; };
 		B5D314E31BA06D9900108C89 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		B5F864801BA12649006E57A5 /* DidSelectTabBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DidSelectTabBarDelegate.swift; sourceTree = "<group>"; };
 		BA428AF81B9F2BF200CE73F0 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		BA428AF91B9F2BF200CE73F0 /* NotificationTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTableViewController.xib; sourceTree = "<group>"; };
 		BA428AFC1B9F31C300CE73F0 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		99593B451B983C82000C51C1 /* nobishiro */ = {
 			isa = PBXGroup;
 			children = (
+				B5F8647F1BA125E1006E57A5 /* Delegates */,
 				B5105AD51B99418400BD9ECD /* Models */,
 				B57B35071B9860A500C156A2 /* Cells */,
 				99593B481B983C82000C51C1 /* AppDelegate.swift */,
@@ -280,6 +283,14 @@
 				B5BB5E511B9FFC6500EB2680 /* WorkCell.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		B5F8647F1BA125E1006E57A5 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B5F864801BA12649006E57A5 /* DidSelectTabBarDelegate.swift */,
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +425,7 @@
 				99593B691B983D48000C51C1 /* PostingViewController.swift in Sources */,
 				B566B1CE1B9FBC3E002612A6 /* RankingViewController.swift in Sources */,
 				BA428AFF1B9F332A00CE73F0 /* NotificationsData.swift in Sources */,
+				B5F864811BA12649006E57A5 /* DidSelectTabBarDelegate.swift in Sources */,
 				B57B35011B984F0400C156A2 /* ThreePanelMangaTableViewCell.swift in Sources */,
 				99593BA21B997AA4000C51C1 /* PostingTitleCustomCell.swift in Sources */,
 				99593C141B9DC91D000C51C1 /* PostCollectionView.swift in Sources */,
