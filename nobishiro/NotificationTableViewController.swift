@@ -20,6 +20,8 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
         notificationTableView.reloadData()
         if notifications.count > 0{
             mesImageView.hidden = true
+        }else{
+            mesImageView.hidden = false
         }
       }
     }

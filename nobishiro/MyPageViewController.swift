@@ -14,12 +14,18 @@ import Alamofire
 
 class MyPageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
+    @IBOutlet weak var mesImageView: UIImageView!
     @IBOutlet weak var myWorksTableView: UITableView!
 
     private let refreshControl = UIRefreshControl()
     private var works: [Work] = [] {
         didSet {
             myWorksTableView.reloadData()
+            if works.count > 0{
+                mesImageView.hidden = true
+            }else{
+                mesImageView.hidden = false
+            }
         }
     }
     private var myFavorites: [Int] = [] {
