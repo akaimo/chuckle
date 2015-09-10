@@ -72,6 +72,7 @@
                     <constraint firstAttribute="centerY" secondItem="YdI-KZ-rmv" secondAttribute="centerY" id="dHm-Jx-TdI"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="thumImageView" destination="wjw-AP-aGQ" id="GXf-lB-C7g"/>
                 <outlet property="title" destination="LJb-90-QtP" id="YZt-nC-W5c"/>
