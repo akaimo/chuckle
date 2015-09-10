@@ -142,7 +142,7 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                     let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                     cell.favoriteCount.text = String(format: "%.1fK", double)
                 } else {
-                    var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                    var numberOfFavorites = works[indexPath.row].favoriteCount
                     if contains(tempFavorites, works[indexPath.row].workId) {
                         numberOfFavorites++
                     }
@@ -186,7 +186,7 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                     let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                     cell.favoriteCount.text = String(format: "%.1fK", double)
                 } else {
-                    var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                    var numberOfFavorites = works[indexPath.row].favoriteCount
                     if contains(tempFavorites, works[indexPath.row].workId) {
                         numberOfFavorites++
                     }
@@ -231,7 +231,7 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                     let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
                     cell.favoriteCount.text = String(format: "%.1fK", double)
                 } else {
-                    var numberOfFavorites = works[indexPath.row].favoriteCount + 1
+                    var numberOfFavorites = works[indexPath.row].favoriteCount
                     if contains(tempFavorites, works[indexPath.row].workId) {
                         numberOfFavorites++
                     }
