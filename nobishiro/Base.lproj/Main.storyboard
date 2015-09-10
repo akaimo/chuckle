@@ -169,13 +169,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ha-mE-UPX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="lb9-IC-JNb" customClass="RAMChuckleAnimation" customModule="nobishiro" customModuleProvider="target">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                            <color key="value" red="0.92156869173049927" green="0.90980398654937744" blue="0.62352943420410156" alpha="1" colorSpace="deviceRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </customObject>
+                <customObject id="lb9-IC-JNb" customClass="RAMChuckleAnimation" customModule="nobishiro" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="634" y="716"/>
         </scene>
@@ -208,7 +202,7 @@
         <scene sceneID="D3K-1X-RZY">
             <objects>
                 <navigationController storyboardIdentifier="NavigationToPosting" automaticallyAdjustsScrollViewInsets="NO" id="t0L-2b-oI9" customClass="NavigationToPostingViewController" customModule="nobishiro" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="大喜利する" image="chuckle" selectedImage="chuckle" id="9wD-GW-GVS" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" tag="3" title="大喜利する" image="chuckle" selectedImage="chuckle" id="9wD-GW-GVS" customClass="RAMAnimatedTabBarItem" customModule="nobishiro" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">

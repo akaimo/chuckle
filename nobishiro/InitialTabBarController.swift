@@ -39,7 +39,6 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: create methods
@@ -141,10 +140,16 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let containersDict = NSMutableDictionary()
         let itemsCount: Int = tabBar.items!.count as Int - 1
+        let items = tabBar.items!
         
-        for index in 0...itemsCount {
-            let viewContainer = createViewContainer()
+       // for index in 0...itemsCount {
+       
+        for (index, item) in enumerate(items) {
+            let viewContainer = createViewContainer(index)
             containersDict.setValue(viewContainer, forKey: "container\(index)")
+            if item.tag != 3 {
+            
+            }
         }
         
         let keys = containersDict.allKeys
@@ -163,7 +168,7 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
         return containersDict
     }
     
-    func createViewContainer() -> UIView {
+    func createViewContainer(index: Int) -> UIView {
         let viewContainer = UIView()
         viewContainer.backgroundColor = UIColor.clearColor() // for test
         viewContainer.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -204,18 +209,35 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
         let items = tabBar.items as! [RAMAnimatedTabBarItem]
         
         let currentIndex = gesture.view!.tag
+        
         if selectedIndex != currentIndex {
-            let animationItem : RAMAnimatedTabBarItem = items[currentIndex]
-            let icon = iconsView[currentIndex].icon
-            let textLabel = iconsView[currentIndex].textLabel
-            animationItem.playAnimation(icon, textLabel: textLabel)
             
-            let deselelectIcon = iconsView[selectedIndex].icon
-            let deselelectTextLabel = iconsView[selectedIndex].textLabel
-            let deselectItem = items[selectedIndex]
-            deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
-            
-            selectedIndex = gesture.view!.tag
+            if items[currentIndex].tag == 3{
+                let animationItem : RAMAnimatedTabBarItem = items[currentIndex]
+                let icon = iconsView[currentIndex].icon
+                let textLabel = iconsView[currentIndex].textLabel
+                animationItem.playAnimation(icon, textLabel: textLabel)
+             
+                if let currentViewController = self.selectedViewController {
+                    let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NavigationToPosting") as! UINavigationController
+                    nextViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+                    currentViewController.presentViewController(nextViewController, animated: true, completion: nil)
+                }
+                
+            }else{
+                let animationItem : RAMAnimatedTabBarItem = items[currentIndex]
+                let icon = iconsView[currentIndex].icon
+                let textLabel = iconsView[currentIndex].textLabel
+                animationItem.playAnimation(icon, textLabel: textLabel)
+                
+                let deselelectIcon = iconsView[selectedIndex].icon
+                let deselelectTextLabel = iconsView[selectedIndex].textLabel
+                let deselectItem = items[selectedIndex]
+                deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
+                
+                selectedIndex = gesture.view!.tag
+            }
+
         }
     }
     
@@ -226,19 +248,4 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
         items[to].playAnimation(iconsView[to].icon, textLabel: iconsView[to].textLabel)
     }
     
-    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        
-        //ここが呼び出されない？
-        
-        if viewController is NavigationToPostingViewController {
-            if let currentViewController = self.selectedViewController {
-                let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NavigationToPosting") as! UINavigationController
-                nextViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-                currentViewController.presentViewController(nextViewController, animated: true, completion: nil)
-            }
-            return false
-        }
-        return true
-    }
-
 }

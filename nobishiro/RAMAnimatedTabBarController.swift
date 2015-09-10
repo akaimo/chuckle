@@ -187,7 +187,7 @@ class RAMAnimatedTabBarController: UITabBarController {
         viewContainer.backgroundColor = UIColor.clearColor() // for test
         viewContainer.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(viewContainer)
-
+        
         // add gesture
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapHandler:")
         tapGesture.numberOfTouchesRequired = 1
