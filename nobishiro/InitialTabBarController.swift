@@ -248,6 +248,13 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
          //       UITabBar.appearance().backgroundImage = UIImage(named: "alermTab")
                 
                 selectedIndex = gesture.view!.tag
+
+                let tabViewControllers = self.viewControllers!
+                let nextNavigationController = tabViewControllers[selectedIndex] as! UINavigationController
+                if let viewControllers = nextNavigationController.viewControllers,
+                nextViewController = viewControllers[0] as? AutoReloadDelegate {
+                    nextViewController.autoReload()
+                }
             }
 
         }

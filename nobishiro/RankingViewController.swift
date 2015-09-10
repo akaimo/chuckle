@@ -12,7 +12,7 @@ import Himotoki
 import Social
 import Alamofire
 
-class RankingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RankingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AutoReloadDelegate {
 
     @IBOutlet weak var rankingTableView: UITableView!
 
@@ -280,4 +280,8 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
             println("shareWithLINE")
             SNS.shareWithSNS(self, sns: .LINE, workID: sender.tag)
         }
+    func autoReload() {
+        println("RankingController: autoload")
+        loadWorks()
+    }
 }
