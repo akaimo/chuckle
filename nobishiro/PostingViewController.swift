@@ -206,7 +206,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             
             focusNum = imgCount
-            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
             self.postingTableView.reloadData()
         }
     }
@@ -301,7 +301,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             imgCount += 1
             focusNum = imgCount
             self.postingTableView.reloadData()
-            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
         }
         
         postCheck()
