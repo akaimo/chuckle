@@ -13,13 +13,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="416.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsB-WP-ZKa">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MsB-WP-ZKa">
                         <rect key="frame" x="15" y="5" width="290" height="470"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CiA-MD-9Yu">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CiA-MD-9Yu">
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほ" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90G-P4-wDv" userLabel="title">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほ" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90G-P4-wDv" userLabel="title">
                                         <rect key="frame" x="10" y="10" width="270" height="70"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -34,7 +34,7 @@
                                     <constraint firstAttribute="bottom" secondItem="90G-P4-wDv" secondAttribute="bottom" constant="10" id="xn0-Bb-KuI"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XQL-eq-iwB" userLabel="firstPanel">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQL-eq-iwB" userLabel="firstPanel">
                                 <rect key="frame" x="70" y="100" width="150" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="height" constant="150" id="z4L-ON-zrR"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="17d-1y-XDn" userLabel="secondPanel">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17d-1y-XDn" userLabel="secondPanel">
                                 <rect key="frame" x="70" y="253" width="150" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -50,7 +50,7 @@
                                     <constraint firstAttribute="height" constant="150" id="uIQ-Wo-EwY"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4V-Gy-ONC">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d4V-Gy-ONC">
                                 <rect key="frame" x="228" y="379" width="65" height="24"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="numberOfStars" translatesAutoresizingMaskIntoConstraints="NO" id="CkW-ir-Ape">
@@ -86,14 +86,14 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5EV-aF-E67">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5EV-aF-E67">
                                 <rect key="frame" x="10" y="412" width="270" height="1"/>
                                 <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Rwe-XI-MM9"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F5-GY-BeO" userLabel="postToTwitter">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F5-GY-BeO" userLabel="postToTwitter">
                                 <rect key="frame" x="10" y="423" width="35" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="HDP-zW-grt"/>
@@ -103,7 +103,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iR5-r8-S3e" userLabel="postToFacebook">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iR5-r8-S3e" userLabel="postToFacebook">
                                 <rect key="frame" x="55" y="423" width="35" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="K9X-FQ-Ngk"/>
@@ -113,7 +113,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IE5-Ft-ob2" userLabel="postToLine">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IE5-Ft-ob2" userLabel="postToLine">
                                 <rect key="frame" x="100" y="423" width="35" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="Fmf-ij-g9g"/>
@@ -123,7 +123,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewj-RW-kEe" userLabel="postToFavorite">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewj-RW-kEe" userLabel="postToFavorite">
                                 <rect key="frame" x="253" y="428" width="26" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="26" id="3t4-si-F9N"/>
@@ -192,7 +192,7 @@
         <image name="facebook" width="35" height="37"/>
         <image name="line" width="35" height="37"/>
         <image name="numberOfStars" width="16" height="15"/>
-        <image name="star" width="52" height="50"/>
+        <image name="star" width="26" height="25"/>
         <image name="twitter" width="35" height="37"/>
     </resources>
 </document>

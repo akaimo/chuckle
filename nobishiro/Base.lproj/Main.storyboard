@@ -417,11 +417,11 @@
     </scenes>
     <resources>
         <image name="PostCancel" width="17" height="16"/>
-        <image name="alermTab" width="60" height="60"/>
+        <image name="alermTab" width="30" height="30"/>
         <image name="background" width="640" height="1132"/>
-        <image name="chuckle" width="60" height="60"/>
-        <image name="myPageTab" width="60" height="60"/>
-        <image name="newTab" width="54" height="96"/>
-        <image name="rankingTab" width="60" height="60"/>
+        <image name="chuckle" width="30" height="30"/>
+        <image name="myPageTab" width="30" height="30"/>
+        <image name="newTab" width="30" height="30"/>
+        <image name="rankingTab" width="30" height="30"/>
     </resources>
 </document>

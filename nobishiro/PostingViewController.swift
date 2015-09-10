@@ -41,6 +41,9 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         var barBtn: UIBarButtonItem = UIBarButtonItem()
         barBtn.title = ""
         self.navigationItem.backBarButtonItem = barBtn
+        
+        let backgroundImg = UIImage(named: "background")
+        postingTableView.backgroundView = UIImageView(image: backgroundImg)
 
         postingTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
         postingTableView.registerNib(UINib(nibName: "TopPostingTableViewCell", bundle: nil), forCellReuseIdentifier: "TopPosting")
@@ -107,6 +110,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             
             cell.postingImageView.tag = indexPath.row
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.backgroundColor = UIColor.clearColor()
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
             cell.postingImageView.addGestureRecognizer(gesture)
@@ -135,6 +139,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             
             cell.postingImageView.tag = indexPath.row
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.backgroundColor = UIColor.clearColor()
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
             cell.postingImageView.addGestureRecognizer(gesture)
@@ -170,6 +175,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             
             cell.postingImageView.tag = indexPath.row
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.backgroundColor = UIColor.clearColor()
             
             let gesture = UITapGestureRecognizer(target:self, action: "didClickImageView:")
             cell.postingImageView.addGestureRecognizer(gesture)
