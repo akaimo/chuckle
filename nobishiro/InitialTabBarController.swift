@@ -14,7 +14,7 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-  
+    //    UITabBar.appearance().backgroundImage = UIImage(named: "chuckle")
         let containers = createViewContainers()
         createCustomIcons(containers)
         
@@ -217,7 +217,12 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                 let icon = iconsView[currentIndex].icon
                 let textLabel = iconsView[currentIndex].textLabel
                 animationItem.playAnimation(icon, textLabel: textLabel)
-             
+                
+                let deselelectIcon = iconsView[currentIndex].icon
+                let deselelectTextLabel = iconsView[currentIndex].textLabel
+                let deselectItem = items[currentIndex]
+                deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
+                
                 if let currentViewController = self.selectedViewController {
                     let nextViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NavigationToPosting") as! UINavigationController
                     nextViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
@@ -234,11 +239,30 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                 let deselelectTextLabel = iconsView[selectedIndex].textLabel
                 let deselectItem = items[selectedIndex]
                 deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
+         //       UITabBar.appearance().backgroundImage = UIImage(named: "alermTab")
                 
                 selectedIndex = gesture.view!.tag
             }
 
         }
+    }
+    
+    func changeTab(showtabIndex:Int) {
+        let items = tabBar.items as! [RAMAnimatedTabBarItem]
+        
+        let deselelectIcon = iconsView[selectedIndex].icon
+        let deselelectTextLabel = iconsView[selectedIndex].textLabel
+        let deselectItem = items[selectedIndex]
+        deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
+        
+        
+        let animationItemNew : RAMAnimatedTabBarItem = items[selectedIndex]
+        let iconNew = iconsView[selectedIndex].icon
+        let textLabelNew = iconsView[selectedIndex].textLabel
+        animationItemNew.playAnimation(iconNew, textLabel: textLabelNew)
+
+        selectedIndex = showtabIndex
+
     }
     
     func setSelectIndex(#from:Int,to:Int) {
