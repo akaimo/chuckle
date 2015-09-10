@@ -12,11 +12,15 @@ import Alamofire
 
 class NotificationTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var mesImageView: UIImageView!
     @IBOutlet private weak var notificationTableView: UITableView!
     private let refreshControl = UIRefreshControl()
     private var notifications: [Notification] = [] {
       didSet {
         notificationTableView.reloadData()
+        if notifications.count > 0{
+            mesImageView.hidden = true
+        }
       }
     }
 
