@@ -11,7 +11,7 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIApplicationDelegate {
+class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIApplicationDelegate {
     @IBOutlet weak var postBtn: UIBarButtonItem!
     @IBOutlet weak var postingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var postingTableView: UITableView!
@@ -206,7 +206,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             
             focusNum = imgCount
-            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
             self.postingTableView.reloadData()
         }
     }
@@ -301,10 +301,14 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             imgCount += 1
             focusNum = imgCount
             self.postingTableView.reloadData()
-            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            self.postingTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: imgCount, inSection: 0), atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
         }
         
         postCheck()
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake((self.view.frame.size.width - 4*5) / 4, (self.view.frame.size.width - 4*3) / 4)
     }
     
     
