@@ -169,7 +169,10 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     func titleCheck() {
-        if postTitle == "" {
+        let str = postTitle.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        let sstr = str.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
+        println("title:\(sstr)")
+        if postTitle.isEmpty || sstr.isEmpty {
             postBtn.enabled = false
         } else {
             postBtn.enabled = true
