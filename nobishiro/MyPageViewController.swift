@@ -128,7 +128,7 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
             cell.postToLine.addTarget(self, action: "shareWithLINE:", forControlEvents: .TouchUpInside)
 
             cell.postToFavorite.enabled = false
-            cell.postToFavorite.setImage(nil, forState: .Normal)
+            cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
 
             if works[indexPath.row].favoriteCount > 1000 {
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
@@ -157,7 +157,7 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
             cell.postToLine.addTarget(self, action: "shareWithLINE:", forControlEvents: .TouchUpInside)
 
             cell.postToFavorite.enabled = false
-            cell.postToFavorite.setImage(nil, forState: .Normal)
+            cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
 
             if works[indexPath.row].favoriteCount > 1000 {
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
@@ -187,7 +187,7 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
             cell.postToLine.addTarget(self, action: "shareWithLINE:", forControlEvents: .TouchUpInside)
 
             cell.postToFavorite.enabled = false
-            cell.postToFavorite.setImage(nil, forState: .Normal)
+            cell.postToFavorite.setImage(UIImage(named: "star-mine"), forState: .Normal)
 
             if works[indexPath.row].favoriteCount > 1000 {
                 let double: Double = Double(works[indexPath.row].favoriteCount) / 1000
