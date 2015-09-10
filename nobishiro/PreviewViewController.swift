@@ -165,7 +165,9 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
             println(error)
         }
 
-        
         self.dismissViewControllerAnimated(true, completion: nil)
+
+        let notification = NSNotification(name: "ShowNew", object: nil)
+        NSNotificationCenter.defaultCenter().postNotification(notification)
     }
 }

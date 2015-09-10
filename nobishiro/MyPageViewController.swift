@@ -48,6 +48,9 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
 
         refreshControl.addTarget(self, action: "loadWorks", forControlEvents: .ValueChanged)
         myWorksTableView.addSubview(refreshControl)
+
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "reloadTimeline:", name: "ReloadTimeline", object: nil)
     }
 
     func loadWorks() {
@@ -213,5 +216,9 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
     func shareWithLINE(sender: UIButton) {
         println("shareWithLINE")
         SNS.shareWithSNS(self, sns: .LINE, workID: sender.tag)
+    }
+
+    func reloadTimeline(center: NSNotificationCenter) {
+        loadWorks()
     }
 }

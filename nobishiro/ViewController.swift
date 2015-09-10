@@ -12,7 +12,7 @@ import Himotoki
 import Social
 import Alamofire
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DidSelectTabBarDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private weak var timelineTableView: UITableView!
     private let refreshControl = UIRefreshControl()
@@ -50,6 +50,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         refreshControl.addTarget(self, action: "loadWorks", forControlEvents: .ValueChanged)
         timelineTableView.addSubview(refreshControl)
+
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "reloadTimeline:", name: "ReloadTimeline", object: nil)
     }
 
     func loadWorks() {
@@ -300,7 +303,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
-    func didSelect(tabBarController: InitialTabBarController) {
+    func reloadTimeline(center: NSNotificationCenter) {
         loadWorks()
     }
 }
