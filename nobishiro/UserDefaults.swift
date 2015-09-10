@@ -26,7 +26,7 @@ struct UserDefaults {
             println("userID return \(uid)")
             return uid as! Int
         }else{
-            println("userID return 1")
+            println("userID return 仮の1")
             return 1
         }
         
