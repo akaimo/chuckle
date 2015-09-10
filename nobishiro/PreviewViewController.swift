@@ -220,21 +220,14 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         var userID: AnyObject!
-        var platform = platformName()
-        if platform == "x86_64" {
-            // simulator
-            userID = 1
-        } else {
-            // 実機処理
-            let ud = NSUserDefaults.standardUserDefaults()
-            userID = ud.objectForKey("userID")
-            
-            if userID == nil {
-                println("--- uiseID = nil ---")
-                return
-            }
-        }
+        let ud = NSUserDefaults.standardUserDefaults()
+        userID = ud.objectForKey("userID")
         
+        if userID == nil {
+            println("--- uiseID = nil ---")
+            return
+        }
+    
         let parameters: [String: AnyObject] = [
             "title": postTitle,
             "user_id": userID,
