@@ -11,7 +11,7 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PreviewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
+class PreviewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UIScrollViewDelegate {
     @IBOutlet weak var postBtn: UIBarButtonItem!
     @IBOutlet weak var postTableView: UITableView!
     internal var imgArray: [Int]!
@@ -25,7 +25,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "タイトル"
+        self.title = "タイトルを入れてね！"
         self.postTableView.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
         
         postTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
@@ -87,7 +87,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.titleTextView.delegate = self
             cell.titleTextView.becomeFirstResponder()
             cell.titleBackgroundView.layer.borderColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1).CGColor
-            cell.titleBackgroundView.layer.borderWidth = 1
+            cell.titleBackgroundView.layer.borderWidth = 2
             cell.backgroundColor = UIColor.clearColor()
             
             return cell
@@ -185,6 +185,11 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
         self.lastReplacementString = text
         
         return true
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.view.endEditing(true)
+        println("hoge")
     }
     
     
