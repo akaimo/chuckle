@@ -17,7 +17,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
     internal var imgArray: [Int]!
     internal var materials: [Material]!
     private var postTitle = ""
-    private let maxLength = 20
+    private let maxLength = 30
     private var previousText = ""
     private var lastReplaceRange: NSRange!
     private var lastReplacementString = ""
