@@ -280,19 +280,19 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
             println(currentIndex)
             if currentIndex == 0 { //つまり、ランキングを２連続押したとき
                 let notification = NSNotification(name: "ReloadTimelineRanking", object: nil)
-                NSNotificationCenter.defaultCenter().postNotification(notification)
+          //      NSNotificationCenter.defaultCenter().postNotification(notification)
             }
             if currentIndex == 1 { //つまり、新着タブを２連続押したとき
                 let notification = NSNotification(name: "ReloadTimeline", object: nil)
-                NSNotificationCenter.defaultCenter().postNotification(notification)
+          //      NSNotificationCenter.defaultCenter().postNotification(notification)
             }
             if currentIndex == 3 { //つまり、通知タブを２連続押したとき
                 let notification = NSNotification(name: "ReloadTimelineNotifications", object: nil)
-                NSNotificationCenter.defaultCenter().postNotification(notification)
+          //      NSNotificationCenter.defaultCenter().postNotification(notification)
             }
             if currentIndex == 4 { //つまり、自分の投稿を２連続押したとき
                 let notification = NSNotification(name: "ReloadTimelineMyPage", object: nil)
-                NSNotificationCenter.defaultCenter().postNotification(notification)
+          //      NSNotificationCenter.defaultCenter().postNotification(notification)
             }}
     }
     
