@@ -11,21 +11,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cHf-G5-WIh">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="4" width="600" height="596"/>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="0.0" id="1Wl-TM-6qE">
                         <size key="itemSize" width="77" height="77"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="4" minY="4" maxX="4" maxY="4"/>
+                        <inset key="sectionInset" minX="4" minY="0.0" maxX="4" maxY="4"/>
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="cHf-G5-WIh" secondAttribute="trailing" id="3Lo-YA-vIg"/>
                 <constraint firstItem="cHf-G5-WIh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9kP-7s-RLn"/>
-                <constraint firstItem="cHf-G5-WIh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fH7-gk-AfD"/>
+                <constraint firstItem="cHf-G5-WIh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="fH7-gk-AfD"/>
                 <constraint firstAttribute="bottom" secondItem="cHf-G5-WIh" secondAttribute="bottom" id="oiH-bQ-dCT"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
