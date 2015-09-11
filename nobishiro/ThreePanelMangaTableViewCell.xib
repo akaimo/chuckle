@@ -122,10 +122,10 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cm-Cl-rpb" userLabel="postToFavorite">
-                                <rect key="frame" x="253" y="607" width="26" height="24"/>
+                                <rect key="frame" x="243" y="597.5" width="46" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="26" id="mvX-9m-azx"/>
-                                    <constraint firstAttribute="height" constant="24" id="wft-r2-f07"/>
+                                    <constraint firstAttribute="width" constant="46" id="mvX-9m-azx"/>
+                                    <constraint firstAttribute="height" constant="44" id="wft-r2-f07"/>
                                 </constraints>
                                 <state key="normal" image="star">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -161,10 +161,10 @@
                             <constraint firstAttribute="bottom" secondItem="gjp-3H-U4c" secondAttribute="bottom" constant="10" id="kHU-Kr-IFO"/>
                             <constraint firstItem="xCn-gO-r0A" firstAttribute="top" secondItem="W2b-lL-ZqT" secondAttribute="top" id="kYy-BH-5YD"/>
                             <constraint firstAttribute="bottom" secondItem="iRP-5P-JLW" secondAttribute="bottom" constant="10" id="nAC-0v-wSz"/>
-                            <constraint firstAttribute="bottom" secondItem="1Cm-Cl-rpb" secondAttribute="bottom" constant="18" id="nEL-pF-lbu"/>
+                            <constraint firstAttribute="bottom" secondItem="1Cm-Cl-rpb" secondAttribute="bottom" constant="8" id="nEL-pF-lbu"/>
                             <constraint firstAttribute="trailing" secondItem="pI7-tz-4FL" secondAttribute="trailing" constant="-3" id="u9r-Lo-TGe"/>
                             <constraint firstItem="Nna-sW-jwT" firstAttribute="top" secondItem="ZvJ-43-3vl" secondAttribute="bottom" constant="3" id="xpU-7E-06k"/>
-                            <constraint firstAttribute="trailing" secondItem="1Cm-Cl-rpb" secondAttribute="trailing" constant="11" id="xpg-r7-wUO"/>
+                            <constraint firstAttribute="trailing" secondItem="1Cm-Cl-rpb" secondAttribute="trailing" constant="1" id="xpg-r7-wUO"/>
                             <constraint firstItem="HG0-BP-hNg" firstAttribute="leading" secondItem="W2b-lL-ZqT" secondAttribute="leading" constant="10" id="zL9-jX-kBz"/>
                             <constraint firstItem="obl-rh-Hn6" firstAttribute="top" secondItem="HG0-BP-hNg" secondAttribute="bottom" constant="10" id="zoh-Fh-IiZ"/>
                         </constraints>
@@ -203,7 +203,7 @@
         <image name="facebook" width="35" height="37"/>
         <image name="line" width="35" height="37"/>
         <image name="numberOfStars" width="16" height="15"/>
-        <image name="star" width="52" height="50"/>
+        <image name="star" width="26" height="25"/>
         <image name="twitter" width="35" height="37"/>
     </resources>
 </document>
