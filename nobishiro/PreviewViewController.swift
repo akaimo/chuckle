@@ -11,7 +11,7 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PreviewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
+class PreviewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UIScrollViewDelegate {
     @IBOutlet weak var postBtn: UIBarButtonItem!
     @IBOutlet weak var postTableView: UITableView!
     internal var imgArray: [Int]!
@@ -185,6 +185,11 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
         self.lastReplacementString = text
         
         return true
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.view.endEditing(true)
+        println("hoge")
     }
     
     
