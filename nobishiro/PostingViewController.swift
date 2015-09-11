@@ -33,7 +33,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "コマ画像"
+        self.title = "2コマ以上入れてね！"
         self.navigationController?.navigationBarHidden = false
         
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
