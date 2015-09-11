@@ -298,7 +298,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myPageDefault" translatesAutoresizingMaskIntoConstraints="NO" id="8jr-7k-ryO">
-                                <rect key="frame" x="155" y="255.5" width="290" height="89"/>
+                                <rect key="frame" x="155" y="256" width="290" height="89"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="D8x-Es-oK1"/>
                                     <constraint firstAttribute="height" constant="89" id="aDK-dX-Qca"/>
