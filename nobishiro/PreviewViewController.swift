@@ -25,7 +25,7 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "タイトルを入れてね！"
+        self.title = "タイトルを入力してね！"
         self.postTableView.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
         
         postTableView.registerNib(UINib(nibName: "PostingTableViewCell", bundle: nil), forCellReuseIdentifier: "Posting")
@@ -87,7 +87,8 @@ class PreviewViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.titleTextView.delegate = self
             cell.titleTextView.becomeFirstResponder()
             cell.titleBackgroundView.layer.borderColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1).CGColor
-            cell.titleBackgroundView.layer.borderWidth = 2
+            cell.titleBackgroundView.layer.borderWidth = 1
+            cell.titleBackgroundView.layer.cornerRadius = 10
             cell.backgroundColor = UIColor.clearColor()
             
             return cell
