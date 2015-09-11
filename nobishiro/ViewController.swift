@@ -324,9 +324,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func reloadTimeline(center: NSNotificationCenter) {
+        println("reloadTimeline in NewTL")
         loadWorks()
         let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-        let hoge: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
         if works.count > 0 {
             timelineTableView.scrollToRowAtIndexPath(topIndexPath, atScrollPosition: .Top, animated: false)
         }

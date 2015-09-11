@@ -8,8 +8,9 @@
 
 import UIKit
 
-class PostingTitleCustomCell: UITableViewCell {
-    @IBOutlet weak var titleTextField: UITextField!
+class PostingTitleCustomCell: UITableViewCell {     
+    @IBOutlet weak var titleTextView: UITextView!
+    @IBOutlet weak var titleBackgroundView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

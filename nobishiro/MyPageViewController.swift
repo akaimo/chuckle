@@ -14,12 +14,18 @@ import Alamofire
 
 class MyPageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AutoReloadDelegate  {
 
+    @IBOutlet weak var mesImageView: UIImageView!
     @IBOutlet weak var myWorksTableView: UITableView!
 
     private let refreshControl = UIRefreshControl()
     private var works: [Work] = [] {
         didSet {
             myWorksTableView.reloadData()
+            if works.count > 0{
+                mesImageView.hidden = true
+            }else{
+                mesImageView.hidden = false
+            }
         }
     }
     private var myFavorites: [Int] = [] {
@@ -51,6 +57,8 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
 
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "reloadTimeline:", name: "ReloadTimeline", object: nil)
+        notificationCenter.addObserver(self, selector: "reloadTimelineMyPage:", name: "ReloadTimelineMyPage", object: nil)
+
     }
 
     func loadWorks() {
@@ -226,4 +234,13 @@ class MyPageViewController: UIViewController, UITableViewDataSource, UITableView
         println("MyPageController: autoload")
         loadWorks()
     }
+    
+    func reloadTimelineMyPage(center: NSNotificationCenter) {
+        loadWorks()
+        let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        if works.count > 0 {
+            myWorksTableView.scrollToRowAtIndexPath(topIndexPath, atScrollPosition: .Top, animated: false)
+        }
+    }
+
 }

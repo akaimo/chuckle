@@ -10,11 +10,11 @@ import UIKit
 
 class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
     var iconsView: [(icon: UIImageView, textLabel: UILabel)] = Array()
+    var currentIndexBefore = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-    //    UITabBar.appearance().backgroundImage = UIImage(named: "chuckle")
         let containers = createViewContainers()
         createCustomIcons(containers)
         
@@ -37,6 +37,7 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: "showNew:", name: "ShowNew", object: nil)
+        notificationCenter.addObserver(self, selector: "showNotifications:", name: "ShowNotifications", object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +57,18 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                 
                 let container : UIView = containers["container\(itemsCount-index)"] as! UIView
                 container.tag = index
+                
+                if index == 2{
+                    println("中央")
+                    let backgroundImage = UIImage(named: "Center")
+                    let iconBg = UIImageView(image: backgroundImage)
+                    iconBg.setTranslatesAutoresizingMaskIntoConstraints(false)
+                    container.addSubview(iconBg)
+                    createConstraints(iconBg, container: container, size: backgroundImage!.size, yOffset: -5)
+                    
+                }else{
+                    println("ほか")
+                }
                 
                 let icon = UIImageView(image: item.image)
                 icon.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -231,6 +244,8 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                     currentViewController.presentViewController(nextViewController, animated: true, completion: nil)
                 }
             }else{
+                currentIndexBefore = currentIndex
+
                 if items[currentIndex].tag == 4 {
                     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
                     appDel.resetBadgeValue()
@@ -245,7 +260,6 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                 let deselelectTextLabel = iconsView[selectedIndex].textLabel
                 let deselectItem = items[selectedIndex]
                 deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
-         //       UITabBar.appearance().backgroundImage = UIImage(named: "alermTab")
                 
                 selectedIndex = gesture.view!.tag
 
@@ -257,25 +271,29 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
                 }
             }
 
-        }
-    }
-    
-    func changeTab(showtabIndex:Int) {
-        let items = tabBar.items as! [RAMAnimatedTabBarItem]
-        
-        let deselelectIcon = iconsView[selectedIndex].icon
-        let deselelectTextLabel = iconsView[selectedIndex].textLabel
-        let deselectItem = items[selectedIndex]
-        deselectItem.deselectAnimation(deselelectIcon, textLabel: deselelectTextLabel)
-        
-        
-        let animationItemNew : RAMAnimatedTabBarItem = items[selectedIndex]
-        let iconNew = iconsView[selectedIndex].icon
-        let textLabelNew = iconsView[selectedIndex].textLabel
-        animationItemNew.playAnimation(iconNew, textLabel: textLabelNew)
-
-        selectedIndex = showtabIndex
-
+        }else{            //現在選択中のタブと同じタブを選んだとき
+            let animationItem : RAMAnimatedTabBarItem = items[currentIndex]
+            let icon = iconsView[currentIndex].icon
+            let textLabel = iconsView[currentIndex].textLabel
+            animationItem.playAnimation(icon, textLabel: textLabel)
+            
+            println(currentIndex)
+            if currentIndex == 0 { //つまり、ランキングを２連続押したとき
+                let notification = NSNotification(name: "ReloadTimelineRanking", object: nil)
+          //      NSNotificationCenter.defaultCenter().postNotification(notification)
+            }
+            if currentIndex == 1 { //つまり、新着タブを２連続押したとき
+                let notification = NSNotification(name: "ReloadTimeline", object: nil)
+          //      NSNotificationCenter.defaultCenter().postNotification(notification)
+            }
+            if currentIndex == 3 { //つまり、通知タブを２連続押したとき
+                let notification = NSNotification(name: "ReloadTimelineNotifications", object: nil)
+          //      NSNotificationCenter.defaultCenter().postNotification(notification)
+            }
+            if currentIndex == 4 { //つまり、自分の投稿を２連続押したとき
+                let notification = NSNotification(name: "ReloadTimelineMyPage", object: nil)
+          //      NSNotificationCenter.defaultCenter().postNotification(notification)
+            }}
     }
     
     func setSelectIndex(#from:Int,to:Int) {
@@ -286,9 +304,15 @@ class InitialTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     func showNew(center: NSNotificationCenter) {
-        selectedIndex = 1
-
+        setSelectIndex(from: currentIndexBefore,to: 1)
         let notification = NSNotification(name: "ReloadTimeline", object: nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)
+        
+    }
+    
+    func showNotifications(center: NSNotificationCenter) {
+        setSelectIndex(from: currentIndexBefore,to: 3)
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDel.resetBadgeValue()
     }
 }

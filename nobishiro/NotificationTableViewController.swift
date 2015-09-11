@@ -12,11 +12,17 @@ import Alamofire
 
 class NotificationTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AutoReloadDelegate {
 
+    @IBOutlet weak var mesImageView: UIImageView!
     @IBOutlet private weak var notificationTableView: UITableView!
     private let refreshControl = UIRefreshControl()
     private var notifications: [Notification] = [] {
       didSet {
         notificationTableView.reloadData()
+        if notifications.count > 0{
+            mesImageView.hidden = true
+        }else{
+            mesImageView.hidden = false
+        }
       }
     }
 
@@ -37,6 +43,9 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
         loadNotifications()
         refreshControl.addTarget(self, action: "loadNotifications", forControlEvents: .ValueChanged)
         notificationTableView.addSubview(refreshControl)
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "reloadTimelineNotifications:", name: "ReloadTimelineNotifications", object: nil)
+        
 
     }
 
@@ -121,5 +130,13 @@ class NotificationTableViewController: UIViewController, UITableViewDataSource, 
     func autoReload() {
         println("NotificationController: autoload")
         loadNotifications()
+    }
+    
+    func reloadTimelineNotifications(center: NSNotificationCenter) {
+        loadNotifications()
+        let topIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        if notifications.count > 0 {
+            notificationTableView.scrollToRowAtIndexPath(topIndexPath, atScrollPosition: .Top, animated: false)
+        }
     }
 }

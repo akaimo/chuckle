@@ -23,8 +23,10 @@ struct UserDefaults {
     static func getUserID() -> Int {
         let ud = NSUserDefaults.standardUserDefaults()
         if let uid:AnyObject = ud.objectForKey("userID") {
+            println("userID return \(uid)")
             return uid as! Int
         }else{
+            println("userID return 仮の1")
             return 1
         }
         
