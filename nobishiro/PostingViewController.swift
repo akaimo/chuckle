@@ -11,7 +11,7 @@ import Haneke
 import Himotoki
 import Alamofire
 
-class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIApplicationDelegate {
+class PostingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIApplicationDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var postBtn: UIBarButtonItem!
     @IBOutlet weak var postingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var postingTableView: UITableView!
@@ -21,9 +21,17 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     private var imgArray: [Int?] = [nil, nil, nil, nil]
     private var focusNum: Int? = nil
     private var postTitle: String = ""
-    private var animat = false
-    private var collectionOriginY: CGFloat = 0.0
-    private var animationHeight: CGFloat = 0.0
+    private var animat = false                          // collectionViewが出ているか
+    private var longCV = false                          // collectionViewが伸びているか
+    private var shortCV = false                         // collectionViewが縮むことができるか
+    
+    private var touchY: CGFloat = 0.0                   // 縮むときの初期タップ座標
+    private var collectionOriginY: CGFloat = 0.0        // collectionViewが出てくる前のY座標
+    private var collectionShortY: CGFloat = 0.0         // shortサイズのY座標
+    private var collectionHeight: CGFloat = 0.0         // shortサイズの高さ
+    private var collectionLongY: CGFloat = 0.0          // longサイズのY座標
+    private var collectionLongHeight: CGFloat = 0.0     // longサイズの高さ
+    
     private var materials: [Material] = [] {
         didSet {
             postingCollectionView.postCollectionView.reloadData()
@@ -51,19 +59,25 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         postingTableView.registerNib(UINib(nibName: "TopPostingTableViewCell", bundle: nil), forCellReuseIdentifier: "TopPosting")
         postingTableView.registerNib(UINib(nibName: "BottomTableViewCell", bundle: nil), forCellReuseIdentifier: "BottomPosting")
         
-        animationHeight = self.view.frame.height / 2
-        println(animationHeight)
-        
         postingCollectionView = PostCollectionView.instance()
         postingCollectionView.postCollectionView.dataSource = self
         postingCollectionView.postCollectionView.delegate = self
         postingCollectionView.postCollectionView.registerNib(UINib(nibName: "PostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Stamp")
-        postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: animationHeight)
+        postingCollectionView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: collectionHeight)
         self.view.addSubview(postingCollectionView)
+        
+        let myPan = UIPanGestureRecognizer(target: self, action: "panGesture:")
+        myPan.delegate = self
+        self.postingCollectionView.addGestureRecognizer(myPan)
         
         postBtn.enabled = false
         
+        // collectionView
         collectionOriginY = self.postingCollectionView.frame.origin.y
+        collectionHeight = self.view.frame.height / 2
+        collectionShortY = collectionOriginY - collectionHeight
+        collectionLongY = collectionShortY - self.postingCollectionView.frame.origin.y / 4
+        collectionLongHeight = collectionHeight + self.view.frame.height / 4
         
         loadMaterials()
     }
@@ -231,10 +245,11 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
 
     // collectionViewを出す
     func openCollection() {
-        self.postingTableViewHeight.constant = animationHeight
-        self.postingCollectionView.frame.origin.y = self.collectionOriginY
+        self.postingTableViewHeight.constant = collectionHeight
+        self.postingCollectionView.frame.origin.y = collectionOriginY
+        self.postingCollectionView.frame.size.height = collectionHeight
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.postingCollectionView.frame.origin.y -= self.postingCollectionView.frame.height
+            self.postingCollectionView.frame.origin.y = self.collectionShortY
             self.postingTableView.layoutIfNeeded()
         })
         animat = true
@@ -244,7 +259,7 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     func closeCollection() {
         self.postingTableViewHeight.constant = 0
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.postingCollectionView.frame.origin.y += self.postingCollectionView.frame.height
+            self.postingCollectionView.frame.origin.y = self.collectionOriginY
             self.postingTableView.layoutIfNeeded()
         })
         animat = false
@@ -263,6 +278,78 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
         imgArray[sender.tag] = nil
         self.postingTableView.reloadData()
         postCheck()
+    }
+    
+    
+    
+    
+    internal func panGesture(sender: UIPanGestureRecognizer){
+        let location = sender.locationInView(self.view)
+        
+        if self.view.frame.size.height / 2 > location.y && longCV == false {
+            // short
+            self.postingCollectionView.frame.origin.y = location.y
+            self.postingCollectionView.frame.size.height = self.view.frame.size.height - location.y
+            self.postingCollectionView.postCollectionView.scrollEnabled = false
+            
+            if sender.state == UIGestureRecognizerState.Ended && self.view.frame.size.height * 3/7 > location.y {
+                longCollection()
+            } else if sender.state == UIGestureRecognizerState.Ended && self.view.frame.size.height * 3/7 < location.y {
+                shortCollection()
+            }
+        } else if longCV == true {
+            // long
+            if shortCV == true && (touchY - location.y) < 0 {
+                // down swipe
+                println(touchY - location.y)
+                self.postingCollectionView.frame.origin.y = collectionLongY - (touchY - location.y)
+                self.postingCollectionView.frame.size.height = self.collectionLongHeight + (touchY - location.y)
+                self.postingCollectionView.postCollectionView.scrollEnabled = false
+                
+                if sender.state == UIGestureRecognizerState.Ended && (touchY - location.y) * -1 < 40 {
+                    longCollection()
+                } else if sender.state == UIGestureRecognizerState.Ended && (touchY - location.y) * -1 >= 40 {
+                    shortCollection()
+                }
+            }
+        }
+        
+        
+        self.postingCollectionView.postCollectionView.scrollEnabled = true
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+//        println(self.postingCollectionView.postCollectionView.contentOffset.y)
+        if longCV == true && self.postingCollectionView.postCollectionView.contentOffset.y == 0.0 {
+            shortCV = true
+            touchY = touch.locationInView(self.view).y
+        } else {
+            shortCV = false
+        }
+        
+        return true
+    }
+    
+    // collectionViewを長くする
+    func longCollection() {
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.postingCollectionView.frame.origin.y = self.collectionLongY
+            self.postingCollectionView.frame.size.height = self.collectionLongHeight
+        })
+        longCV = true
+    }
+    
+    // collectionViewを元の長さに戻す
+    func shortCollection() {
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.postingCollectionView.frame.origin.y = self.collectionHeight
+            self.postingCollectionView.frame.size.height = self.collectionHeight
+        })
+        longCV = false
     }
 
     
