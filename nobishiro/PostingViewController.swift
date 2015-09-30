@@ -301,7 +301,6 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
             // long
             if shortCV == true && (touchY - location.y) < 0 {
                 // down swipe
-                println(touchY - location.y)
                 self.postingCollectionView.frame.origin.y = collectionLongY - (touchY - location.y)
                 self.postingCollectionView.frame.size.height = self.collectionLongHeight + (touchY - location.y)
                 self.postingCollectionView.postCollectionView.scrollEnabled = false
@@ -323,8 +322,8 @@ class PostingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-//        println(self.postingCollectionView.postCollectionView.contentOffset.y)
         if longCV == true && self.postingCollectionView.postCollectionView.contentOffset.y == 0.0 {
+            // 一番上まで表示されていてバウンドしていないとき
             shortCV = true
             touchY = touch.locationInView(self.view).y
         } else {
